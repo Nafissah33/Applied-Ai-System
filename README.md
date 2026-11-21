@@ -21,7 +21,43 @@ PawPal+ AI extends my earlier **PawPal+** mini-project (a rule-based pet-care sc
 | **Evaluation harness** | `evals/run_evals.py` | 32 checks: guardrails, plan quality (retrieval on vs off), consistency, style, specialized model vs rules, and RAG grounding. |
 | **Integration** | `app.py` | "AI Planner" section in the Streamlit app; accepted plans are added to the selected `Pet` only after you click confirm. |
 
-Architecture: see [`diagrams/architecture.mmd`](diagrams/architecture.mmd) (Mermaid source; GitHub renders it below).
+System overview (human and testing checkpoints are highlighted; source in [`diagrams/system_overview.mmd`](diagrams/system_overview.mmd)):
+
+```mermaid
+flowchart LR
+    USER(["Pet owner<br/>(human)"]) -->|"free-text request"| GUARD_IN
+
+    subgraph SYS["PawPal+ AI system"]
+        GUARD_IN{"Input guardrail"} -->|"allowed"| CLF["Profile<br/>rules + trained classifier"]
+        CLF --> RET["Retriever (RAG)<br/>searches knowledge/"]
+        KB[("Knowledge base<br/>dogs, cats, general,<br/>custom notes")] --> RET
+        RET -->|"retrieved passages"| AGENT["Planning agent<br/>propose, check, revise"]
+        AGENT --> GUARD_OUT{"Output guardrail"}
+        GUARD_OUT --> SCHED["Scheduler<br/>(original PawPal+ core)"]
+        SCHED --> SELF{"Self-check:<br/>essentials scheduled?"}
+        SELF -->|"no: revise"| AGENT
+        SELF -->|"yes"| EXPL["Explanation<br/>quotes sources + confidence"]
+    end
+
+    GUARD_IN -->|"blocked"| REFUSE["Refusal + vet referral"]
+    REFUSE --> USER
+    EXPL --> REVIEW(["Owner reviews plan<br/>(human check)"])
+    REVIEW -->|"confirms"| PET[("Pet task list")]
+    REVIEW -->|"rejects"| USER
+
+    SYS -.->|"every step logged"| TRACE["Traces + logs<br/>ai_interactions.md, logs/pawpal.log"]
+    TRACE -.->|"developer inspects"| DEV(["Developer<br/>(human check)"])
+
+    EVAL["Evaluator: evals/run_evals.py<br/>+ pytest unit tests"] -.->|"runs predefined inputs through"| SYS
+    EVAL -.->|"pass / fail summary"| DEV
+
+    classDef human fill:#fde9d9,stroke:#c0602a,stroke-width:2px;
+    classDef test fill:#dff3ef,stroke:#1f7a70,stroke-width:2px;
+    class USER,REVIEW,DEV human;
+    class EVAL test;
+```
+
+Detailed architecture: see [`diagrams/architecture.mmd`](diagrams/architecture.mmd) (Mermaid source; GitHub renders it below).
 
 ```mermaid
 flowchart TD
