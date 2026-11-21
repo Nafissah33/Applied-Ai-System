@@ -109,4 +109,18 @@ If I had more time, I'd prioritize making `generate_plan()` actually honor `pref
 
 - What is one important thing you learned about designing systems or working with AI on this project?
 
- 
+---
+
+## 4. Extending PawPal+ into an AI system (final project)
+
+*Draft written with Claude Code from what happened during this work. Edit it into your own words.*
+
+**How I used AI.** I used Claude Code to plan the extension against the grading rubric, design the `pawpal_ai/` package (retriever, guardrails, planner), write the evaluation harness, and debug failures. The most useful prompts were concrete: pasting the rubric and asking for a mapping of requirements to files, and asking the assistant to run the evals and explain failures.
+
+**An AI suggestion I accepted.** The assistant recommended a hybrid design: build retrieval, planning and guardrails offline with a swappable backend, instead of depending on a paid LLM. I accepted it and chose to skip the API key entirely, which made the whole system free, deterministic and easy for a grader to run. It also made consistency testing meaningful (3 identical runs).
+
+**An AI suggestion I rejected or revised.** The assistant first proposed an LLM-driven planner using the Claude API; I rejected that for the offline version. Separately, the assistant's first guardrail treated any high-priority "feeding" task as proof that a feeding existed, so "Appetite and water check" satisfied both feeding and water. My own eval harness caught this: the indoor-cat plan had no Feeding task. I revised the check to look at the task title. A second revision came from the same harness: the self-check loop stopped after 3 attempts and could not drop redundant meals, so a 20-minute plan lost its water check. I raised the limit and added a rule to collapse redundant meals.
+
+**What I learned.** Evals found two real bugs that reading the code did not. A confident-looking AI-written component is not trustworthy until it is tested on adversarial and edge-case inputs, such as a tiny time budget or a plural word ("joints") that the parser did not recognize.
+
+**Limitations and future work.** Retrieval is keyword-based, so adding embeddings would handle paraphrases. The knowledge base should be reviewed by a veterinarian. An optional LLM backend could handle free-form requests, and the evals could then compare offline and LLM modes. The scheduler could honor preferred times instead of laying tasks out sequentially from 08:00.

@@ -1,0 +1,37 @@
+flowchart TD
+    U["User request (free text)<br/>demo.py CLI or Streamlit AI Planner tab"] --> IG
+
+    subgraph GR1["pawpal_ai/guardrails.py: input guardrail"]
+        IG{"check_input<br/>empty / too long / injection /<br/>medical-dosage / budget"}
+    end
+    IG -- "blocked" --> REF["Refusal message<br/>(vet referral or reason) + trace"]
+    IG -- "allowed (+ warnings)" --> PP
+
+    subgraph AG["pawpal_ai/planner.py: AIPlanner.plan (agentic workflow, every step traced)"]
+        PP["1. parse_profile<br/>species, life stage, conditions, minutes"]
+        PP --> Q["2. build query"]
+        Q --> RET
+        RET["3. retrieve top-3 chunks<br/>pawpal_ai/retriever.py (TF-IDF cosine,<br/>species filter)"]
+        KB[("knowledge/*.md<br/>dogs, cats, general<br/>+ knowledge/custom/")] --> RET
+        RET --> PR["4. propose tasks<br/>from TASK lines in retrieved chunks<br/>(built-in defaults if none)"]
+        PR --> OG
+        subgraph GR2["guardrails.py: output guardrail"]
+            OG{"validate_tasks<br/>schema, bounds, no dosage text,<br/>dedupe, add missing feeding / water"}
+        end
+        OG --> REV["5. revise: keep best-matching walk"]
+        REV --> SCH
+        subgraph CORE["pawpal_system.py: original PawPal+ core"]
+            SCH["Scheduler.detect_conflicts,<br/>find_next_available_slot,<br/>generate_plan (sort, filter, lay out)"]
+        end
+        SCH --> SC{"6. self-check<br/>high-priority task missed?"}
+        SC -- "yes (max 3 loops)" --> DROP["drop lowest-priority task"] --> SCH
+        SC -- "no" --> CONF["7. confidence score<br/>(best retrieval score)"]
+        CONF --> EXP["8. explain<br/>specialized style with source citations"]
+    end
+
+    EXP --> OUT["PlanResult: schedule, explanations,<br/>sources, confidence, warnings, trace"]
+    OUT --> CONFIRM{"User confirms?<br/>(Streamlit button)"}
+    CONFIRM -- "yes" --> PET["AIPlanner.apply_to_pet<br/>adds tasks to Pet / Owner"]
+    OUT --> LOG["ai_interactions.md<br/>(demo.py --log)"]
+
+    EV["evals/run_evals.py<br/>guardrail, quality, consistency,<br/>specialization checks"] -. "calls plan()" .-> AG

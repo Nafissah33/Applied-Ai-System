@@ -197,3 +197,59 @@ if st.button("Generate schedule"):
         st.caption(f"Total time used: {total_used}/{available_minutes} minutes.")
     else:
         st.info(scheduler.explain_plan(plan))
+
+st.divider()
+
+st.subheader("🤖 AI Planner")
+st.caption(
+    "Describe your pet and your time. The planner retrieves care guidance from the knowledge base, "
+    "applies guardrails, schedules with the PawPal+ Scheduler, and explains every choice. Runs offline."
+)
+
+from pawpal_ai import AIPlanner  # noqa: E402
+
+
+@st.cache_resource
+def _get_planner() -> AIPlanner:
+    return AIPlanner()
+
+
+ai_request = st.text_input(
+    "Describe your pet and time available",
+    value="I have a senior dog with arthritis, I only have 45 minutes today",
+)
+use_retrieval = st.checkbox("Use retrieval (RAG)", value=True)
+
+if st.button("Plan with AI"):
+    st.session_state.ai_result = _get_planner().plan(ai_request, use_retrieval=use_retrieval)
+
+ai_result = st.session_state.get("ai_result")
+if ai_result is not None:
+    if ai_result.status == "refused":
+        st.error(ai_result.message)
+    else:
+        for warning in ai_result.warnings:
+            st.warning(warning)
+        st.metric("Confidence", f"{ai_result.confidence:.0%}")
+        st.table(
+            [
+                {
+                    "start": e["start_time"],
+                    "end": e["end_time"],
+                    "task": e["task"].title,
+                    "priority": e["task"].priority,
+                    "minutes": e["task"].duration_minutes,
+                }
+                for e in ai_result.plan
+            ]
+        )
+        with st.expander("Why this plan? (sources and explanations)"):
+            for chunk in ai_result.retrieved:
+                st.markdown(f"- **{chunk.citation}** (relevance {chunk.score})")
+            st.text(ai_result.explanation)
+        if st.button(f"Add these tasks to {pet.name}"):
+            AIPlanner.apply_to_pet(ai_result, pet)
+            st.success(f"Added {len(ai_result.plan)} tasks to {pet.name}. Scroll up to see them.")
+    with st.expander("Agent trace"):
+        for i, step in enumerate(ai_result.trace, 1):
+            st.markdown(f"{i}. **{step['step']}**: {step['detail']}")
