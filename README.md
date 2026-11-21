@@ -17,7 +17,7 @@ It matters because a generic scheduler would give that arthritic dog a 30-minute
 | | |
 |---|---|
 | **Built with** | Python, Streamlit, pytest. Retrieval and the classifier are written from scratch with no ML libraries. |
-| **Results** | 30/30 evaluation test cases and 32/32 unit tests pass. Retrieval put the expected task in 6/6 plans vs 0/6 without it. The trained classifier beat keyword rules 14/20 vs 8/20 on held-out requests. |
+| **Results** | 33/33 evaluation test cases and 37/37 unit tests pass. Retrieval put the expected task in 6/6 plans vs 0/6 without it. The trained classifier beat keyword rules 14/20 vs 8/20 on held-out requests. |
 | **Safety** | Refuses dosage and medical questions, blocks prompt injection, validates every AI-proposed task, and needs a human click before changing any data. |
 | **Runs anywhere** | No API key, no network, deterministic output. Four commands from clone to demo. |
 
@@ -31,7 +31,7 @@ It matters because a generic scheduler would give that arthritic dog a 30-minute
 | **Specialized model** | `pawpal_ai/classifier.py`, `data/`, `models/` | A Naive Bayes classifier **trained on a synthetic dataset** (900 examples) that reads life stage and conditions from free text. Compared against keyword rules on held-out phrasing. |
 | **Agentic workflow** | `pawpal_ai/planner.py` | Eight traced steps with a self-check loop that revises the plan if essential care is missed. |
 | **Guardrails** | `pawpal_ai/guardrails.py` | Blocks injection, medical or dosage questions, and bad input; validates and repairs proposed tasks. |
-| **Evaluation harness** | `evals/run_evals.py` | 30 predefined test cases with a pass/fail summary. |
+| **Evaluation harness** | `evals/run_evals.py` | 33 predefined test cases with a pass/fail summary. |
 | **Logging and error handling** | `pawpal_ai/log.py` | Requests logged to `logs/pawpal.log`; unexpected errors return a safe message; a missing model falls back to rules. |
 | **UI integration** | `app.py` | "AI Planner" section in the Streamlit app. Tasks are added to a pet only after you confirm. |
 
@@ -100,8 +100,8 @@ streamlit run app.py              # UI: see the "AI Planner" section at the bott
 Test it:
 
 ```bash
-python -m pytest -q               # 32 unit tests (original scheduler + AI layer)
-python evals/run_evals.py         # 30-case evaluation harness, writes evals/results.md
+python -m pytest -q               # 37 unit tests (original scheduler + AI layer)
+python evals/run_evals.py         # 33-case evaluation harness, writes evals/results.md
 ```
 
 Optional, retrain the classifier from the synthetic data:
@@ -175,14 +175,14 @@ Sources: Cat Care Basics > Kitten care
 
 ## Testing summary
 
-**In a few lines:** 30 of 30 evaluation test cases and 32 of 32 unit tests pass. Average confidence was 0.93 with retrieval versus 0.30 without it, and 0.00 (with a warning shown) for an unsupported species. Retrieval put the expected task in 6/6 plans versus 0/6 without it. The trained classifier got 14/20 held-out requests right versus 8/20 for keyword rules. Along the way the tests caught four real bugs (below), and accuracy improved after each fix. A human review of 6 inputs passed 4 of 6 and found two plan-quality weaknesses the automated tests did not catch; both were then fixed and covered by regression tests.
+**In a few lines:** 33 of 33 evaluation test cases and 37 of 37 unit tests pass. Average confidence was 0.93 with retrieval versus 0.30 without it, and 0.00 (with a warning shown) for an unsupported species. Retrieval put the expected task in 6/6 plans versus 0/6 without it. The trained classifier got 14/20 held-out requests right versus 8/20 for keyword rules. Along the way the tests caught four real bugs (below), and accuracy improved after each fix. A human review of 6 inputs passed 4 of 6 and found two plan-quality weaknesses the automated tests did not catch; both were then fixed and covered by regression tests.
 
 **How reliability is measured** (all reproducible with `python evals/run_evals.py`, which writes [`evals/results.md`](evals/results.md) and machine-readable [`evals/results.json`](evals/results.json)):
 
 | Method | What it shows |
 |---|---|
-| Automated tests (`pytest`, 32 tests) | Key functions: retrieval, guardrails, parsing, planner, classifier, error handling |
-| Evaluation harness (30 cases) | Guardrails 11/11, plan quality 6/6, consistency 6/6, human-review regressions 2/2, specialization, classifier vs rules, RAG grounding, confidence, error handling |
+| Automated tests (`pytest`, 37 tests) | Key functions: retrieval, guardrails, parsing, planner, classifier, error handling |
+| Evaluation harness (33 cases) | Guardrails 14/14, plan quality 6/6, consistency 6/6, human-review regressions 2/2, specialization, classifier vs rules, RAG grounding, confidence, error handling |
 | Confidence scoring | Every plan carries a 0-1 score from retrieval strength; plans under 0.5 show a "review this yourself" warning |
 | Logging and error handling | Each request goes to `logs/pawpal.log`; an internal failure returns a safe `error` result with a log pointer instead of crashing (tested by simulating a crash) |
 | Human evaluation | [`evals/human_eval.md`](evals/human_eval.md): 6 inputs reviewed by hand, **4 of 6 passed on the first review**. The two failures (a kitten plan with one meal, an overweight-dog plan with overlapping feeding tasks) were fixed and now have automated regression checks. Re-review of the fixed outputs is recorded as pending. One reviewer; notes drafted by Claude Code and confirmed by me. |
@@ -198,7 +198,7 @@ A sample of the results table (full table in `evals/results.md`):
 | "my parrot, 40 minutes" | Low confidence with warning | Pass |
 | Simulated retriever crash | Returns `error` status, no crash | Pass |
 
-**What worked.** Retrieval changed the plans in the intended way, guardrails handled all 11 injection, dosage and bad-input cases, plans were identical across repeated runs, and every retrieval-backed explanation quotes text that really exists in a retrieved passage.
+**What worked.** Retrieval changed the plans in the intended way, guardrails handled all 14 injection, dosage, emergency and bad-input cases, plans were identical across repeated runs, and every retrieval-backed explanation quotes text that really exists in a retrieved passage.
 
 **What didn't, at first.** The harness caught real bugs that reading the code missed: a guardrail that counted "Appetite and water check" as both feeding and water (a plan had no Feeding task), a self-check loop that stopped after 3 attempts and could not drop redundant meals (a 20-minute plan lost its water check), a plural word ("joints") the parser did not recognize, and a species list that did not know "lab". The first classifier also guessed a life stage when none was mentioned.
 

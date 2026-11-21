@@ -20,6 +20,19 @@ VET_MESSAGE = (
     "I can still schedule a reminder for medication your vet has prescribed."
 )
 
+EMERGENCY_MESSAGE = (
+    "This sounds like it could be an emergency. I can't help with that. Contact an emergency veterinarian "
+    "or a pet poison hotline right away, and don't wait for a care schedule."
+)
+
+_EMERGENCY_PATTERNS = [
+    r"\b(ate|eaten|eat|swallowed|ingested|licked|drank)\b.*\b(chocolate|grapes?|raisins?|xylitol|onions?|garlic|poison|antifreeze|"
+    r"bleach|lily|lilies|medicine|medication|pills?|batteries|battery)\b",
+    r"\b(poison(ed|ing|ous)?|toxic)\b",
+    r"\b(seizures?|seizing|not breathing|can'?t breathe|struggling to breathe|collapsed|unconscious|bleeding|choking|bloat|"
+    r"hit by a car|emergency)\b",
+]
+
 _INJECTION_PATTERNS = [
     r"ignore (all |any |the )?(previous|prior|above|earlier) (instructions|rules|prompts?)",
     r"disregard (all |any |the )?(previous|prior|above|your) (instructions|rules)",
@@ -37,6 +50,8 @@ _MEDICAL_PATTERNS = [
     r"\bdiagnos(e|is|ing)\b",
     r"\b(ibuprofen|tylenol|acetaminophen|aspirin|advil|xylitol)\b",
     r"\bhow much (medicine|medication|insulin|pills?)\b",
+    r"\b(how (much|many)|right amount of|safe amount of|enough of)\b.*\b(medicine|medication|meds|pills?|tablets?|"
+    r"benadryl|tylenol|aspirin|ibuprofen|insulin|painkillers?|supplements?)\b",
     r"\bwhat is wrong with\b",
 ]
 _DOSE_IN_TITLE = re.compile(r"\b\d+(\.\d+)?\s?(mg|ml|mcg|cc|tablets?|pills?)\b", re.IGNORECASE)
@@ -62,6 +77,9 @@ def check_input(text: str, minutes: int | None = None, species: str | None = Non
     for pattern in _INJECTION_PATTERNS:
         if re.search(pattern, lowered):
             return InputCheck(False, "Request looks like an attempt to change the assistant's rules, so it was blocked.", "injection")
+    for pattern in _EMERGENCY_PATTERNS:
+        if re.search(pattern, lowered):
+            return InputCheck(False, EMERGENCY_MESSAGE, "emergency")
     for pattern in _MEDICAL_PATTERNS:
         if re.search(pattern, lowered):
             return InputCheck(False, VET_MESSAGE, "medical")

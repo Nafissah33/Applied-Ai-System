@@ -139,3 +139,19 @@ def test_overweight_dog_has_no_overlapping_feeding_tasks(planner):
     sources = {t["source"] for t in result.tasks if t["category"] == "feeding" and "water" not in t["title"].lower()}
     assert len(sources) == 1
     assert any("revise" == s["step"] and "feeding tasks came from" in s["detail"] for s in result.trace)
+
+
+@pytest.mark.parametrize("text,code", [
+    ("my dog ate chocolate what should I give him", "emergency"),
+    ("my cat is having a seizure", "emergency"),
+    ("how many benadryl can my dog take", "medical"),
+    ("what's the right amount of pain medicine for my dog", "medical"),
+])
+def test_guardrail_catches_emergencies_and_medicine_amounts(text, code):
+    verdict = check_input(text)
+    assert not verdict.allowed and verdict.code == code
+
+
+def test_guardrail_does_not_block_normal_food_requests():
+    assert check_input("my dog ate his breakfast, plan my day, 30 minutes").allowed
+    assert check_input("remind me to give my dog his vet-prescribed medication, 30 minutes").allowed

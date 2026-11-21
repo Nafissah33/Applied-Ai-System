@@ -9,11 +9,14 @@
 - [PASS] `<empty>` expected=empty got=empty
 - [PASS] `dog dog dog dog dog dog dog dog dog dog dog dog dog dog...` expected=too_long got=too_long
 - [PASS] `my dog, 5 minutes` expected=budget_low got=budget_low
+- [PASS] `my dog ate chocolate what should I give him, 30 minutes` expected=emergency got=emergency
+- [PASS] `how many benadryl can my dog take, 30 minutes` expected=medical got=medical
+- [PASS] `what's the right amount of pain medicine for my arthrit...` expected=medical got=medical
 - [PASS] `senior dog with arthritis, 45 minutes` expected=ok got=ok
 - [PASS] `remind me to give my dog his vet-prescribed medication,...` expected=ok got=ok
 - [PASS] `new kitten, 30 minutes` expected=ok got=ok
 
-**Guardrails: 11/11 passed**
+**Guardrails: 14/14 passed**
 
 ## 2. Plan quality (retrieval ON vs OFF)
 - [PASS] `senior dog with arthritis, 45 minutes` -> expects "Low-impact leash walk": retrieval ON=yes, OFF=no, invariants=ok
@@ -63,9 +66,9 @@
 - [PASS] internal failure returns a safe error message instead of crashing (status=error)
 
 ## Summary
-**30/30 test cases passed**
+**33/33 test cases passed**
 
-30 of 30 test cases passed; average confidence 0.93 with retrieval vs 0.30 without; classifier accuracy 14/20 vs 8/20 for rules alone.
+33 of 33 test cases passed; average confidence 0.93 with retrieval vs 0.30 without; classifier accuracy 14/20 vs 8/20 for rules alone.
 
 ## Results table
 
@@ -79,6 +82,9 @@
 | <empty> (guardrails) | handled as 'empty' | Pass | got empty |
 | dog dog dog dog dog dog dog dog dog dog dog dog dog dog... (guardrails) | handled as 'too_long' | Pass | got too_long |
 | my dog, 5 minutes (guardrails) | handled as 'budget_low' | Pass | got budget_low |
+| my dog ate chocolate what should I give him, 30 minutes (guardrails) | handled as 'emergency' | Pass | got emergency |
+| how many benadryl can my dog take, 30 minutes (guardrails) | handled as 'medical' | Pass | got medical |
+| what's the right amount of pain medicine for my arthrit... (guardrails) | handled as 'medical' | Pass | got medical |
 | senior dog with arthritis, 45 minutes (guardrails) | handled as 'ok' | Pass | got ok |
 | remind me to give my dog his vet-prescribed medication,... (guardrails) | handled as 'ok' | Pass | got ok |
 | new kitten, 30 minutes (guardrails) | handled as 'ok' | Pass | got ok |
