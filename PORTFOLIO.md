@@ -26,6 +26,9 @@ RAG enhancement (multiple sources including two custom documents, with a before/
 | Classifier + rules vs rules (held-out) | 14/20 vs 8/20 |
 | Explanations quoting a retrieved sentence | 20/20 |
 
+## What this project says about me as an AI engineer
+I treat AI as an engineering problem, not a demo. I extended an existing system instead of starting over, and I made every AI feature earn its place with a measurement: retrieval is judged by whether the plan changes (6/6 vs 0/6), the trained classifier by held-out accuracy (14/20 vs 8/20), and the guardrails by adversarial tests I wrote against my own code. When those tests, and a human review, found failures (a missing feeding task, a one-meal kitten plan, a poisoning request that slipped through), I fixed them and kept the tests. I am honest about limits: the README and model card say the knowledge base is not vet-reviewed, the classifier is trained on synthetic data and tested on only 20 examples, and a high confidence score does not mean the advice is correct. I work with AI tools as a collaborator I verify, not one I trust blindly, and I choose reproducible, testable designs (an offline system with no API key) over impressive but unverifiable ones.
+
 ## What I learned
 My own evaluation harness found bugs that reading the code did not: a guardrail that treated "Appetite and water check" as both feeding and water, and a self-check loop that gave up too early. AI-written code looks confident, so it needs tests on edge cases before it can be trusted. I also learned how much a trained model depends on its data: the first classifier guessed a life stage when none was given, and fixing it was a data change, not a code change.
 

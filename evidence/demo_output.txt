@@ -1,0 +1,181 @@
+
+==============================================================================
+REQUEST: I have a senior dog with arthritis, I only have 45 minutes today
+==============================================================================
+Profile: dog, senior, conditions=['joint'], 45 min
+Sources: Dog Care Basics > Joint and arthritis support for dogs; Dog Care Basics > Senior dog care
+╭─────────┬───────┬───────────────────────┬────────────┬───────╮
+│ Start   │ End   │ Task                  │ Priority   │   Min │
+├─────────┼───────┼───────────────────────┼────────────┼───────┤
+│ 08:00   │ 08:05 │ Fresh water check     │ high       │     5 │
+│ 08:05   │ 08:15 │ Feeding               │ high       │    10 │
+│ 08:15   │ 08:30 │ Low-impact leash walk │ high       │    15 │
+│ 08:30   │ 08:35 │ Mobility check        │ medium     │     5 │
+│ 08:35   │ 08:45 │ Gentle joint massage  │ medium     │    10 │
+╰─────────┴───────┴───────────────────────┴────────────┴───────╯
+Confidence: 0.99
+WARNING: Did not fit in 45 minutes: Warm bedding check
+
+Why this plan:
+[HIGH] Fresh water check, 5 min. Why: chosen for this pet's profile. Source: guardrail: essentials. Placed 08:00-08:05 after higher-priority care.
+[HIGH] Feeding, 10 min. Why: chosen for this pet's profile. Source: guardrail: essentials. Placed 08:05-08:15 after higher-priority care.
+[HIGH] Low-impact leash walk, 15 min. Why: "Dogs with joint pain or arthritis benefit from low-impact exercise such as slow leash walks and avoiding stairs or jumping." Source: Dog Care Basics > Joint and arthritis support for dogs. Placed 08:15-08:30 after higher-priority care.
+[MEDIUM] Mobility check, 5 min. Why: "Keep a regular schedule and check mobility daily." Source: Dog Care Basics > Senior dog care. Placed 08:30-08:35 after higher-priority care.
+[MEDIUM] Gentle joint massage, 10 min. Why: "Gentle massage and warm bedding help." Source: Dog Care Basics > Joint and arthritis support for dogs. Placed 08:35-08:45 after higher-priority care.
+
+Agent trace:
+  1. input_guardrail [tool: guardrails.check_input]: passed
+  2. profile: species=dog, stage=senior, conditions=['joint'], minutes=45
+  3. retrieve [tool: KnowledgeRetriever.search]: Dog Care Basics > Joint and arthritis support for dogs (score 0.496); Dog Care Basics > Senior dog care (score 0.247)
+  4. propose: 5 tasks suggested by retrieved documents
+  5. output_guardrail [tool: guardrails.validate_tasks]: fixed: essential "Feeding" task was missing -> added
+  6. output_guardrail [tool: guardrails.validate_tasks]: fixed: essential "Fresh water check" was missing -> added
+  7. revise: kept most relevant walk "Low-impact leash walk"; removed ['Gentle short walk']
+  8. self_check [tool: Scheduler.detect_conflicts + Scheduler.generate_plan]: attempt 1: scheduled 5/6 tasks, missed high-priority: none
+  9. confidence: 0.99 (best retrieval score 0.496)
+  10. explain: 5 explanations written in 'specialized' style
+
+==============================================================================
+REQUEST: Plan a day for my new kitten, 30 minutes available
+==============================================================================
+Profile: cat, young, conditions=none, 30 min
+Sources: Cat Care Basics > Kitten care
+╭─────────┬───────┬─────────────────────┬────────────┬───────╮
+│ Start   │ End   │ Task                │ Priority   │   Min │
+├─────────┼───────┼─────────────────────┼────────────┼───────┤
+│ 08:00   │ 08:05 │ Kitten morning meal │ high       │     5 │
+│ 08:05   │ 08:10 │ Kitten midday meal  │ high       │     5 │
+│ 08:10   │ 08:15 │ Kitten evening meal │ high       │     5 │
+│ 08:15   │ 08:20 │ Fresh water check   │ high       │     5 │
+│ 08:20   │ 08:30 │ Kitten play session │ medium     │    10 │
+╰─────────┴───────┴─────────────────────┴────────────┴───────╯
+Confidence: 1.00
+WARNING: Did not fit in 30 minutes: Gentle handling and socialization
+
+Why this plan:
+[HIGH] Kitten morning meal, 5 min. Why: "Kittens need several small meals a day, lots of short play sessions, and gentle handling and socialization." Source: Cat Care Basics > Kitten care. Placed 08:00-08:05 after higher-priority care.
+[HIGH] Kitten midday meal, 5 min. Why: "Kittens need several small meals a day, lots of short play sessions, and gentle handling and socialization." Source: Cat Care Basics > Kitten care. Placed 08:05-08:10 after higher-priority care.
+[HIGH] Kitten evening meal, 5 min. Why: "Kittens need several small meals a day, lots of short play sessions, and gentle handling and socialization." Source: Cat Care Basics > Kitten care. Placed 08:10-08:15 after higher-priority care.
+[HIGH] Fresh water check, 5 min. Why: chosen for this pet's profile. Source: guardrail: essentials. Placed 08:15-08:20 after higher-priority care.
+[MEDIUM] Kitten play session, 10 min. Why: "Kittens need several small meals a day, lots of short play sessions, and gentle handling and socialization." Source: Cat Care Basics > Kitten care. Placed 08:20-08:30 after higher-priority care.
+
+Agent trace:
+  1. input_guardrail [tool: guardrails.check_input]: passed
+  2. profile: species=cat, stage=young, conditions=none, minutes=30
+  3. retrieve [tool: KnowledgeRetriever.search]: Cat Care Basics > Kitten care (score 0.544)
+  4. propose: 5 tasks suggested by retrieved documents
+  5. output_guardrail [tool: guardrails.validate_tasks]: fixed: essential "Fresh water check" was missing -> added
+  6. self_check [tool: Scheduler.detect_conflicts + Scheduler.generate_plan]: attempt 1: scheduled 5/6 tasks, missed high-priority: none
+  7. confidence: 1.00 (best retrieval score 0.544)
+  8. explain: 5 explanations written in 'specialized' style
+
+==============================================================================
+REQUEST: What dose of ibuprofen can I give my dog?
+==============================================================================
+REFUSED: I can't give medical, diagnosis or dosage advice. Please contact your veterinarian. I can still schedule a reminder for medication your vet has prescribed.
+
+Agent trace:
+  1. input_guardrail [tool: guardrails.check_input]: BLOCKED (medical): I can't give medical, diagnosis or dosage advice. Please contact your veterinarian. I can still schedule a reminder for medication your vet has prescribed.
+
+==============================================================================
+REQUEST: my lab can't manage the stairs anymore and winces when he gets up, 40 minutes
+==============================================================================
+Profile: dog, adult, conditions=['joint'], 40 min
+Sources: Dog Care Basics > Joint and arthritis support for dogs; Owner Custom Notes > Mochi the golden retriever notes
+╭─────────┬───────┬───────────────────────┬────────────┬───────╮
+│ Start   │ End   │ Task                  │ Priority   │   Min │
+├─────────┼───────┼───────────────────────┼────────────┼───────┤
+│ 08:00   │ 08:05 │ Fresh water check     │ high       │     5 │
+│ 08:05   │ 08:15 │ Feeding               │ high       │    10 │
+│ 08:15   │ 08:30 │ Low-impact leash walk │ high       │    15 │
+│ 08:30   │ 08:40 │ Gentle joint massage  │ medium     │    10 │
+╰─────────┴───────┴───────────────────────┴────────────┴───────╯
+Confidence: 1.00
+
+Why this plan:
+[HIGH] Fresh water check, 5 min. Why: chosen for this pet's profile. Source: guardrail: essentials. Placed 08:00-08:05 after higher-priority care.
+[HIGH] Feeding, 10 min. Why: chosen for this pet's profile. Source: guardrail: essentials. Placed 08:05-08:15 after higher-priority care.
+[HIGH] Low-impact leash walk, 15 min. Why: "Dogs with joint pain or arthritis benefit from low-impact exercise such as slow leash walks and avoiding stairs or jumping." Source: Dog Care Basics > Joint and arthritis support for dogs. Placed 08:15-08:30 after higher-priority care.
+[MEDIUM] Gentle joint massage, 10 min. Why: "Gentle massage and warm bedding help." Source: Dog Care Basics > Joint and arthritis support for dogs. Placed 08:30-08:40 after higher-priority care.
+
+Agent trace:
+  1. input_guardrail [tool: guardrails.check_input]: passed
+  2. profile: species=dog, stage=adult, conditions=['joint'], minutes=40
+  3. specialized_model [tool: ProfileClassifier.predict]: classifier added conditions=['joint']
+  4. retrieve [tool: KnowledgeRetriever.search]: Dog Care Basics > Joint and arthritis support for dogs (score 0.534); Owner Custom Notes > Mochi the golden retriever notes (score 0.138)
+  5. propose: 3 tasks suggested by retrieved documents
+  6. output_guardrail [tool: guardrails.validate_tasks]: fixed: essential "Feeding" task was missing -> added
+  7. output_guardrail [tool: guardrails.validate_tasks]: fixed: essential "Fresh water check" was missing -> added
+  8. revise: removed high-impact task(s) ['Fetch session'] because the pet has a joint condition
+  9. self_check [tool: Scheduler.detect_conflicts + Scheduler.generate_plan]: attempt 1: scheduled 4/4 tasks, missed high-priority: none
+  10. confidence: 1.00 (best retrieval score 0.534)
+  11. explain: 4 explanations written in 'specialized' style
+
+==============================================================================
+REQUEST: Luna cat, 30 minutes
+==============================================================================
+Profile: cat, adult, conditions=none, 30 min
+Sources: Owner Vet Notes > Luna the cat vet notes; Cat Care Basics > Cat grooming; Cat Care Basics > Indoor cat enrichment
+╭─────────┬───────┬─────────────────────────┬────────────┬───────╮
+│ Start   │ End   │ Task                    │ Priority   │   Min │
+├─────────┼───────┼─────────────────────────┼────────────┼───────┤
+│ 08:00   │ 08:05 │ Wet food meal           │ high       │     5 │
+│ 08:05   │ 08:10 │ Extra water refill      │ high       │     5 │
+│ 08:10   │ 08:20 │ Quiet play session      │ medium     │    10 │
+│ 08:20   │ 08:30 │ Enrichment toy rotation │ medium     │    10 │
+╰─────────┴───────┴─────────────────────────┴────────────┴───────╯
+Confidence: 0.92
+WARNING: Did not fit in 30 minutes: Brushing, Claw trim, Climbing and scratching time
+
+Why this plan:
+[HIGH] Wet food meal, 5 min. Why: "Luna, a shy indoor cat, was advised by her vet to eat wet food twice a day and to drink extra water." Source: Owner Vet Notes > Luna the cat vet notes. Placed 08:00-08:05 after higher-priority care.
+[HIGH] Extra water refill, 5 min. Why: "Luna, a shy indoor cat, was advised by her vet to eat wet food twice a day and to drink extra water." Source: Owner Vet Notes > Luna the cat vet notes. Placed 08:05-08:10 after higher-priority care.
+[MEDIUM] Quiet play session, 10 min. Why: "Luna hides when stressed, so give her quiet one-on-one play in a calm room and avoid loud toys." Source: Owner Vet Notes > Luna the cat vet notes. Placed 08:10-08:20 after higher-priority care.
+[MEDIUM] Enrichment toy rotation, 10 min. Why: "Indoor cats need climbing spaces, scratching posts, window perches and rotating toys to prevent boredom." Source: Cat Care Basics > Indoor cat enrichment. Placed 08:20-08:30 after higher-priority care.
+
+Agent trace:
+  1. input_guardrail [tool: guardrails.check_input]: passed
+  2. profile: species=cat, stage=adult, conditions=none, minutes=30
+  3. retrieve [tool: KnowledgeRetriever.search]: Owner Vet Notes > Luna the cat vet notes (score 0.461); Cat Care Basics > Cat grooming (score 0.141); Cat Care Basics > Indoor cat enrichment (score 0.105)
+  4. propose: 7 tasks suggested by retrieved documents
+  5. output_guardrail [tool: guardrails.validate_tasks]: all tasks valid
+  6. self_check [tool: Scheduler.detect_conflicts + Scheduler.generate_plan]: attempt 1: scheduled 4/7 tasks, missed high-priority: none
+  7. confidence: 0.92 (best retrieval score 0.461)
+  8. explain: 4 explanations written in 'specialized' style
+
+==============================================================================
+REQUEST: Mochi senior golden retriever with arthritis, 45 minutes
+==============================================================================
+Profile: dog, senior, conditions=['joint'], 45 min
+Sources: Dog Care Basics > Joint and arthritis support for dogs; Owner Custom Notes > Mochi the golden retriever notes; Dog Care Basics > Senior dog care
+╭─────────┬───────┬───────────────────────┬────────────┬───────╮
+│ Start   │ End   │ Task                  │ Priority   │   Min │
+├─────────┼───────┼───────────────────────┼────────────┼───────┤
+│ 08:00   │ 08:05 │ Fresh water check     │ high       │     5 │
+│ 08:05   │ 08:15 │ Feeding               │ high       │    10 │
+│ 08:15   │ 08:30 │ Low-impact leash walk │ high       │    15 │
+│ 08:30   │ 08:35 │ Mobility check        │ medium     │     5 │
+│ 08:35   │ 08:45 │ Gentle joint massage  │ medium     │    10 │
+╰─────────┴───────┴───────────────────────┴────────────┴───────╯
+Confidence: 0.87
+WARNING: Did not fit in 45 minutes: Warm bedding check
+
+Why this plan:
+[HIGH] Fresh water check, 5 min. Why: chosen for this pet's profile. Source: guardrail: essentials. Placed 08:00-08:05 after higher-priority care.
+[HIGH] Feeding, 10 min. Why: chosen for this pet's profile. Source: guardrail: essentials. Placed 08:05-08:15 after higher-priority care.
+[HIGH] Low-impact leash walk, 15 min. Why: "Dogs with joint pain or arthritis benefit from low-impact exercise such as slow leash walks and avoiding stairs or jumping." Source: Dog Care Basics > Joint and arthritis support for dogs. Placed 08:15-08:30 after higher-priority care.
+[MEDIUM] Mobility check, 5 min. Why: "Keep a regular schedule and check mobility daily." Source: Dog Care Basics > Senior dog care. Placed 08:30-08:35 after higher-priority care.
+[MEDIUM] Gentle joint massage, 10 min. Why: "Gentle massage and warm bedding help." Source: Dog Care Basics > Joint and arthritis support for dogs. Placed 08:35-08:45 after higher-priority care.
+
+Agent trace:
+  1. input_guardrail [tool: guardrails.check_input]: passed
+  2. profile: species=dog, stage=senior, conditions=['joint'], minutes=45
+  3. retrieve [tool: KnowledgeRetriever.search]: Dog Care Basics > Joint and arthritis support for dogs (score 0.437); Owner Custom Notes > Mochi the golden retriever notes (score 0.397); Dog Care Basics > Senior dog care (score 0.162)
+  4. propose: 6 tasks suggested by retrieved documents
+  5. output_guardrail [tool: guardrails.validate_tasks]: fixed: essential "Feeding" task was missing -> added
+  6. output_guardrail [tool: guardrails.validate_tasks]: fixed: essential "Fresh water check" was missing -> added
+  7. revise: kept most relevant walk "Low-impact leash walk"; removed ['Gentle short walk']
+  8. revise: removed high-impact task(s) ['Fetch session'] because the pet has a joint condition
+  9. self_check [tool: Scheduler.detect_conflicts + Scheduler.generate_plan]: attempt 1: scheduled 5/6 tasks, missed high-priority: none
+  10. confidence: 0.87 (best retrieval score 0.437)
+  11. explain: 5 explanations written in 'specialized' style

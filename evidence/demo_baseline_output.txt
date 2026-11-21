@@ -1,0 +1,30 @@
+
+==============================================================================
+REQUEST: I have a senior dog with arthritis, I only have 45 minutes today
+==============================================================================
+Profile: dog, senior, conditions=['joint'], 45 min
+Sources: none
+╭─────────┬───────┬───────────────────┬────────────┬───────╮
+│ Start   │ End   │ Task              │ Priority   │   Min │
+├─────────┼───────┼───────────────────┼────────────┼───────┤
+│ 08:00   │ 08:05 │ Fresh water check │ high       │     5 │
+│ 08:05   │ 08:15 │ Feeding           │ high       │    10 │
+│ 08:15   │ 08:45 │ Walk              │ medium     │    30 │
+╰─────────┴───────┴───────────────────┴────────────┴───────╯
+Confidence: 0.30
+WARNING: Low confidence: limited matching guidance. Please review this plan yourself.
+
+Why this plan:
+Fresh water check scheduled (high priority).
+Feeding scheduled (high priority).
+Walk scheduled (medium priority).
+
+Agent trace:
+  1. input_guardrail [tool: guardrails.check_input]: passed
+  2. profile: species=dog, stage=senior, conditions=['joint'], minutes=45
+  3. retrieve [tool: KnowledgeRetriever.search]: skipped (baseline mode, no retrieval)
+  4. propose: using 3 built-in default tasks
+  5. output_guardrail [tool: guardrails.validate_tasks]: all tasks valid
+  6. self_check [tool: Scheduler.detect_conflicts + Scheduler.generate_plan]: attempt 1: scheduled 3/3 tasks, missed high-priority: none
+  7. confidence: 0.30 (best retrieval score 0.0)
+  8. explain: 3 explanations written in 'baseline' style
