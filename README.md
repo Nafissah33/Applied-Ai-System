@@ -199,6 +199,16 @@ python demo.py > evidence/demo_output.txt 2>&1
 python demo.py --baseline "I have a senior dog with arthritis, I only have 45 minutes today" > evidence/demo_baseline_output.txt 2>&1
 ```
 
+### Where to find each piece of evidence
+
+| What it demonstrates | Where in this README | Inputs and outputs shown |
+|---|---|---|
+| **End-to-end system run (3 inputs)** | [Sample interactions](#sample-interactions) and Command 2 below | Senior dog with arthritis, a paraphrased request, a new kitten, and a refused dosage question, each with its full output |
+| **AI feature behavior: RAG** | [Stretch features](#stretch-features-all-four-implemented) (before/after) and Command 2 below | Same request with and without retrieval or custom documents, with the plans, sources and confidence for each |
+| **AI feature behavior: agent** | Command 3 below | An 11-step trace showing the tool called at each step, two revisions and a self-check |
+| **AI feature behavior: specialized model** | [Sample interactions](#sample-interactions) (example 2) and `model_card.md` | A paraphrase the keyword rules miss, handled by the trained classifier (8/20 vs 14/20 held-out) |
+| **Reliability, guardrail and evaluation behavior** | Commands 1 and 4 below | 41 passing unit tests, 14/14 guardrail cases, plan-quality and consistency results, and the final summary line |
+
 **Command 1: unit tests**
 
 ```text
@@ -207,16 +217,47 @@ $ python -m pytest -q
 41 passed in 0.03s
 ```
 
-**Command 2: example inputs through the system** (see [Sample interactions](#sample-interactions) for full outputs):
+**Command 2: custom-document RAG (input and output)**
 
-```bash
-python demo.py "I have a senior dog with arthritis, I only have 45 minutes today"
-python demo.py "Plan a day for my new kitten, 30 minutes available"
-python demo.py "What dose of ibuprofen can I give my dog?"
-python demo.py "Luna cat, 30 minutes"          # uses the custom vet-notes document
+```text
+$ python demo.py "Luna cat, 30 minutes"
+Profile: cat, adult, conditions=none, 30 min
+Sources: Owner Vet Notes > Luna the cat vet notes; Cat Care Basics > Cat grooming; Cat Care Basics > Indoor cat enrichment
+╭─────────┬───────┬─────────────────────────┬────────────┬───────╮
+│ Start   │ End   │ Task                    │ Priority   │   Min │
+├─────────┼───────┼─────────────────────────┼────────────┼───────┤
+│ 08:00   │ 08:05 │ Wet food meal           │ high       │     5 │
+│ 08:05   │ 08:10 │ Extra water refill      │ high       │     5 │
+│ 08:10   │ 08:20 │ Quiet play session      │ medium     │    10 │
+│ 08:20   │ 08:30 │ Enrichment toy rotation │ medium     │    10 │
+╰─────────┴───────┴─────────────────────────┴────────────┴───────╯
+Confidence: 0.92
+WARNING: Did not fit in 30 minutes: Brushing, Claw trim, Climbing and scratching time
 ```
 
-**Command 3: reliability and guardrail results**
+Without the custom vet notes the same request returns a generic cat routine (Morning feeding, Evening feeding, Appetite and water check, Fresh water check, Litter box scooping, Claw trim) at confidence 0.65; with them it follows Luna's vet advice at 0.92.
+
+**Command 3: agent behavior (tool calls, revisions and self-check)**
+
+```text
+$ python demo.py "Mochi senior golden retriever with arthritis, 45 minutes"
+Agent trace:
+  1. input_guardrail [tool: guardrails.check_input]: passed
+  2. profile: species=dog, stage=senior, conditions=['joint'], minutes=45
+  3. retrieve [tool: KnowledgeRetriever.search]: Dog Care Basics > Joint and arthritis support for dogs (score 0.437); Owner Custom Notes > Mochi the golden retriever notes (score 0.397); Dog Care Basics > Senior dog care (score 0.162)
+  4. propose: 6 tasks suggested by retrieved documents
+  5. output_guardrail [tool: guardrails.validate_tasks]: fixed: essential "Feeding" task was missing -> added
+  6. output_guardrail [tool: guardrails.validate_tasks]: fixed: essential "Fresh water check" was missing -> added
+  7. revise: kept most relevant walk "Low-impact leash walk"; removed ['Gentle short walk']
+  8. revise: removed high-impact task(s) ['Fetch session'] because the pet has a joint condition
+  9. self_check [tool: Scheduler.detect_conflicts + Scheduler.generate_plan]: attempt 1: scheduled 5/6 tasks, missed high-priority: none
+  10. confidence: 0.87 (best retrieval score 0.437)
+  11. explain: 5 explanations written in 'specialized' style
+```
+
+Step 8 shows a guardrail-style revision: the custom note suggested a "Fetch session", which the agent removed because the pet has a joint condition.
+
+**Command 4: reliability, guardrail and evaluation results**
 
 ```text
 $ python evals/run_evals.py
