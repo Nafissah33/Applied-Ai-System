@@ -234,8 +234,8 @@ python demo.py --baseline "I have a senior dog with arthritis, I only have 45 mi
 
 ```text
 $ python -m pytest -q
-.........................................                                [100%]
-41 passed in 0.03s
+............................................                             [100%]
+44 passed in 0.03s
 ```
 
 **Command 2: custom-document RAG (input and output)**
