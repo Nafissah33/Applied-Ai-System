@@ -39,12 +39,13 @@ header[data-testid="stHeader"] { background: transparent; }
 .block-container { max-width: 1180px; padding-top: 3.6rem; }
 h1, h2, h3 { color: #0E4C7A; letter-spacing: -0.01em; }
 .topbar { display: flex; justify-content: space-between; align-items: center; background: #0E4C7A; color: #fff;
-          padding: 14px 26px; border-radius: 14px 14px 0 0; }
+          padding: 14px 26px; border-radius: 12px 12px 0 0; }
 .topbar .brand { font-size: 1.45rem; font-weight: 700; }
 .topbar .tagline { color: #BFEDE7; font-size: 1.05rem; }
 .hero { background: linear-gradient(135deg, #0E4C7A 0%, #14908F 55%, #3BB98A 100%); text-align: center;
         padding: 30px 24px 0 24px; border-radius: 0 0 18px 18px; margin-bottom: 18px; overflow: hidden; }
-.hero h1 { color: #fff; font-size: 2.7rem; margin: 0 0 8px 0; }
+.hero .eyebrow { color: #9FE8DC; letter-spacing: 0.22em; font-size: 0.95rem; font-weight: 700; margin-bottom: 10px; }
+.hero h1 { color: #fff; font-size: 2.8rem; margin: 0 0 10px 0; font-weight: 700; }
 .hero p { color: #E6FAF6; font-size: 1.3rem; margin: 0 auto 14px auto; max-width: 820px; }
 .hero img { width: 100%; max-width: 1080px; display: block; margin: 0 auto; border-radius: 14px 14px 0 0; }
 .cards { display: flex; gap: 16px; margin: 6px 0 20px 0; flex-wrap: wrap; }
@@ -62,9 +63,10 @@ div.stButton > button { border-radius: 10px; font-size: 1.1rem; }
 _img = _hero_image_src()
 st.markdown(
     f"""
-<div class="topbar"><span class="brand">🐾 {CLINIC_NAME}</span>
+<div class="topbar"><span class="brand">{CLINIC_NAME}</span>
 <span class="tagline">Compassionate care, planned with AI</span></div>
 <div class="hero">
+  <div class="eyebrow">COMPASSIONATE CARE &nbsp;·&nbsp; POWERED BY AI</div>
   <h1>Welcome to {CLINIC_NAME}</h1>
   <p>Our team is here for your dogs, cats and exotic pets. Tell us about your companion and we will build a safe,
   explained daily care plan.</p>
@@ -80,7 +82,7 @@ st.markdown(
 )
 
 with st.sidebar:
-    st.markdown(f"### 🐾 {CLINIC_NAME}")
+    st.markdown(f"### {CLINIC_NAME}")
     st.caption("Nafissatou LO · 491 Applied AI for Engineers · Fall 2026")
     st.markdown(f"[View the code on GitHub]({REPO_URL})")
     st.divider()
@@ -116,7 +118,7 @@ def _get_planner() -> AIPlanner:
     return AIPlanner()
 
 
-tab_ai, tab_manage = st.tabs(["🤖 AI Planner", "📋 My pets & schedule"])
+tab_ai, tab_manage = st.tabs(["AI Planner", "My pets & schedule"])
 
 with tab_ai:
     st.subheader("Plan a day with AI")
@@ -177,11 +179,11 @@ with tab_manage:
 
     save_col, load_col = st.columns(2)
     with save_col:
-        if st.button("💾 Save data"):
+        if st.button("Save data"):
             owner.save_to_json(DEFAULT_DATA_FILE)
             st.success(f"Saved to {DEFAULT_DATA_FILE}.")
     with load_col:
-        if st.button("📂 Reload from file"):
+        if st.button("Reload from file"):
             if os.path.exists(DEFAULT_DATA_FILE):
                 st.session_state.owner = Owner.load_from_json(DEFAULT_DATA_FILE)
                 st.rerun()
