@@ -114,6 +114,22 @@ def load_chunks(knowledge_dir: Path | str = DEFAULT_KNOWLEDGE_DIR) -> list[Chunk
     return chunks
 
 
+def best_sentence(text: str, primary: str, secondary: str = "") -> str:
+    """Return the sentence of a retrieved passage that best matches `primary` (e.g. a task title),
+    using `secondary` (e.g. the user's request) only as a weaker signal. Grounds explanations in the source text."""
+    sentences = [s.strip() for s in re.split(r"(?<=[.!?])\s+", text) if s.strip()]
+    if not sentences:
+        return ""
+    p, q = set(tokenize(primary)), set(tokenize(secondary))
+
+    def score(item):
+        i, s = item
+        words = set(tokenize(s))
+        return (3 * len(p & words) + len(q & words), -i)
+
+    return max(enumerate(sentences), key=score)[1]
+
+
 class KnowledgeRetriever:
     def __init__(self, knowledge_dir: Path | str = DEFAULT_KNOWLEDGE_DIR):
         self.chunks = load_chunks(knowledge_dir)

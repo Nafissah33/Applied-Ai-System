@@ -8,7 +8,8 @@ flowchart TD
     IG -- "allowed (+ warnings)" --> PP
 
     subgraph AG["pawpal_ai/planner.py: AIPlanner.plan (agentic workflow, every step traced)"]
-        PP["1. parse_profile<br/>species, life stage, conditions, minutes"]
+        PP["1. parse_profile<br/>keyword rules + specialized classifier<br/>(species, life stage, conditions, minutes)"]
+        MODEL[("models/profile_model.json<br/>Naive Bayes trained on<br/>data/profile_training.jsonl")] --> PP
         PP --> Q["2. build query"]
         Q --> RET
         RET["3. retrieve top-3 chunks<br/>pawpal_ai/retriever.py (TF-IDF cosine,<br/>species filter)"]
@@ -26,7 +27,7 @@ flowchart TD
         SCH --> SC{"6. self-check<br/>high-priority task missed?"}
         SC -- "yes (max 3 loops)" --> DROP["drop lowest-priority task"] --> SCH
         SC -- "no" --> CONF["7. confidence score<br/>(best retrieval score)"]
-        CONF --> EXP["8. explain<br/>specialized style with source citations"]
+        CONF --> EXP["8. explain: specialized style<br/>quotes the best-matching retrieved sentence<br/>+ source citation"]
     end
 
     EXP --> OUT["PlanResult: schedule, explanations,<br/>sources, confidence, warnings, trace"]
@@ -34,4 +35,6 @@ flowchart TD
     CONFIRM -- "yes" --> PET["AIPlanner.apply_to_pet<br/>adds tasks to Pet / Owner"]
     OUT --> LOG["ai_interactions.md<br/>(demo.py --log)"]
 
-    EV["evals/run_evals.py<br/>guardrail, quality, consistency,<br/>specialization checks"] -. "calls plan()" .-> AG
+    LG["logs/pawpal.log<br/>(every request, status, warnings, errors)"]
+    AG -. "logs" .-> LG
+    EV["evals/run_evals.py<br/>guardrail, quality, consistency,<br/>specialization, model, grounding checks"] -. "calls plan()" .-> AG

@@ -12,11 +12,13 @@ PawPal+ AI extends my earlier **PawPal+** mini-project (a rule-based pet-care sc
 
 | Feature | Where | What it does |
 |---|---|---|
-| **RAG (multi-source retrieval)** | `pawpal_ai/retriever.py`, `knowledge/` | TF-IDF cosine retrieval over markdown guides (dogs, cats, general) plus your own notes in `knowledge/custom/`. Chunks keep their source for citations. |
+| **RAG (multi-source retrieval)** | `pawpal_ai/retriever.py`, `knowledge/` | TF-IDF cosine retrieval over markdown guides (dogs, cats, general) plus your own notes in `knowledge/custom/`. Retrieved sections **decide which tasks are proposed** and their sentences are quoted in the explanations, so retrieval changes the output, not just the citations. |
 | **Agentic planning workflow** | `pawpal_ai/planner.py` | 8 traced steps: input guardrail, profile parsing, retrieval, task proposal, output guardrail, revision, scheduling with a self-check loop, confidence and explanation. |
 | **Guardrails** | `pawpal_ai/guardrails.py` | Blocks empty/oversized input, prompt injection, and medical/dosage questions (vet referral). Validates proposed tasks (schema, bounds, no dosage text, dedupe, forced feeding and water). |
-| **Specialization** | `planner._explain` | Constrained explanation style with fixed fields and source citations, compared to a plain baseline in `model_card.md`. |
-| **Evaluation harness** | `evals/run_evals.py` | 30 checks over guardrails, plan quality (retrieval on vs off), consistency, and style. |
+| **Specialized model** | `pawpal_ai/classifier.py`, `data/`, `models/`, `train_profile_model.py` | A small Naive Bayes classifier **trained on a synthetic dataset** (900 examples) that reads life stage and conditions from free text, so paraphrases like "can't manage the stairs" are understood. It extends the keyword rules and is compared against them on held-out phrasing in `model_card.md`. |
+| **Specialized explanation style** | `planner._explain` | Constrained explanation format that **quotes the retrieved passage** and cites its source, compared to a plain baseline in `model_card.md`. |
+| **Logging and error handling** | `pawpal_ai/log.py`, `AIPlanner.plan` | Every request is logged to `logs/pawpal.log`; unexpected errors return a safe `error` status instead of crashing; a missing model file falls back to keyword rules. |
+| **Evaluation harness** | `evals/run_evals.py` | 32 checks: guardrails, plan quality (retrieval on vs off), consistency, style, specialized model vs rules, and RAG grounding. |
 | **Integration** | `app.py` | "AI Planner" section in the Streamlit app; accepted plans are added to the selected `Pet` only after you click confirm. |
 
 Architecture: see [`diagrams/architecture.mmd`](diagrams/architecture.mmd) (Mermaid source; GitHub renders it below).
@@ -32,7 +34,8 @@ flowchart TD
     IG -- "allowed (+ warnings)" --> PP
 
     subgraph AG["pawpal_ai/planner.py: AIPlanner.plan (agentic workflow, every step traced)"]
-        PP["1. parse_profile<br/>species, life stage, conditions, minutes"]
+        PP["1. parse_profile<br/>keyword rules + specialized classifier<br/>(species, life stage, conditions, minutes)"]
+        MODEL[("models/profile_model.json<br/>Naive Bayes trained on<br/>data/profile_training.jsonl")] --> PP
         PP --> Q["2. build query"]
         Q --> RET
         RET["3. retrieve top-3 chunks<br/>pawpal_ai/retriever.py (TF-IDF cosine,<br/>species filter)"]
@@ -50,7 +53,7 @@ flowchart TD
         SCH --> SC{"6. self-check<br/>high-priority task missed?"}
         SC -- "yes (max 3 loops)" --> DROP["drop lowest-priority task"] --> SCH
         SC -- "no" --> CONF["7. confidence score<br/>(best retrieval score)"]
-        CONF --> EXP["8. explain<br/>specialized style with source citations"]
+        CONF --> EXP["8. explain: specialized style<br/>quotes the best-matching retrieved sentence<br/>+ source citation"]
     end
 
     EXP --> OUT["PlanResult: schedule, explanations,<br/>sources, confidence, warnings, trace"]
@@ -58,7 +61,9 @@ flowchart TD
     CONFIRM -- "yes" --> PET["AIPlanner.apply_to_pet<br/>adds tasks to Pet / Owner"]
     OUT --> LOG["ai_interactions.md<br/>(demo.py --log)"]
 
-    EV["evals/run_evals.py<br/>guardrail, quality, consistency,<br/>specialization checks"] -. "calls plan()" .-> AG
+    LG["logs/pawpal.log<br/>(every request, status, warnings, errors)"]
+    AG -. "logs" .-> LG
+    EV["evals/run_evals.py<br/>guardrail, quality, consistency,<br/>specialization, model, grounding checks"] -. "calls plan()" .-> AG
 ```
 
 ## Setup
@@ -76,18 +81,19 @@ No API key or network access is needed.
 ## Run
 
 ```bash
-python demo.py                    # 3 built-in example requests, end to end
+python demo.py                    # 4 built-in example requests, end to end
 python demo.py "puppy, 45 minutes"
 python demo.py --baseline "senior dog with arthritis, 45 minutes"   # no retrieval, for comparison
 python demo.py --log              # also append agent traces to ai_interactions.md
+python data/generate_training_data.py && python train_profile_model.py   # optional: regenerate data + retrain the classifier
 streamlit run app.py              # UI, see the "AI Planner" section at the bottom
 ```
 
 ## Test and evaluate
 
 ```bash
-python -m pytest -q               # 25 unit tests (original scheduler + AI layer)
-python evals/run_evals.py         # 30-check evaluation harness, writes evals/results.md
+python -m pytest -q               # 30 unit tests (original scheduler + AI layer)
+python evals/run_evals.py         # 32-check evaluation harness, writes evals/results.md
 ```
 
 ## Sample output
@@ -131,6 +137,19 @@ Confidence: 0.30   WARNING: Low confidence: limited matching guidance.
 
 Without retrieval the arthritic senior dog gets a generic 30-minute walk. With retrieval it gets a 15-minute low-impact leash walk, a mobility check, and a joint massage, each citing its source. Across 6 test requests the expected specialized task appears **6/6 with retrieval vs 0/6 without** (`evals/results.md`).
 
+### Specialized model: a paraphrase the keyword rules miss
+
+```text
+$ python demo.py "my lab can't manage the stairs anymore and winces when he gets up, 40 minutes"
+Profile: dog, adult, conditions=['joint'], 40 min
+  3. specialized_model: classifier added conditions=['joint']
+  4. retrieve: Dog Care Basics > Joint and arthritis support for dogs (score 0.53); ...
+[HIGH] Low-impact leash walk, 15 min. Why: "Dogs with joint pain or arthritis benefit from low-impact exercise
+such as slow leash walks and avoiding stairs or jumping." Source: Dog Care Basics > Joint and arthritis support for dogs.
+```
+
+Keyword rules alone find no condition in this sentence, so the plan would be generic. On 20 held-out paraphrased requests the rules alone get stage and conditions right **8/20**; rules plus the trained classifier get **14/20** (see `model_card.md` for caveats).
+
 ## Guardrail examples
 
 | Input | Behavior | Result |
@@ -146,6 +165,7 @@ Without retrieval the arthritic senior dog gets a generic 30-minute walk. With r
 
 ## Limitations
 
+- The classifier is trained on synthetic data and evaluated on only 20 held-out examples, so its accuracy numbers are rough; it still misses some phrasings (see `model_card.md`).
 - Retrieval is keyword-based TF-IDF, so it can miss paraphrases (for example "slowing down on walks" matches no condition word).
 - Profile parsing is rule-based; it understands only a fixed set of species, stages and conditions.
 - Guidance in `knowledge/` is general and written for this project, not veterinary advice.

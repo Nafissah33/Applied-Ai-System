@@ -12,8 +12,14 @@ from datetime import date
 
 from pawpal_system import Owner, Pet, Scheduler, Task
 
+from .classifier import ProfileClassifier
 from .guardrails import MAX_MINUTES, check_input, validate_tasks
-from .retriever import Chunk, KnowledgeRetriever
+from .log import get_logger
+from .retriever import Chunk, KnowledgeRetriever, best_sentence
+
+logger = get_logger()
+MODEL_CONDITION_THRESHOLD = 0.9
+MODEL_STAGE_CONFIDENCE = 0.9
 
 DEFAULT_MINUTES = 60
 MAX_REVISIONS = 8
@@ -29,8 +35,9 @@ _STAGE_WORDS = {
     "young": ["puppy", "kitten", "young", "baby"],
     "senior": ["senior", "old", "elderly", "aging", "geriatric"],
 }
-_SPECIES_WORDS = {"dog": ["dog", "puppy", "pup", "retriever", "labrador", "poodle", "beagle"],
-                  "cat": ["cat", "kitten", "kitty", "tabby", "siamese"]}
+_SPECIES_WORDS = {"dog": ["dog", "puppy", "pup", "pooch", "canine", "retriever", "lab", "labrador", "poodle", "beagle",
+                          "shepherd", "bulldog", "husky", "terrier", "corgi", "dachshund"],
+                  "cat": ["cat", "kitten", "kitty", "feline", "tabby", "siamese", "persian", "tomcat"]}
 _BASELINE_TASKS = {
     "dog": [("Feeding", 10, "high", "feeding"), ("Fresh water check", 5, "high", "feeding"), ("Walk", 30, "medium", "walk")],
     "cat": [("Feeding", 5, "high", "feeding"), ("Fresh water check", 5, "high", "feeding"), ("Play", 15, "medium", "play")],
@@ -60,8 +67,12 @@ class PlanResult:
         return "\n".join(lines)
 
 
-def parse_profile(text: str) -> dict:
-    """Extract species, life stage, conditions, and a time budget from free text."""
+def parse_profile(text: str, classifier: ProfileClassifier | None = None) -> dict:
+    """Extract species, life stage, conditions, and a time budget from free text.
+
+    Keyword rules run first. If a trained classifier is given it fills the gaps: it can add conditions the
+    keywords missed and replace the default "adult" stage, but only when it is highly confident.
+    """
     lowered = text.lower()
     raw_words = re.findall(r"[a-z]+", lowered)
     # Also match singular forms so "joints" finds "joint" and "puppies" style plurals still work.
@@ -85,7 +96,17 @@ def parse_profile(text: str) -> dict:
     if hours or mins:
         minutes = int(float(hours.group(1)) * 60) if hours else 0
         minutes += int(mins.group(1)) if mins else 0
-    return {"species": species, "stage": stage, "conditions": conditions, "minutes": minutes}
+    profile = {"species": species, "stage": stage, "conditions": conditions, "minutes": minutes}
+    if classifier is not None:
+        pred = classifier.predict(text, threshold=MODEL_CONDITION_THRESHOLD)
+        added = [c for c in pred["conditions"] if c not in conditions]
+        profile["conditions"] = conditions + added
+        if stage == "adult" and pred["stage"] != "adult" and pred["stage_confidence"] >= MODEL_STAGE_CONFIDENCE:
+            profile["stage"] = pred["stage"]
+            profile["model_stage"] = True
+        if added:
+            profile["model_conditions"] = added
+    return profile
 
 
 def _query_from_profile(text: str, profile: dict) -> str:
@@ -102,19 +123,39 @@ def _explain(entry: dict, task_meta: dict, style: str) -> str:
     if style == "baseline":
         return f"{task.title} scheduled ({task.priority} priority)."
     source = task_meta.get("source", "general guidance")
+    guidance = task_meta.get("guidance")
+    why = f'"{guidance}"' if guidance else "chosen for this pet's profile."
     return (
         f"[{task.priority.upper()}] {task.title}, {task.duration_minutes} min. "
-        f"Why: chosen for this pet's profile. Source: {source}. "
+        f"Why: {why} Source: {source}. "
         f"Placed {entry['start_time']}-{entry['end_time']} after higher-priority care."
     )
 
 
 class AIPlanner:
-    def __init__(self, retriever: KnowledgeRetriever | None = None):
+    def __init__(self, retriever: KnowledgeRetriever | None = None, use_model: bool = True):
         self.retriever = retriever or KnowledgeRetriever()
+        self.classifier: ProfileClassifier | None = None
+        if use_model:
+            try:
+                self.classifier = ProfileClassifier.load()
+            except (OSError, ValueError, KeyError) as exc:
+                logger.warning("Profile model unavailable (%s); using keyword rules only.", exc)
 
     def plan(self, request: str, *, use_retrieval: bool = True, style: str = "specialized",
-             today: date | None = None) -> PlanResult:
+             use_model: bool = True, today: date | None = None) -> PlanResult:
+        """Run the full workflow. Never raises: unexpected errors are logged and returned as status 'error'."""
+        try:
+            result = self._plan(request, use_retrieval, style, use_model, today)
+        except Exception as exc:  # noqa: BLE001 - last-resort safety net for the UI/CLI
+            logger.exception("Planner failed for request %r", request)
+            return PlanResult(status="error", message=f"Sorry, the planner hit an unexpected error ({type(exc).__name__}). "
+                                                      "Nothing was scheduled; see logs/pawpal.log.")
+        logger.info("request=%r status=%s confidence=%.2f tasks=%d warnings=%d",
+                    request, result.status, result.confidence, len(result.plan), len(result.warnings))
+        return result
+
+    def _plan(self, request: str, use_retrieval: bool, style: str, use_model: bool, today: date | None) -> PlanResult:
         result = PlanResult(status="ok")
         trace = result.trace
 
@@ -122,7 +163,7 @@ class AIPlanner:
             trace.append({"step": step, "detail": detail})
 
         # 1. Input guardrail
-        profile = parse_profile(request or "")
+        profile = parse_profile(request or "", self.classifier if use_model else None)
         verdict = check_input(request, minutes=profile["minutes"], species=profile["species"])
         if not verdict.allowed:
             log("input_guardrail", f"BLOCKED ({verdict.code}): {verdict.reason}")
@@ -134,6 +175,9 @@ class AIPlanner:
         log("input_guardrail", "passed" + (f" with warnings: {verdict.warnings}" if verdict.warnings else ""))
         log("profile", f"species={profile['species']}, stage={profile['stage']}, "
                        f"conditions={profile['conditions'] or 'none'}, minutes={profile['minutes']}")
+        if profile.get("model_conditions") or profile.get("model_stage"):
+            log("specialized_model", f"classifier added conditions={profile.get('model_conditions', [])}"
+                                     f"{', stage=' + profile['stage'] if profile.get('model_stage') else ''}")
 
         # 2. Retrieval
         proposed: list[dict] = []
@@ -145,7 +189,8 @@ class AIPlanner:
             log("retrieve", "; ".join(f"{c.citation} (score {c.score})" for c in result.retrieved) or "no relevant documents")
             for chunk in result.retrieved:
                 for suggestion in chunk.suggestions:
-                    proposed.append({**suggestion, "source": chunk.citation, "chunk_score": chunk.score})
+                    proposed.append({**suggestion, "source": chunk.citation, "chunk_score": chunk.score,
+                                     "guidance": best_sentence(chunk.text, suggestion["title"], request)})
         else:
             log("retrieve", "skipped (baseline mode, no retrieval)")
         if not proposed:

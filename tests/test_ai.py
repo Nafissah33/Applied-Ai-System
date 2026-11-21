@@ -4,6 +4,7 @@ import pytest
 
 from pawpal_ai import AIPlanner, KnowledgeRetriever
 from pawpal_ai.guardrails import check_input, validate_tasks
+from pawpal_ai.classifier import ProfileClassifier
 from pawpal_ai.planner import parse_profile
 from pawpal_system import Pet
 
@@ -91,3 +92,38 @@ def test_apply_to_pet_adds_tasks(planner):
 
 def test_parse_profile_matches_plural_words():
     assert parse_profile("my dog has sore joints, 30 min")["conditions"] == ["joint"]
+
+
+def test_classifier_understands_paraphrase_that_rules_miss():
+    clf = ProfileClassifier.load()
+    text = "my lab can't manage the stairs anymore and winces when he gets up, 40 minutes"
+    assert parse_profile(text)["conditions"] == []
+    assert parse_profile(text, clf)["conditions"] == ["joint"]
+
+
+def test_classifier_roundtrip_and_keeps_adult_default(tmp_path):
+    clf = ProfileClassifier.load()
+    path = tmp_path / "m.json"
+    clf.save(path)
+    again = ProfileClassifier.load(path)
+    assert again.predict("a new kitten, 30 minutes") == clf.predict("a new kitten, 30 minutes")
+    assert parse_profile("my dog, 30 minutes", clf)["stage"] == "adult"
+
+
+def test_explanations_quote_retrieved_text(planner):
+    result = planner.plan("senior dog with arthritis, 45 minutes")
+    passages = " ".join(c.text for c in result.retrieved)
+    walk = next(l for l in result.explanation.splitlines() if "Low-impact leash walk" in l)
+    quoted = walk.split('Why: "', 1)[1].split('" Source:', 1)[0]
+    assert quoted in passages
+
+
+def test_planner_survives_internal_error(planner, monkeypatch):
+    monkeypatch.setattr(planner.retriever, "search", lambda *a, **k: 1 / 0)
+    result = planner.plan("puppy, 30 minutes")
+    assert result.status == "error" and "logs/pawpal.log" in result.message
+
+
+def test_planner_falls_back_to_rules_when_model_missing(monkeypatch, tmp_path):
+    monkeypatch.setattr("pawpal_ai.planner.ProfileClassifier.load", classmethod(lambda cls, *a, **k: (_ for _ in ()).throw(OSError("missing"))))
+    assert AIPlanner().classifier is None

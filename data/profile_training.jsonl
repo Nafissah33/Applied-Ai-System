@@ -1,0 +1,900 @@
+{"text": "Plan a day for my cat. It is 3 years old and lives in an apartment and has separation anxiety. I have 30 minutes.", "stage": "adult", "conditions": ["anxious", "indoor"]}
+{"text": "Plan a day for the dog. It is getting up there in age. I have 30 minutes.", "stage": "senior", "conditions": []}
+{"text": "Help me care for my dog. It is in her golden years and has arthritis. only 45 minutes today.", "stage": "senior", "conditions": ["joint"]}
+{"text": "Schedule care for the dog. It needs to lose weight. I have an hour.", "stage": "adult", "conditions": ["weight"]}
+{"text": "Plan a day for our kitten. It is healthy and in his prime and needs to lose weight. I have an hour.", "stage": "adult", "conditions": ["weight"]}
+{"text": "What should I do with my cat Luna. It is a few months old and lives in an apartment. 1 hour available.", "stage": "young", "conditions": ["indoor"]}
+{"text": "Plan a day for my dog Max. It is only 8 weeks old and keeps gaining weight. 1 hour available.", "stage": "young", "conditions": ["weight"]}
+{"text": "What should I do with our puppy. It is 14 years old and is slow to get up and barks all day. I have 30 minutes.", "stage": "senior", "conditions": ["anxious", "joint"]}
+{"text": "Schedule care for my cat Luna. It is aging. I have an hour.", "stage": "senior", "conditions": []}
+{"text": "Plan a day for my dog Max. It is two years old. I have 30 minutes.", "stage": "adult", "conditions": []}
+{"text": "What should I do with my dog Max. It just came home as a baby and is nervous around noises. I have 30 minutes.", "stage": "young", "conditions": ["anxious"]}
+{"text": "Plan a day for my golden retriever. . 1 hour available.", "stage": "adult", "conditions": []}
+{"text": "What should I do with my golden retriever. It stays inside all day. 20 minutes free.", "stage": "adult", "conditions": ["indoor"]}
+{"text": "Help me care for the dog. It is an old boy. 60 minutes today.", "stage": "senior", "conditions": []}
+{"text": "Help me care for my cat. It never goes outside and has sore joints. I have 30 minutes.", "stage": "adult", "conditions": ["indoor", "joint"]}
+{"text": "Schedule care for my dog Max. It is obese. I have an hour.", "stage": "adult", "conditions": ["weight"]}
+{"text": "Help me care for my tabby. It is two years old and tears up the sofa. 60 minutes today.", "stage": "adult", "conditions": ["anxious"]}
+{"text": "What should I do with the dog. It is a few months old and stays inside all day. I have 30 minutes.", "stage": "young", "conditions": ["indoor"]}
+{"text": "Help me care for my golden retriever. . 1 hour available.", "stage": "adult", "conditions": []}
+{"text": "Plan a day for our puppy. It has a grey muzzle. I have an hour.", "stage": "senior", "conditions": []}
+{"text": "Help me care for the dog. . 1 hour available.", "stage": "adult", "conditions": []}
+{"text": "Plan a day for my cat. It is 5 years old and stays inside all day. 20 minutes free.", "stage": "adult", "conditions": ["indoor"]}
+{"text": "Plan a day for my cat Luna. It is 5 years old. 60 minutes today.", "stage": "adult", "conditions": []}
+{"text": "Schedule care for our puppy. It is a puppy and is on a diet. 60 minutes today.", "stage": "young", "conditions": ["weight"]}
+{"text": "Schedule care for our puppy. It is a kitten and keeps pacing. I have an hour.", "stage": "young", "conditions": ["anxious"]}
+{"text": "Help me care for our kitten. It is in her golden years. 60 minutes today.", "stage": "senior", "conditions": []}
+{"text": "What should I do with my cat Luna. It is a puppy. 1 hour available.", "stage": "young", "conditions": []}
+{"text": "Schedule care for my golden retriever. It is two years old. 1 hour available.", "stage": "adult", "conditions": []}
+{"text": "Plan a day for our kitten. It is fully grown. only 45 minutes today.", "stage": "adult", "conditions": []}
+{"text": "What should I do with my cat Luna. It is 3 years old and is stiff in the morning. 20 minutes free.", "stage": "adult", "conditions": ["joint"]}
+{"text": "Help me care for the dog. It has a grey muzzle and is an indoor pet. 60 minutes today.", "stage": "senior", "conditions": ["indoor"]}
+{"text": "Help me care for our puppy. It is 3 years old and is limping. I have an hour.", "stage": "adult", "conditions": ["joint"]}
+{"text": "What should I do with my cat Luna. It is chubby. I have 30 minutes.", "stage": "adult", "conditions": ["weight"]}
+{"text": "Help me care for the dog. It is a kitten and has sore joints. I have 30 minutes.", "stage": "young", "conditions": ["joint"]}
+{"text": "Help me care for my cat Luna. . 20 minutes free.", "stage": "adult", "conditions": []}
+{"text": "Schedule care for my golden retriever. It is newborn. I have an hour.", "stage": "young", "conditions": []}
+{"text": "Help me care for my tabby. It is 5 years old and is chubby. I have an hour.", "stage": "adult", "conditions": ["weight"]}
+{"text": "Help me care for our puppy. It just came home as a baby and needs to lose weight. I have an hour.", "stage": "young", "conditions": ["weight"]}
+{"text": "What should I do with my cat. It is a puppy. only 45 minutes today.", "stage": "young", "conditions": []}
+{"text": "Plan a day for my tabby. It is a puppy. I have 30 minutes.", "stage": "young", "conditions": []}
+{"text": "Help me care for my dog Max. It is healthy and in his prime. 20 minutes free.", "stage": "adult", "conditions": []}
+{"text": "Help me care for my golden retriever. It is hyper and stays inside all day. 20 minutes free.", "stage": "adult", "conditions": ["anxious", "indoor"]}
+{"text": "Help me care for the dog. . 60 minutes today.", "stage": "adult", "conditions": []}
+{"text": "Schedule care for our puppy. It is chubby. 20 minutes free.", "stage": "adult", "conditions": ["weight"]}
+{"text": "What should I do with my golden retriever. It has sore joints. only 45 minutes today.", "stage": "adult", "conditions": ["joint"]}
+{"text": "Schedule care for the dog. It lives in an apartment. I have 30 minutes.", "stage": "adult", "conditions": ["indoor"]}
+{"text": "Schedule care for my tabby. It is a senior. 20 minutes free.", "stage": "senior", "conditions": []}
+{"text": "Plan a day for my cat. It is an adult and is hyper. I have 30 minutes.", "stage": "adult", "conditions": ["anxious"]}
+{"text": "Help me care for my dog Max. It is 5 years old. 60 minutes today.", "stage": "adult", "conditions": []}
+{"text": "Schedule care for my cat. It never goes outside. 20 minutes free.", "stage": "adult", "conditions": ["indoor"]}
+{"text": "Plan a day for my cat. It is a puppy. I have an hour.", "stage": "young", "conditions": []}
+{"text": "Plan a day for my golden retriever. . I have an hour.", "stage": "adult", "conditions": []}
+{"text": "Help me care for my dog. It is an adult and is hyper and never goes outside. 1 hour available.", "stage": "adult", "conditions": ["anxious", "indoor"]}
+{"text": "Schedule care for my dog Max. It is a kitten. 1 hour available.", "stage": "young", "conditions": []}
+{"text": "Schedule care for my cat Luna. It is fully grown and is overweight. I have 30 minutes.", "stage": "adult", "conditions": ["weight"]}
+{"text": "What should I do with our kitten. It is a puppy and is obese. 60 minutes today.", "stage": "young", "conditions": ["weight"]}
+{"text": "Schedule care for our kitten. It is fully grown and never goes outside. 60 minutes today.", "stage": "adult", "conditions": ["indoor"]}
+{"text": "Schedule care for my dog. It is a senior and is an indoor pet. 60 minutes today.", "stage": "senior", "conditions": ["indoor"]}
+{"text": "Plan a day for my cat. It is in her golden years and is a house pet and has hip dysplasia. I have an hour.", "stage": "senior", "conditions": ["indoor", "joint"]}
+{"text": "What should I do with our puppy. It is slow to get up. I have 30 minutes.", "stage": "adult", "conditions": ["joint"]}
+{"text": "Schedule care for my tabby. It is 3 years old. 1 hour available.", "stage": "adult", "conditions": []}
+{"text": "Plan a day for my cat Luna. It is a few months old. 1 hour available.", "stage": "young", "conditions": []}
+{"text": "Plan a day for my cat. It needs to lose weight. only 45 minutes today.", "stage": "adult", "conditions": ["weight"]}
+{"text": "Plan a day for my dog Max. It is an adult and is an indoor pet. I have an hour.", "stage": "adult", "conditions": ["indoor"]}
+{"text": "What should I do with my cat Luna. It is aging and is chubby. 1 hour available.", "stage": "senior", "conditions": ["weight"]}
+{"text": "Plan a day for my tabby. It is 14 years old and is overweight. 60 minutes today.", "stage": "senior", "conditions": ["weight"]}
+{"text": "Plan a day for my dog. It is putting on pounds. I have 30 minutes.", "stage": "adult", "conditions": ["weight"]}
+{"text": "Plan a day for my tabby. It is 5 years old and has hip dysplasia. I have 30 minutes.", "stage": "adult", "conditions": ["joint"]}
+{"text": "Plan a day for my golden retriever. It is stiff in the morning. 1 hour available.", "stage": "adult", "conditions": ["joint"]}
+{"text": "Help me care for my golden retriever. It is a few months old and needs to lose weight. 20 minutes free.", "stage": "young", "conditions": ["weight"]}
+{"text": "Plan a day for our kitten. . only 45 minutes today.", "stage": "adult", "conditions": []}
+{"text": "Schedule care for our puppy. . I have 30 minutes.", "stage": "adult", "conditions": []}
+{"text": "Plan a day for our kitten. It is fully grown. 60 minutes today.", "stage": "adult", "conditions": []}
+{"text": "What should I do with my golden retriever. It is getting up there in age. 1 hour available.", "stage": "senior", "conditions": []}
+{"text": "What should I do with my cat. It is a few months old and has hip dysplasia and is obese. only 45 minutes today.", "stage": "young", "conditions": ["joint", "weight"]}
+{"text": "Plan a day for our puppy. It is only 8 weeks old. 1 hour available.", "stage": "young", "conditions": []}
+{"text": "Plan a day for my cat Luna. It has high energy. 20 minutes free.", "stage": "adult", "conditions": ["anxious"]}
+{"text": "What should I do with my golden retriever. It just came home as a baby. only 45 minutes today.", "stage": "young", "conditions": []}
+{"text": "Schedule care for my cat. It is 3 years old. 1 hour available.", "stage": "adult", "conditions": []}
+{"text": "Help me care for my dog. It is fully grown and has hip dysplasia. 1 hour available.", "stage": "adult", "conditions": ["joint"]}
+{"text": "Schedule care for the dog. It is newborn and has arthritis. 1 hour available.", "stage": "young", "conditions": ["joint"]}
+{"text": "Schedule care for our puppy. . 1 hour available.", "stage": "adult", "conditions": []}
+{"text": "Schedule care for the dog. It is two years old and is obese. I have an hour.", "stage": "adult", "conditions": ["weight"]}
+{"text": "Plan a day for my dog. It is in her golden years. 20 minutes free.", "stage": "senior", "conditions": []}
+{"text": "What should I do with my dog. It is 14 years old and is restless. 20 minutes free.", "stage": "senior", "conditions": ["anxious"]}
+{"text": "Schedule care for my dog Max. It is two years old. 1 hour available.", "stage": "adult", "conditions": []}
+{"text": "What should I do with my tabby. It is 3 years old and is restless. 60 minutes today.", "stage": "adult", "conditions": ["anxious"]}
+{"text": "What should I do with my tabby. . 1 hour available.", "stage": "adult", "conditions": []}
+{"text": "Help me care for my cat. It needs to lose weight. 1 hour available.", "stage": "adult", "conditions": ["weight"]}
+{"text": "Help me care for my dog. It is a few months old. 20 minutes free.", "stage": "young", "conditions": []}
+{"text": "What should I do with my dog Max. It is 3 years old and keeps gaining weight. 1 hour available.", "stage": "adult", "conditions": ["weight"]}
+{"text": "Help me care for my cat. It is too heavy and barks all day. 20 minutes free.", "stage": "adult", "conditions": ["anxious", "weight"]}
+{"text": "Plan a day for our puppy. It chews the cushions. 20 minutes free.", "stage": "adult", "conditions": ["anxious"]}
+{"text": "What should I do with my tabby. It is aging and has sore joints. I have 30 minutes.", "stage": "senior", "conditions": ["joint"]}
+{"text": "Plan a day for my golden retriever. . I have 30 minutes.", "stage": "adult", "conditions": []}
+{"text": "Plan a day for my dog Max. It just came home as a baby and is on a diet. I have an hour.", "stage": "young", "conditions": ["weight"]}
+{"text": "Plan a day for my cat. It is getting up there in age and struggles with stairs. 1 hour available.", "stage": "senior", "conditions": ["joint"]}
+{"text": "Plan a day for my tabby. It is a few months old and has hip dysplasia. 1 hour available.", "stage": "young", "conditions": ["joint"]}
+{"text": "What should I do with my tabby. It is too heavy. I have 30 minutes.", "stage": "adult", "conditions": ["weight"]}
+{"text": "Plan a day for my dog. It tears up the sofa. 60 minutes today.", "stage": "adult", "conditions": ["anxious"]}
+{"text": "Help me care for the dog. It is an adult. 20 minutes free.", "stage": "adult", "conditions": []}
+{"text": "Schedule care for the dog. It lives in an apartment. 60 minutes today.", "stage": "adult", "conditions": ["indoor"]}
+{"text": "What should I do with our kitten. It is getting up there in age. only 45 minutes today.", "stage": "senior", "conditions": []}
+{"text": "Schedule care for my cat. It is 5 years old. I have an hour.", "stage": "adult", "conditions": []}
+{"text": "Plan a day for our puppy. It is a puppy and never goes outside and is overweight. I have an hour.", "stage": "young", "conditions": ["indoor", "weight"]}
+{"text": "Help me care for the dog. It just came home as a baby and is creaky. 60 minutes today.", "stage": "young", "conditions": ["joint"]}
+{"text": "Help me care for our puppy. It is young and playful and keeps gaining weight and is an indoor pet. 1 hour available.", "stage": "young", "conditions": ["indoor", "weight"]}
+{"text": "Schedule care for my golden retriever. It is anxious. I have 30 minutes.", "stage": "adult", "conditions": ["anxious"]}
+{"text": "What should I do with my cat. It is an adult. 20 minutes free.", "stage": "adult", "conditions": []}
+{"text": "What should I do with my cat. It has high energy. only 45 minutes today.", "stage": "adult", "conditions": ["anxious"]}
+{"text": "Help me care for my cat Luna. It is 5 years old and is an indoor pet. 60 minutes today.", "stage": "adult", "conditions": ["indoor"]}
+{"text": "What should I do with my dog. It is 5 years old. I have 30 minutes.", "stage": "adult", "conditions": []}
+{"text": "Plan a day for my cat Luna. It is only 8 weeks old. I have an hour.", "stage": "young", "conditions": []}
+{"text": "Schedule care for my dog Max. . 60 minutes today.", "stage": "adult", "conditions": []}
+{"text": "Help me care for my cat. It is aging and struggles with stairs and lives in an apartment. 20 minutes free.", "stage": "senior", "conditions": ["indoor", "joint"]}
+{"text": "What should I do with our puppy. . 60 minutes today.", "stage": "adult", "conditions": []}
+{"text": "Help me care for my cat Luna. It is 5 years old and is putting on pounds. I have an hour.", "stage": "adult", "conditions": ["weight"]}
+{"text": "Help me care for our kitten. It just came home as a baby and is an indoor pet. 20 minutes free.", "stage": "young", "conditions": ["indoor"]}
+{"text": "What should I do with my cat. It is an old boy and needs to lose weight. only 45 minutes today.", "stage": "senior", "conditions": ["weight"]}
+{"text": "Help me care for our kitten. It stays inside all day. I have an hour.", "stage": "adult", "conditions": ["indoor"]}
+{"text": "Plan a day for my dog Max. . I have an hour.", "stage": "adult", "conditions": []}
+{"text": "Schedule care for our kitten. It is an adult. only 45 minutes today.", "stage": "adult", "conditions": []}
+{"text": "Help me care for my cat Luna. . 1 hour available.", "stage": "adult", "conditions": []}
+{"text": "Plan a day for my golden retriever. It is a puppy and is overweight. 20 minutes free.", "stage": "young", "conditions": ["weight"]}
+{"text": "Plan a day for my dog Max. It is anxious. only 45 minutes today.", "stage": "adult", "conditions": ["anxious"]}
+{"text": "Schedule care for my tabby. It is aging and is on a diet and has arthritis. I have 30 minutes.", "stage": "senior", "conditions": ["joint", "weight"]}
+{"text": "Help me care for my dog. It is 14 years old and is anxious. only 45 minutes today.", "stage": "senior", "conditions": ["anxious"]}
+{"text": "Help me care for my dog. It is 5 years old. 60 minutes today.", "stage": "adult", "conditions": []}
+{"text": "Schedule care for my cat. . 20 minutes free.", "stage": "adult", "conditions": []}
+{"text": "Plan a day for the dog. It is 14 years old and is a house pet. I have 30 minutes.", "stage": "senior", "conditions": ["indoor"]}
+{"text": "Schedule care for the dog. It is an old boy. 20 minutes free.", "stage": "senior", "conditions": []}
+{"text": "Schedule care for the dog. It is newborn. 1 hour available.", "stage": "young", "conditions": []}
+{"text": "What should I do with our kitten. It is in her golden years. only 45 minutes today.", "stage": "senior", "conditions": []}
+{"text": "Plan a day for the dog. It is fully grown. 20 minutes free.", "stage": "adult", "conditions": []}
+{"text": "Plan a day for my tabby. . 20 minutes free.", "stage": "adult", "conditions": []}
+{"text": "Help me care for our puppy. It is a kitten and keeps pacing. only 45 minutes today.", "stage": "young", "conditions": ["anxious"]}
+{"text": "What should I do with our kitten. It is newborn. I have 30 minutes.", "stage": "young", "conditions": []}
+{"text": "What should I do with my cat. It is healthy and in his prime. 60 minutes today.", "stage": "adult", "conditions": []}
+{"text": "What should I do with our kitten. It is a kitten and is too heavy. I have 30 minutes.", "stage": "young", "conditions": ["weight"]}
+{"text": "Schedule care for my cat. It is too heavy and is an indoor pet. I have an hour.", "stage": "adult", "conditions": ["indoor", "weight"]}
+{"text": "Schedule care for my cat. It is aging. I have an hour.", "stage": "senior", "conditions": []}
+{"text": "Schedule care for our kitten. It has a grey muzzle and stays inside all day. I have an hour.", "stage": "senior", "conditions": ["indoor"]}
+{"text": "Plan a day for my golden retriever. It is 5 years old. I have an hour.", "stage": "adult", "conditions": []}
+{"text": "What should I do with my cat. It lives in an apartment. 20 minutes free.", "stage": "adult", "conditions": ["indoor"]}
+{"text": "What should I do with my tabby. It is 3 years old. I have 30 minutes.", "stage": "adult", "conditions": []}
+{"text": "Schedule care for my tabby. . I have an hour.", "stage": "adult", "conditions": []}
+{"text": "Plan a day for my cat. It is two years old and needs to lose weight. only 45 minutes today.", "stage": "adult", "conditions": ["weight"]}
+{"text": "Help me care for our kitten. It lives in an apartment and is on a diet. only 45 minutes today.", "stage": "adult", "conditions": ["indoor", "weight"]}
+{"text": "Help me care for my dog Max. It is 5 years old and gets bored easily and is on a diet. I have an hour.", "stage": "adult", "conditions": ["anxious", "weight"]}
+{"text": "Schedule care for my dog. . 20 minutes free.", "stage": "adult", "conditions": []}
+{"text": "Schedule care for the dog. It destroys furniture. I have 30 minutes.", "stage": "adult", "conditions": ["anxious"]}
+{"text": "Schedule care for my golden retriever. It is elderly. 1 hour available.", "stage": "senior", "conditions": []}
+{"text": "Schedule care for my dog Max. It has a grey muzzle and is a house pet. only 45 minutes today.", "stage": "senior", "conditions": ["indoor"]}
+{"text": "Plan a day for my golden retriever. . I have an hour.", "stage": "adult", "conditions": []}
+{"text": "Schedule care for my dog Max. It has a grey muzzle and chews the cushions and is an indoor pet. 60 minutes today.", "stage": "senior", "conditions": ["anxious", "indoor"]}
+{"text": "Schedule care for the dog. It is only 8 weeks old. I have 30 minutes.", "stage": "young", "conditions": []}
+{"text": "Plan a day for my dog. It is creaky. 1 hour available.", "stage": "adult", "conditions": ["joint"]}
+{"text": "What should I do with my dog Max. It is a kitten and is putting on pounds. I have an hour.", "stage": "young", "conditions": ["weight"]}
+{"text": "Plan a day for our kitten. It is 5 years old. I have 30 minutes.", "stage": "adult", "conditions": []}
+{"text": "What should I do with my dog Max. It is a puppy and tears up the sofa. I have an hour.", "stage": "young", "conditions": ["anxious"]}
+{"text": "What should I do with our kitten. It is an indoor pet. I have 30 minutes.", "stage": "adult", "conditions": ["indoor"]}
+{"text": "Help me care for our kitten. It is an indoor pet. I have 30 minutes.", "stage": "adult", "conditions": ["indoor"]}
+{"text": "Help me care for the dog. It is obese. I have an hour.", "stage": "adult", "conditions": ["weight"]}
+{"text": "Schedule care for my dog. It just came home as a baby and is slow to get up. 60 minutes today.", "stage": "young", "conditions": ["joint"]}
+{"text": "What should I do with my golden retriever. . 60 minutes today.", "stage": "adult", "conditions": []}
+{"text": "Plan a day for my dog Max. . I have 30 minutes.", "stage": "adult", "conditions": []}
+{"text": "Schedule care for my dog. . I have an hour.", "stage": "adult", "conditions": []}
+{"text": "Schedule care for our kitten. It keeps pacing. I have 30 minutes.", "stage": "adult", "conditions": ["anxious"]}
+{"text": "Help me care for our kitten. It just came home as a baby. 1 hour available.", "stage": "young", "conditions": []}
+{"text": "Help me care for the dog. It just came home as a baby and chews the cushions and is a house pet. 20 minutes free.", "stage": "young", "conditions": ["anxious", "indoor"]}
+{"text": "Plan a day for the dog. It is an adult and has painful hips. 1 hour available.", "stage": "adult", "conditions": ["joint"]}
+{"text": "Help me care for our puppy. It is stiff in the morning. I have 30 minutes.", "stage": "adult", "conditions": ["joint"]}
+{"text": "Plan a day for my dog. It chews the cushions and has arthritis. 60 minutes today.", "stage": "adult", "conditions": ["anxious", "joint"]}
+{"text": "Schedule care for our kitten. It is newborn and has trouble jumping on the couch. 60 minutes today.", "stage": "young", "conditions": ["joint"]}
+{"text": "Help me care for our kitten. It is an indoor pet and has arthritis. 60 minutes today.", "stage": "adult", "conditions": ["indoor", "joint"]}
+{"text": "What should I do with my cat. It tears up the sofa. only 45 minutes today.", "stage": "adult", "conditions": ["anxious"]}
+{"text": "What should I do with my dog Max. . 1 hour available.", "stage": "adult", "conditions": []}
+{"text": "Schedule care for my cat Luna. It is healthy and in his prime. I have an hour.", "stage": "adult", "conditions": []}
+{"text": "What should I do with my dog. It is 3 years old and is creaky. 20 minutes free.", "stage": "adult", "conditions": ["joint"]}
+{"text": "Help me care for my cat. It is an old boy. only 45 minutes today.", "stage": "senior", "conditions": []}
+{"text": "Help me care for my dog Max. It is 3 years old. I have 30 minutes.", "stage": "adult", "conditions": []}
+{"text": "Help me care for my golden retriever. It is healthy and in his prime and lives in an apartment. I have an hour.", "stage": "adult", "conditions": ["indoor"]}
+{"text": "Help me care for our kitten. It is a puppy. 60 minutes today.", "stage": "young", "conditions": []}
+{"text": "Schedule care for my cat Luna. It struggles with stairs. 60 minutes today.", "stage": "adult", "conditions": ["joint"]}
+{"text": "Schedule care for our kitten. It is a few months old and has trouble jumping on the couch. I have an hour.", "stage": "young", "conditions": ["joint"]}
+{"text": "What should I do with our puppy. It is newborn and is overweight. 1 hour available.", "stage": "young", "conditions": ["weight"]}
+{"text": "Help me care for my golden retriever. It has a grey muzzle. only 45 minutes today.", "stage": "senior", "conditions": []}
+{"text": "Help me care for our puppy. It is two years old and chews the cushions. only 45 minutes today.", "stage": "adult", "conditions": ["anxious"]}
+{"text": "Schedule care for our puppy. It is getting up there in age. 60 minutes today.", "stage": "senior", "conditions": []}
+{"text": "Help me care for our kitten. It is an adult and destroys furniture. 60 minutes today.", "stage": "adult", "conditions": ["anxious"]}
+{"text": "Plan a day for our kitten. It is a kitten. 1 hour available.", "stage": "young", "conditions": []}
+{"text": "Schedule care for our kitten. . I have 30 minutes.", "stage": "adult", "conditions": []}
+{"text": "What should I do with my golden retriever. . 20 minutes free.", "stage": "adult", "conditions": []}
+{"text": "What should I do with my dog. It has separation anxiety. 60 minutes today.", "stage": "adult", "conditions": ["anxious"]}
+{"text": "Help me care for the dog. It is healthy and in his prime. 60 minutes today.", "stage": "adult", "conditions": []}
+{"text": "Help me care for our puppy. It is aging and is obese. 1 hour available.", "stage": "senior", "conditions": ["weight"]}
+{"text": "What should I do with our kitten. It is two years old and is limping. 1 hour available.", "stage": "adult", "conditions": ["joint"]}
+{"text": "What should I do with my tabby. It is an adult and is creaky. I have 30 minutes.", "stage": "adult", "conditions": ["joint"]}
+{"text": "Plan a day for my dog Max. It is an adult and has sore joints. I have an hour.", "stage": "adult", "conditions": ["joint"]}
+{"text": "What should I do with my tabby. . 20 minutes free.", "stage": "adult", "conditions": []}
+{"text": "Schedule care for my tabby. It is aging. only 45 minutes today.", "stage": "senior", "conditions": []}
+{"text": "Plan a day for my cat Luna. It is an old boy. 1 hour available.", "stage": "senior", "conditions": []}
+{"text": "Plan a day for the dog. It is two years old and is creaky. I have an hour.", "stage": "adult", "conditions": ["joint"]}
+{"text": "Schedule care for the dog. It is healthy and in his prime. only 45 minutes today.", "stage": "adult", "conditions": []}
+{"text": "Help me care for my cat. It is two years old and is too heavy. 20 minutes free.", "stage": "adult", "conditions": ["weight"]}
+{"text": "Help me care for my cat Luna. It is in her golden years and keeps gaining weight. 1 hour available.", "stage": "senior", "conditions": ["weight"]}
+{"text": "Schedule care for our kitten. It stays inside all day. 60 minutes today.", "stage": "adult", "conditions": ["indoor"]}
+{"text": "Plan a day for my dog Max. It is two years old and is on a diet and lives in an apartment. 20 minutes free.", "stage": "adult", "conditions": ["indoor", "weight"]}
+{"text": "Schedule care for our puppy. It is 5 years old and has arthritis. I have 30 minutes.", "stage": "adult", "conditions": ["joint"]}
+{"text": "Schedule care for my dog. It is getting up there in age and needs to lose weight and tears up the sofa. 1 hour available.", "stage": "senior", "conditions": ["anxious", "weight"]}
+{"text": "Help me care for our puppy. It is fully grown and is chubby. only 45 minutes today.", "stage": "adult", "conditions": ["weight"]}
+{"text": "Plan a day for my tabby. It is fully grown and is too heavy. 20 minutes free.", "stage": "adult", "conditions": ["weight"]}
+{"text": "Plan a day for my golden retriever. It is elderly. I have an hour.", "stage": "senior", "conditions": []}
+{"text": "Help me care for our puppy. It is young and playful. I have 30 minutes.", "stage": "young", "conditions": []}
+{"text": "What should I do with our kitten. It is healthy and in his prime and is overweight. only 45 minutes today.", "stage": "adult", "conditions": ["weight"]}
+{"text": "Schedule care for my golden retriever. It is 5 years old and is an indoor pet. only 45 minutes today.", "stage": "adult", "conditions": ["indoor"]}
+{"text": "Plan a day for my dog. It has a grey muzzle. I have 30 minutes.", "stage": "senior", "conditions": []}
+{"text": "Plan a day for our kitten. It is 14 years old and is putting on pounds. I have 30 minutes.", "stage": "senior", "conditions": ["weight"]}
+{"text": "What should I do with my tabby. It is getting up there in age. 1 hour available.", "stage": "senior", "conditions": []}
+{"text": "Schedule care for my tabby. . 1 hour available.", "stage": "adult", "conditions": []}
+{"text": "What should I do with the dog. It is fully grown. I have an hour.", "stage": "adult", "conditions": []}
+{"text": "Schedule care for our kitten. It is fully grown and never goes outside and has painful hips. 60 minutes today.", "stage": "adult", "conditions": ["indoor", "joint"]}
+{"text": "What should I do with my tabby. It is young and playful and has painful hips. I have 30 minutes.", "stage": "young", "conditions": ["joint"]}
+{"text": "Plan a day for my dog. . 20 minutes free.", "stage": "adult", "conditions": []}
+{"text": "What should I do with our puppy. It is elderly and has sore joints. I have 30 minutes.", "stage": "senior", "conditions": ["joint"]}
+{"text": "Plan a day for our puppy. It is in her golden years and needs to lose weight. 60 minutes today.", "stage": "senior", "conditions": ["weight"]}
+{"text": "Help me care for my dog Max. It is only 8 weeks old. 1 hour available.", "stage": "young", "conditions": []}
+{"text": "Plan a day for the dog. It is young and playful and is anxious. 20 minutes free.", "stage": "young", "conditions": ["anxious"]}
+{"text": "What should I do with the dog. It is a senior and struggles with stairs. I have an hour.", "stage": "senior", "conditions": ["joint"]}
+{"text": "What should I do with my tabby. It keeps gaining weight and never goes outside. only 45 minutes today.", "stage": "adult", "conditions": ["indoor", "weight"]}
+{"text": "Plan a day for my dog. It is elderly. I have 30 minutes.", "stage": "senior", "conditions": []}
+{"text": "What should I do with my dog. It is too heavy. 20 minutes free.", "stage": "adult", "conditions": ["weight"]}
+{"text": "Schedule care for our puppy. It is elderly and has hip dysplasia. 60 minutes today.", "stage": "senior", "conditions": ["joint"]}
+{"text": "Schedule care for my dog. It is a senior and is an indoor pet. I have 30 minutes.", "stage": "senior", "conditions": ["indoor"]}
+{"text": "What should I do with my dog Max. It is 14 years old and is slow to get up. I have an hour.", "stage": "senior", "conditions": ["joint"]}
+{"text": "What should I do with my golden retriever. It is a kitten. I have 30 minutes.", "stage": "young", "conditions": []}
+{"text": "What should I do with my golden retriever. It is 5 years old and is on a diet and has separation anxiety. 1 hour available.", "stage": "adult", "conditions": ["anxious", "weight"]}
+{"text": "Schedule care for my dog. It is healthy and in his prime. 1 hour available.", "stage": "adult", "conditions": []}
+{"text": "What should I do with the dog. It is getting up there in age and keeps gaining weight. 1 hour available.", "stage": "senior", "conditions": ["weight"]}
+{"text": "Schedule care for my dog Max. It is a senior. 1 hour available.", "stage": "senior", "conditions": []}
+{"text": "Schedule care for my tabby. It is a few months old and is putting on pounds. I have an hour.", "stage": "young", "conditions": ["weight"]}
+{"text": "What should I do with our kitten. It just came home as a baby and never goes outside. 1 hour available.", "stage": "young", "conditions": ["indoor"]}
+{"text": "What should I do with my golden retriever. It is an old boy. I have an hour.", "stage": "senior", "conditions": []}
+{"text": "Plan a day for my tabby. It is newborn and is an indoor pet. only 45 minutes today.", "stage": "young", "conditions": ["indoor"]}
+{"text": "Schedule care for my golden retriever. It is an adult and gets bored easily. only 45 minutes today.", "stage": "adult", "conditions": ["anxious"]}
+{"text": "Schedule care for my cat Luna. It is only 8 weeks old. 20 minutes free.", "stage": "young", "conditions": []}
+{"text": "Plan a day for my golden retriever. It is elderly and is putting on pounds. 60 minutes today.", "stage": "senior", "conditions": ["weight"]}
+{"text": "Schedule care for my dog. It is healthy and in his prime and is overweight. I have 30 minutes.", "stage": "adult", "conditions": ["weight"]}
+{"text": "What should I do with our kitten. . 1 hour available.", "stage": "adult", "conditions": []}
+{"text": "What should I do with our puppy. . I have 30 minutes.", "stage": "adult", "conditions": []}
+{"text": "Help me care for the dog. . I have 30 minutes.", "stage": "adult", "conditions": []}
+{"text": "What should I do with my cat. It just came home as a baby and stays inside all day. I have 30 minutes.", "stage": "young", "conditions": ["indoor"]}
+{"text": "Help me care for my cat. It is in her golden years and is restless and keeps gaining weight. only 45 minutes today.", "stage": "senior", "conditions": ["anxious", "weight"]}
+{"text": "Plan a day for my dog Max. It is 3 years old and is overweight and has arthritis. 1 hour available.", "stage": "adult", "conditions": ["joint", "weight"]}
+{"text": "Plan a day for my cat. It is an indoor pet. only 45 minutes today.", "stage": "adult", "conditions": ["indoor"]}
+{"text": "Plan a day for my golden retriever. It is an old boy and stays inside all day. I have 30 minutes.", "stage": "senior", "conditions": ["indoor"]}
+{"text": "What should I do with our kitten. It is two years old and is overweight. 20 minutes free.", "stage": "adult", "conditions": ["weight"]}
+{"text": "Help me care for my cat. It has a grey muzzle and is limping and stays inside all day. I have 30 minutes.", "stage": "senior", "conditions": ["indoor", "joint"]}
+{"text": "What should I do with my cat Luna. It is an adult and is slow to get up. I have 30 minutes.", "stage": "adult", "conditions": ["joint"]}
+{"text": "Schedule care for our kitten. It is 14 years old. 60 minutes today.", "stage": "senior", "conditions": []}
+{"text": "What should I do with our puppy. It is obese. only 45 minutes today.", "stage": "adult", "conditions": ["weight"]}
+{"text": "Schedule care for my cat Luna. It is only 8 weeks old. 20 minutes free.", "stage": "young", "conditions": []}
+{"text": "What should I do with my cat. . I have an hour.", "stage": "adult", "conditions": []}
+{"text": "What should I do with my dog Max. It is too heavy. 1 hour available.", "stage": "adult", "conditions": ["weight"]}
+{"text": "Plan a day for the dog. It is chubby and has arthritis. 60 minutes today.", "stage": "adult", "conditions": ["joint", "weight"]}
+{"text": "Plan a day for my golden retriever. It is fully grown. I have an hour.", "stage": "adult", "conditions": []}
+{"text": "Help me care for my cat Luna. It is a few months old and gets bored easily. 1 hour available.", "stage": "young", "conditions": ["anxious"]}
+{"text": "Help me care for my tabby. It is 14 years old. only 45 minutes today.", "stage": "senior", "conditions": []}
+{"text": "Plan a day for my golden retriever. It is 14 years old. only 45 minutes today.", "stage": "senior", "conditions": []}
+{"text": "Schedule care for our kitten. It is obese. 60 minutes today.", "stage": "adult", "conditions": ["weight"]}
+{"text": "Schedule care for my dog Max. It is newborn and has high energy. I have 30 minutes.", "stage": "young", "conditions": ["anxious"]}
+{"text": "Help me care for my dog Max. It is a house pet. 1 hour available.", "stage": "adult", "conditions": ["indoor"]}
+{"text": "Schedule care for my dog. It is a few months old. I have an hour.", "stage": "young", "conditions": []}
+{"text": "Help me care for my cat Luna. It is newborn. 20 minutes free.", "stage": "young", "conditions": []}
+{"text": "Schedule care for my cat. It is aging and is slow to get up. I have an hour.", "stage": "senior", "conditions": ["joint"]}
+{"text": "Plan a day for our kitten. It is a kitten and is chubby. only 45 minutes today.", "stage": "young", "conditions": ["weight"]}
+{"text": "Plan a day for my dog. . 60 minutes today.", "stage": "adult", "conditions": []}
+{"text": "Plan a day for my golden retriever. It is aging. I have 30 minutes.", "stage": "senior", "conditions": []}
+{"text": "Plan a day for my dog Max. It keeps gaining weight. I have an hour.", "stage": "adult", "conditions": ["weight"]}
+{"text": "Plan a day for my cat. It is 14 years old and has trouble jumping on the couch. I have an hour.", "stage": "senior", "conditions": ["joint"]}
+{"text": "What should I do with the dog. It is overweight. 60 minutes today.", "stage": "adult", "conditions": ["weight"]}
+{"text": "What should I do with my dog. It is fully grown and struggles with stairs. only 45 minutes today.", "stage": "adult", "conditions": ["joint"]}
+{"text": "What should I do with my tabby. It keeps pacing. only 45 minutes today.", "stage": "adult", "conditions": ["anxious"]}
+{"text": "Plan a day for my cat Luna. It is chubby and is an indoor pet. 1 hour available.", "stage": "adult", "conditions": ["indoor", "weight"]}
+{"text": "Plan a day for our kitten. . 20 minutes free.", "stage": "adult", "conditions": []}
+{"text": "Plan a day for my dog Max. It is healthy and in his prime and has hip dysplasia. 60 minutes today.", "stage": "adult", "conditions": ["joint"]}
+{"text": "Plan a day for my dog Max. It has arthritis. 20 minutes free.", "stage": "adult", "conditions": ["joint"]}
+{"text": "Schedule care for my cat Luna. It is a puppy and is anxious and has painful hips. I have an hour.", "stage": "young", "conditions": ["anxious", "joint"]}
+{"text": "Help me care for my golden retriever. . only 45 minutes today.", "stage": "adult", "conditions": []}
+{"text": "Help me care for my cat. It is fully grown and has high energy and is too heavy. 60 minutes today.", "stage": "adult", "conditions": ["anxious", "weight"]}
+{"text": "Schedule care for my golden retriever. It is fully grown. I have an hour.", "stage": "adult", "conditions": []}
+{"text": "Plan a day for our kitten. It is an adult and keeps pacing. I have an hour.", "stage": "adult", "conditions": ["anxious"]}
+{"text": "Schedule care for our puppy. It is an adult and lives in an apartment and has trouble jumping on the couch. 1 hour available.", "stage": "adult", "conditions": ["indoor", "joint"]}
+{"text": "Help me care for my dog Max. . I have 30 minutes.", "stage": "adult", "conditions": []}
+{"text": "What should I do with my dog. It is newborn and has high energy. 1 hour available.", "stage": "young", "conditions": ["anxious"]}
+{"text": "Help me care for the dog. It has a grey muzzle and is chubby. 60 minutes today.", "stage": "senior", "conditions": ["weight"]}
+{"text": "Plan a day for my golden retriever. It tears up the sofa. 60 minutes today.", "stage": "adult", "conditions": ["anxious"]}
+{"text": "Plan a day for my dog. It is elderly and keeps gaining weight and stays inside all day. I have an hour.", "stage": "senior", "conditions": ["indoor", "weight"]}
+{"text": "Plan a day for the dog. It just came home as a baby and has high energy. 1 hour available.", "stage": "young", "conditions": ["anxious"]}
+{"text": "Schedule care for the dog. It is in her golden years. 60 minutes today.", "stage": "senior", "conditions": []}
+{"text": "What should I do with the dog. It is an adult. I have an hour.", "stage": "adult", "conditions": []}
+{"text": "What should I do with our kitten. It lives in an apartment. 1 hour available.", "stage": "adult", "conditions": ["indoor"]}
+{"text": "Help me care for the dog. It is a senior and is anxious. I have 30 minutes.", "stage": "senior", "conditions": ["anxious"]}
+{"text": "Schedule care for my tabby. It is healthy and in his prime and is a house pet. 20 minutes free.", "stage": "adult", "conditions": ["indoor"]}
+{"text": "What should I do with my golden retriever. It has a grey muzzle and stays inside all day. I have 30 minutes.", "stage": "senior", "conditions": ["indoor"]}
+{"text": "Help me care for my cat. It is in her golden years. 60 minutes today.", "stage": "senior", "conditions": []}
+{"text": "What should I do with my golden retriever. It has a grey muzzle and needs to lose weight and is limping. 1 hour available.", "stage": "senior", "conditions": ["joint", "weight"]}
+{"text": "Plan a day for my dog Max. It is 3 years old. 60 minutes today.", "stage": "adult", "conditions": []}
+{"text": "Help me care for my tabby. It is a house pet. only 45 minutes today.", "stage": "adult", "conditions": ["indoor"]}
+{"text": "Plan a day for my cat. It is a senior and stays inside all day and has arthritis. I have 30 minutes.", "stage": "senior", "conditions": ["indoor", "joint"]}
+{"text": "Schedule care for the dog. It is healthy and in his prime and has arthritis. 60 minutes today.", "stage": "adult", "conditions": ["joint"]}
+{"text": "What should I do with my tabby. It is newborn. 60 minutes today.", "stage": "young", "conditions": []}
+{"text": "Help me care for the dog. It is 14 years old and is chubby. I have an hour.", "stage": "senior", "conditions": ["weight"]}
+{"text": "Plan a day for my cat. . I have an hour.", "stage": "adult", "conditions": []}
+{"text": "Plan a day for my dog. It is healthy and in his prime and lives in an apartment. only 45 minutes today.", "stage": "adult", "conditions": ["indoor"]}
+{"text": "Schedule care for our puppy. . 60 minutes today.", "stage": "adult", "conditions": []}
+{"text": "Schedule care for our kitten. It is a few months old and has arthritis. I have 30 minutes.", "stage": "young", "conditions": ["joint"]}
+{"text": "Plan a day for our kitten. It has arthritis and is chubby. I have an hour.", "stage": "adult", "conditions": ["joint", "weight"]}
+{"text": "What should I do with my dog Max. It is only 8 weeks old. 20 minutes free.", "stage": "young", "conditions": []}
+{"text": "What should I do with our kitten. It is a few months old. 60 minutes today.", "stage": "young", "conditions": []}
+{"text": "Help me care for my cat. . 1 hour available.", "stage": "adult", "conditions": []}
+{"text": "Schedule care for the dog. It is 3 years old. 1 hour available.", "stage": "adult", "conditions": []}
+{"text": "What should I do with my cat. It is in her golden years and is nervous around noises. I have an hour.", "stage": "senior", "conditions": ["anxious"]}
+{"text": "Schedule care for my cat Luna. It is an indoor pet. 1 hour available.", "stage": "adult", "conditions": ["indoor"]}
+{"text": "Help me care for our kitten. It is elderly. only 45 minutes today.", "stage": "senior", "conditions": []}
+{"text": "What should I do with my golden retriever. It is an adult and is chubby. 1 hour available.", "stage": "adult", "conditions": ["weight"]}
+{"text": "What should I do with the dog. It is healthy and in his prime. only 45 minutes today.", "stage": "adult", "conditions": []}
+{"text": "What should I do with our puppy. It is fully grown and keeps gaining weight and has painful hips. 1 hour available.", "stage": "adult", "conditions": ["joint", "weight"]}
+{"text": "Help me care for our puppy. It is elderly. 60 minutes today.", "stage": "senior", "conditions": []}
+{"text": "Schedule care for the dog. . 60 minutes today.", "stage": "adult", "conditions": []}
+{"text": "Plan a day for the dog. It is 14 years old. only 45 minutes today.", "stage": "senior", "conditions": []}
+{"text": "Plan a day for my cat. It is fully grown. I have an hour.", "stage": "adult", "conditions": []}
+{"text": "Schedule care for my cat. . only 45 minutes today.", "stage": "adult", "conditions": []}
+{"text": "What should I do with my golden retriever. It is 14 years old and destroys furniture. only 45 minutes today.", "stage": "senior", "conditions": ["anxious"]}
+{"text": "Schedule care for the dog. . 60 minutes today.", "stage": "adult", "conditions": []}
+{"text": "Schedule care for my cat. It is an indoor pet. 1 hour available.", "stage": "adult", "conditions": ["indoor"]}
+{"text": "What should I do with my dog. It is in her golden years and has sore joints. 1 hour available.", "stage": "senior", "conditions": ["joint"]}
+{"text": "Schedule care for our puppy. It is a kitten and has painful hips. 20 minutes free.", "stage": "young", "conditions": ["joint"]}
+{"text": "Schedule care for my dog. It lives in an apartment. I have 30 minutes.", "stage": "adult", "conditions": ["indoor"]}
+{"text": "Help me care for my cat. It is creaky. only 45 minutes today.", "stage": "adult", "conditions": ["joint"]}
+{"text": "What should I do with the dog. It is healthy and in his prime and has sore joints. 1 hour available.", "stage": "adult", "conditions": ["joint"]}
+{"text": "What should I do with my golden retriever. It is aging. I have an hour.", "stage": "senior", "conditions": []}
+{"text": "What should I do with my tabby. It is newborn and is chubby. 20 minutes free.", "stage": "young", "conditions": ["weight"]}
+{"text": "Schedule care for our puppy. It is newborn. 60 minutes today.", "stage": "young", "conditions": []}
+{"text": "Plan a day for our puppy. It is a few months old and needs to lose weight. only 45 minutes today.", "stage": "young", "conditions": ["weight"]}
+{"text": "Help me care for my golden retriever. It is getting up there in age. 60 minutes today.", "stage": "senior", "conditions": []}
+{"text": "What should I do with our puppy. It is only 8 weeks old. 60 minutes today.", "stage": "young", "conditions": []}
+{"text": "Help me care for our kitten. It is 3 years old. I have an hour.", "stage": "adult", "conditions": []}
+{"text": "Help me care for my golden retriever. It is 5 years old and is too heavy. I have 30 minutes.", "stage": "adult", "conditions": ["weight"]}
+{"text": "Schedule care for my golden retriever. . I have 30 minutes.", "stage": "adult", "conditions": []}
+{"text": "Plan a day for my dog Max. It is 3 years old. only 45 minutes today.", "stage": "adult", "conditions": []}
+{"text": "Schedule care for our puppy. It is 3 years old and is anxious. 20 minutes free.", "stage": "adult", "conditions": ["anxious"]}
+{"text": "Schedule care for my dog Max. . 20 minutes free.", "stage": "adult", "conditions": []}
+{"text": "Plan a day for my cat Luna. It is two years old and destroys furniture. 60 minutes today.", "stage": "adult", "conditions": ["anxious"]}
+{"text": "Help me care for my cat. It is anxious and is an indoor pet. 20 minutes free.", "stage": "adult", "conditions": ["anxious", "indoor"]}
+{"text": "Help me care for my tabby. It just came home as a baby. only 45 minutes today.", "stage": "young", "conditions": []}
+{"text": "Schedule care for the dog. It is nervous around noises. 1 hour available.", "stage": "adult", "conditions": ["anxious"]}
+{"text": "Schedule care for my dog Max. . I have 30 minutes.", "stage": "adult", "conditions": []}
+{"text": "Plan a day for our kitten. It is a few months old and never goes outside. 1 hour available.", "stage": "young", "conditions": ["indoor"]}
+{"text": "Help me care for our kitten. It is slow to get up. 60 minutes today.", "stage": "adult", "conditions": ["joint"]}
+{"text": "Plan a day for my golden retriever. It is an adult. 60 minutes today.", "stage": "adult", "conditions": []}
+{"text": "What should I do with our puppy. . 60 minutes today.", "stage": "adult", "conditions": []}
+{"text": "Schedule care for my cat. It just came home as a baby and never goes outside. 60 minutes today.", "stage": "young", "conditions": ["indoor"]}
+{"text": "What should I do with my cat Luna. It is a few months old and is stiff in the morning. I have an hour.", "stage": "young", "conditions": ["joint"]}
+{"text": "Help me care for the dog. It is healthy and in his prime and is an indoor pet. I have 30 minutes.", "stage": "adult", "conditions": ["indoor"]}
+{"text": "What should I do with my cat Luna. It is 14 years old and destroys furniture. 1 hour available.", "stage": "senior", "conditions": ["anxious"]}
+{"text": "Help me care for my golden retriever. It is 14 years old and has painful hips and lives in an apartment. I have an hour.", "stage": "senior", "conditions": ["indoor", "joint"]}
+{"text": "Help me care for my golden retriever. It is elderly and gets bored easily and never goes outside. only 45 minutes today.", "stage": "senior", "conditions": ["anxious", "indoor"]}
+{"text": "Schedule care for my cat. It is on a diet. 60 minutes today.", "stage": "adult", "conditions": ["weight"]}
+{"text": "What should I do with our kitten. It is two years old. I have 30 minutes.", "stage": "adult", "conditions": []}
+{"text": "What should I do with my cat. It is 14 years old and has trouble jumping on the couch. I have an hour.", "stage": "senior", "conditions": ["joint"]}
+{"text": "Plan a day for my golden retriever. It is in her golden years and has trouble jumping on the couch. only 45 minutes today.", "stage": "senior", "conditions": ["joint"]}
+{"text": "Help me care for my cat Luna. It is a puppy and struggles with stairs. only 45 minutes today.", "stage": "young", "conditions": ["joint"]}
+{"text": "Plan a day for our kitten. It is a puppy. 60 minutes today.", "stage": "young", "conditions": []}
+{"text": "Help me care for my cat. It is newborn and is creaky. only 45 minutes today.", "stage": "young", "conditions": ["joint"]}
+{"text": "Plan a day for my dog Max. It is nervous around noises. I have an hour.", "stage": "adult", "conditions": ["anxious"]}
+{"text": "What should I do with my dog. It has a grey muzzle and is hyper. 1 hour available.", "stage": "senior", "conditions": ["anxious"]}
+{"text": "Plan a day for my dog. It is getting up there in age. 1 hour available.", "stage": "senior", "conditions": []}
+{"text": "What should I do with my dog. It is healthy and in his prime. 20 minutes free.", "stage": "adult", "conditions": []}
+{"text": "Plan a day for my cat. It is a kitten and never goes outside. I have an hour.", "stage": "young", "conditions": ["indoor"]}
+{"text": "Help me care for my dog Max. It is two years old and lives in an apartment. 20 minutes free.", "stage": "adult", "conditions": ["indoor"]}
+{"text": "Help me care for my golden retriever. It is newborn. I have 30 minutes.", "stage": "young", "conditions": []}
+{"text": "What should I do with my golden retriever. It just came home as a baby. 20 minutes free.", "stage": "young", "conditions": []}
+{"text": "Plan a day for my cat Luna. It is an adult. 1 hour available.", "stage": "adult", "conditions": []}
+{"text": "Help me care for our puppy. It just came home as a baby and is slow to get up. 1 hour available.", "stage": "young", "conditions": ["joint"]}
+{"text": "Schedule care for my dog. It is aging and is nervous around noises. only 45 minutes today.", "stage": "senior", "conditions": ["anxious"]}
+{"text": "Plan a day for our puppy. It is a kitten. 1 hour available.", "stage": "young", "conditions": []}
+{"text": "Schedule care for my cat Luna. It is healthy and in his prime. I have an hour.", "stage": "adult", "conditions": []}
+{"text": "Plan a day for our kitten. It just came home as a baby and has painful hips and tears up the sofa. I have 30 minutes.", "stage": "young", "conditions": ["anxious", "joint"]}
+{"text": "Help me care for my cat. It is fully grown and is putting on pounds. I have an hour.", "stage": "adult", "conditions": ["weight"]}
+{"text": "What should I do with my cat Luna. . 1 hour available.", "stage": "adult", "conditions": []}
+{"text": "What should I do with my tabby. It is getting up there in age. only 45 minutes today.", "stage": "senior", "conditions": []}
+{"text": "Help me care for my dog. It is two years old. 20 minutes free.", "stage": "adult", "conditions": []}
+{"text": "Help me care for my cat. It chews the cushions. 1 hour available.", "stage": "adult", "conditions": ["anxious"]}
+{"text": "Plan a day for our kitten. It is 3 years old and has separation anxiety. only 45 minutes today.", "stage": "adult", "conditions": ["anxious"]}
+{"text": "Schedule care for the dog. It is 3 years old and stays inside all day. 1 hour available.", "stage": "adult", "conditions": ["indoor"]}
+{"text": "Schedule care for my tabby. . only 45 minutes today.", "stage": "adult", "conditions": []}
+{"text": "Plan a day for our kitten. . 20 minutes free.", "stage": "adult", "conditions": []}
+{"text": "Plan a day for our kitten. It is anxious and never goes outside. I have an hour.", "stage": "adult", "conditions": ["anxious", "indoor"]}
+{"text": "Schedule care for our puppy. . 1 hour available.", "stage": "adult", "conditions": []}
+{"text": "Schedule care for my dog. It is creaky. 60 minutes today.", "stage": "adult", "conditions": ["joint"]}
+{"text": "Schedule care for our puppy. It stays inside all day. I have 30 minutes.", "stage": "adult", "conditions": ["indoor"]}
+{"text": "What should I do with the dog. It has high energy. I have 30 minutes.", "stage": "adult", "conditions": ["anxious"]}
+{"text": "What should I do with my cat Luna. It is anxious and is limping. only 45 minutes today.", "stage": "adult", "conditions": ["anxious", "joint"]}
+{"text": "Schedule care for my cat Luna. It is young and playful and has painful hips. I have an hour.", "stage": "young", "conditions": ["joint"]}
+{"text": "Help me care for my dog Max. It is a few months old and is anxious. 60 minutes today.", "stage": "young", "conditions": ["anxious"]}
+{"text": "Schedule care for my cat Luna. It is fully grown and never goes outside. 1 hour available.", "stage": "adult", "conditions": ["indoor"]}
+{"text": "Schedule care for our puppy. It is a kitten and struggles with stairs. I have 30 minutes.", "stage": "young", "conditions": ["joint"]}
+{"text": "Plan a day for my tabby. It is young and playful and is limping. 1 hour available.", "stage": "young", "conditions": ["joint"]}
+{"text": "Help me care for our puppy. It is 14 years old. I have an hour.", "stage": "senior", "conditions": []}
+{"text": "Help me care for my golden retriever. It is a few months old. only 45 minutes today.", "stage": "young", "conditions": []}
+{"text": "Help me care for my cat Luna. It is a senior and is an indoor pet and is overweight. I have 30 minutes.", "stage": "senior", "conditions": ["indoor", "weight"]}
+{"text": "Help me care for the dog. It is in her golden years and tears up the sofa and has sore joints. I have 30 minutes.", "stage": "senior", "conditions": ["anxious", "joint"]}
+{"text": "What should I do with our kitten. . only 45 minutes today.", "stage": "adult", "conditions": []}
+{"text": "Schedule care for my golden retriever. It has separation anxiety. only 45 minutes today.", "stage": "adult", "conditions": ["anxious"]}
+{"text": "Help me care for my dog Max. It is nervous around noises. I have 30 minutes.", "stage": "adult", "conditions": ["anxious"]}
+{"text": "Help me care for my cat Luna. It is healthy and in his prime and keeps gaining weight. only 45 minutes today.", "stage": "adult", "conditions": ["weight"]}
+{"text": "Help me care for my cat Luna. . 20 minutes free.", "stage": "adult", "conditions": []}
+{"text": "Schedule care for my dog. It is a kitten and is overweight. only 45 minutes today.", "stage": "young", "conditions": ["weight"]}
+{"text": "Schedule care for my cat. It is 5 years old. 60 minutes today.", "stage": "adult", "conditions": []}
+{"text": "Schedule care for the dog. It is 3 years old. I have an hour.", "stage": "adult", "conditions": []}
+{"text": "Plan a day for my dog. . I have an hour.", "stage": "adult", "conditions": []}
+{"text": "Plan a day for my dog. It is only 8 weeks old and is stiff in the morning. I have 30 minutes.", "stage": "young", "conditions": ["joint"]}
+{"text": "What should I do with my dog. It is chubby and tears up the sofa. 60 minutes today.", "stage": "adult", "conditions": ["anxious", "weight"]}
+{"text": "Schedule care for my golden retriever. It is elderly and is creaky. only 45 minutes today.", "stage": "senior", "conditions": ["joint"]}
+{"text": "Help me care for my dog. It is hyper. I have 30 minutes.", "stage": "adult", "conditions": ["anxious"]}
+{"text": "Schedule care for my dog Max. It is an indoor pet. 60 minutes today.", "stage": "adult", "conditions": ["indoor"]}
+{"text": "What should I do with my dog Max. It is fully grown and keeps pacing. 20 minutes free.", "stage": "adult", "conditions": ["anxious"]}
+{"text": "What should I do with our puppy. It is two years old and is an indoor pet and is too heavy. I have an hour.", "stage": "adult", "conditions": ["indoor", "weight"]}
+{"text": "What should I do with our kitten. It is elderly and is hyper and is a house pet. I have 30 minutes.", "stage": "senior", "conditions": ["anxious", "indoor"]}
+{"text": "Schedule care for my golden retriever. It has a grey muzzle. 20 minutes free.", "stage": "senior", "conditions": []}
+{"text": "What should I do with my tabby. It is in her golden years. only 45 minutes today.", "stage": "senior", "conditions": []}
+{"text": "Schedule care for my cat. It is an old boy and is a house pet. 60 minutes today.", "stage": "senior", "conditions": ["indoor"]}
+{"text": "Help me care for my dog Max. It is slow to get up. 60 minutes today.", "stage": "adult", "conditions": ["joint"]}
+{"text": "Help me care for our puppy. It is a house pet. 1 hour available.", "stage": "adult", "conditions": ["indoor"]}
+{"text": "Help me care for my cat Luna. . only 45 minutes today.", "stage": "adult", "conditions": []}
+{"text": "Help me care for my dog. It is only 8 weeks old and stays inside all day. I have 30 minutes.", "stage": "young", "conditions": ["indoor"]}
+{"text": "Schedule care for the dog. . 1 hour available.", "stage": "adult", "conditions": []}
+{"text": "What should I do with my cat. It destroys furniture. 20 minutes free.", "stage": "adult", "conditions": ["anxious"]}
+{"text": "What should I do with our puppy. It is 14 years old. I have 30 minutes.", "stage": "senior", "conditions": []}
+{"text": "What should I do with my tabby. It has a grey muzzle. I have an hour.", "stage": "senior", "conditions": []}
+{"text": "Plan a day for my tabby. It has separation anxiety. 1 hour available.", "stage": "adult", "conditions": ["anxious"]}
+{"text": "Schedule care for my cat Luna. It destroys furniture. 20 minutes free.", "stage": "adult", "conditions": ["anxious"]}
+{"text": "Plan a day for our kitten. It lives in an apartment. I have an hour.", "stage": "adult", "conditions": ["indoor"]}
+{"text": "Schedule care for my dog. It is fully grown and stays inside all day and is obese. 60 minutes today.", "stage": "adult", "conditions": ["indoor", "weight"]}
+{"text": "Help me care for the dog. It is 14 years old and has separation anxiety. only 45 minutes today.", "stage": "senior", "conditions": ["anxious"]}
+{"text": "Help me care for my cat Luna. It is elderly and is slow to get up. 20 minutes free.", "stage": "senior", "conditions": ["joint"]}
+{"text": "Plan a day for my cat. It is 5 years old and stays inside all day. 60 minutes today.", "stage": "adult", "conditions": ["indoor"]}
+{"text": "Help me care for my cat. It is 5 years old and never goes outside. I have an hour.", "stage": "adult", "conditions": ["indoor"]}
+{"text": "What should I do with my tabby. It is on a diet. I have an hour.", "stage": "adult", "conditions": ["weight"]}
+{"text": "Plan a day for my cat. It is an indoor pet. I have an hour.", "stage": "adult", "conditions": ["indoor"]}
+{"text": "Plan a day for our kitten. It is a puppy. 60 minutes today.", "stage": "young", "conditions": []}
+{"text": "Plan a day for my tabby. It is a few months old and is a house pet. only 45 minutes today.", "stage": "young", "conditions": ["indoor"]}
+{"text": "Schedule care for my cat Luna. It is overweight. only 45 minutes today.", "stage": "adult", "conditions": ["weight"]}
+{"text": "Schedule care for my cat. It is an old boy. 60 minutes today.", "stage": "senior", "conditions": []}
+{"text": "Plan a day for my dog Max. It is 5 years old and stays inside all day. I have an hour.", "stage": "adult", "conditions": ["indoor"]}
+{"text": "Help me care for my dog. . 60 minutes today.", "stage": "adult", "conditions": []}
+{"text": "Help me care for my cat Luna. It is fully grown and never goes outside and has high energy. 60 minutes today.", "stage": "adult", "conditions": ["anxious", "indoor"]}
+{"text": "Plan a day for my tabby. It has separation anxiety. 1 hour available.", "stage": "adult", "conditions": ["anxious"]}
+{"text": "What should I do with my dog Max. . only 45 minutes today.", "stage": "adult", "conditions": []}
+{"text": "What should I do with our kitten. It is a senior and never goes outside. 20 minutes free.", "stage": "senior", "conditions": ["indoor"]}
+{"text": "Help me care for my cat. It is aging. only 45 minutes today.", "stage": "senior", "conditions": []}
+{"text": "Help me care for my dog Max. It is young and playful and is chubby and never goes outside. 60 minutes today.", "stage": "young", "conditions": ["indoor", "weight"]}
+{"text": "Plan a day for our kitten. It is a puppy and stays inside all day. only 45 minutes today.", "stage": "young", "conditions": ["indoor"]}
+{"text": "What should I do with our puppy. It is 14 years old and is an indoor pet. only 45 minutes today.", "stage": "senior", "conditions": ["indoor"]}
+{"text": "Help me care for my cat Luna. It is two years old. only 45 minutes today.", "stage": "adult", "conditions": []}
+{"text": "Help me care for our puppy. It is two years old and gets bored easily and stays inside all day. I have 30 minutes.", "stage": "adult", "conditions": ["anxious", "indoor"]}
+{"text": "Help me care for my tabby. It is an adult and has high energy. only 45 minutes today.", "stage": "adult", "conditions": ["anxious"]}
+{"text": "Schedule care for the dog. . 1 hour available.", "stage": "adult", "conditions": []}
+{"text": "Plan a day for my dog Max. It is a puppy and keeps gaining weight. I have 30 minutes.", "stage": "young", "conditions": ["weight"]}
+{"text": "Plan a day for our kitten. It destroys furniture. only 45 minutes today.", "stage": "adult", "conditions": ["anxious"]}
+{"text": "Plan a day for my dog. It is 14 years old and has hip dysplasia and is anxious. only 45 minutes today.", "stage": "senior", "conditions": ["anxious", "joint"]}
+{"text": "What should I do with our kitten. It is fully grown. only 45 minutes today.", "stage": "adult", "conditions": []}
+{"text": "Plan a day for my tabby. It just came home as a baby and keeps pacing. I have 30 minutes.", "stage": "young", "conditions": ["anxious"]}
+{"text": "Plan a day for my dog. It is a house pet. I have 30 minutes.", "stage": "adult", "conditions": ["indoor"]}
+{"text": "What should I do with my cat Luna. It is chubby. 1 hour available.", "stage": "adult", "conditions": ["weight"]}
+{"text": "Schedule care for my dog. It is newborn and is slow to get up. 1 hour available.", "stage": "young", "conditions": ["joint"]}
+{"text": "Plan a day for our kitten. . 20 minutes free.", "stage": "adult", "conditions": []}
+{"text": "Schedule care for my golden retriever. It has painful hips. I have an hour.", "stage": "adult", "conditions": ["joint"]}
+{"text": "Help me care for my dog Max. It is a kitten and is restless. only 45 minutes today.", "stage": "young", "conditions": ["anxious"]}
+{"text": "Plan a day for my dog. It is overweight. 20 minutes free.", "stage": "adult", "conditions": ["weight"]}
+{"text": "Plan a day for our puppy. It is on a diet. I have 30 minutes.", "stage": "adult", "conditions": ["weight"]}
+{"text": "Schedule care for my cat. It has painful hips. only 45 minutes today.", "stage": "adult", "conditions": ["joint"]}
+{"text": "Plan a day for our kitten. . 1 hour available.", "stage": "adult", "conditions": []}
+{"text": "Help me care for my dog Max. It is newborn. 20 minutes free.", "stage": "young", "conditions": []}
+{"text": "What should I do with the dog. It has sore joints and is chubby. 60 minutes today.", "stage": "adult", "conditions": ["joint", "weight"]}
+{"text": "Schedule care for our puppy. It is too heavy. 60 minutes today.", "stage": "adult", "conditions": ["weight"]}
+{"text": "Plan a day for my golden retriever. It has trouble jumping on the couch. 1 hour available.", "stage": "adult", "conditions": ["joint"]}
+{"text": "Help me care for my dog. It is newborn and struggles with stairs. I have 30 minutes.", "stage": "young", "conditions": ["joint"]}
+{"text": "Help me care for my golden retriever. It is aging and is restless. 1 hour available.", "stage": "senior", "conditions": ["anxious"]}
+{"text": "What should I do with our puppy. It is an old boy and has painful hips and keeps pacing. 60 minutes today.", "stage": "senior", "conditions": ["anxious", "joint"]}
+{"text": "Schedule care for our kitten. . I have an hour.", "stage": "adult", "conditions": []}
+{"text": "Plan a day for the dog. It is 5 years old and lives in an apartment. 20 minutes free.", "stage": "adult", "conditions": ["indoor"]}
+{"text": "Schedule care for the dog. It is 3 years old and is on a diet and has high energy. I have an hour.", "stage": "adult", "conditions": ["anxious", "weight"]}
+{"text": "What should I do with my dog Max. It is only 8 weeks old and is a house pet and is too heavy. I have 30 minutes.", "stage": "young", "conditions": ["indoor", "weight"]}
+{"text": "Plan a day for my dog Max. It is fully grown and never goes outside. 60 minutes today.", "stage": "adult", "conditions": ["indoor"]}
+{"text": "Plan a day for our kitten. It is 3 years old and is obese. only 45 minutes today.", "stage": "adult", "conditions": ["weight"]}
+{"text": "Help me care for my cat Luna. . 1 hour available.", "stage": "adult", "conditions": []}
+{"text": "What should I do with my cat Luna. It is getting up there in age and never goes outside and is obese. I have an hour.", "stage": "senior", "conditions": ["indoor", "weight"]}
+{"text": "Help me care for my cat. It is a few months old. I have an hour.", "stage": "young", "conditions": []}
+{"text": "Schedule care for my cat. It is in her golden years. only 45 minutes today.", "stage": "senior", "conditions": []}
+{"text": "Schedule care for my golden retriever. It has hip dysplasia. 1 hour available.", "stage": "adult", "conditions": ["joint"]}
+{"text": "Plan a day for my golden retriever. It is two years old and is an indoor pet. I have 30 minutes.", "stage": "adult", "conditions": ["indoor"]}
+{"text": "What should I do with my golden retriever. It is 14 years old. 60 minutes today.", "stage": "senior", "conditions": []}
+{"text": "Schedule care for my golden retriever. It has hip dysplasia. only 45 minutes today.", "stage": "adult", "conditions": ["joint"]}
+{"text": "What should I do with our puppy. It just came home as a baby and has hip dysplasia. 60 minutes today.", "stage": "young", "conditions": ["joint"]}
+{"text": "Plan a day for the dog. It is a few months old. 60 minutes today.", "stage": "young", "conditions": []}
+{"text": "What should I do with my cat Luna. It is only 8 weeks old and lives in an apartment. only 45 minutes today.", "stage": "young", "conditions": ["indoor"]}
+{"text": "Schedule care for our puppy. It has arthritis. only 45 minutes today.", "stage": "adult", "conditions": ["joint"]}
+{"text": "Schedule care for my dog. It is 5 years old and is putting on pounds. 60 minutes today.", "stage": "adult", "conditions": ["weight"]}
+{"text": "What should I do with our kitten. It is a few months old. 20 minutes free.", "stage": "young", "conditions": []}
+{"text": "What should I do with my cat Luna. It is a few months old and destroys furniture. I have 30 minutes.", "stage": "young", "conditions": ["anxious"]}
+{"text": "What should I do with our puppy. It is only 8 weeks old and is an indoor pet and is restless. 1 hour available.", "stage": "young", "conditions": ["anxious", "indoor"]}
+{"text": "Plan a day for my dog Max. It is in her golden years and is a house pet. 1 hour available.", "stage": "senior", "conditions": ["indoor"]}
+{"text": "What should I do with my dog. . 60 minutes today.", "stage": "adult", "conditions": []}
+{"text": "Schedule care for my dog Max. It is elderly. I have an hour.", "stage": "senior", "conditions": []}
+{"text": "Plan a day for my dog Max. It never goes outside. 60 minutes today.", "stage": "adult", "conditions": ["indoor"]}
+{"text": "What should I do with the dog. It has a grey muzzle and struggles with stairs. 20 minutes free.", "stage": "senior", "conditions": ["joint"]}
+{"text": "Help me care for our puppy. It is healthy and in his prime and barks all day. 60 minutes today.", "stage": "adult", "conditions": ["anxious"]}
+{"text": "Schedule care for my cat. It is 3 years old. I have an hour.", "stage": "adult", "conditions": []}
+{"text": "What should I do with the dog. It is on a diet. 60 minutes today.", "stage": "adult", "conditions": ["weight"]}
+{"text": "Help me care for my tabby. . 1 hour available.", "stage": "adult", "conditions": []}
+{"text": "Schedule care for our puppy. It just came home as a baby and stays inside all day. I have an hour.", "stage": "young", "conditions": ["indoor"]}
+{"text": "Help me care for our kitten. It is fully grown and tears up the sofa. I have an hour.", "stage": "adult", "conditions": ["anxious"]}
+{"text": "Plan a day for my cat. It is only 8 weeks old. only 45 minutes today.", "stage": "young", "conditions": []}
+{"text": "What should I do with my dog Max. It is a few months old and is overweight. I have 30 minutes.", "stage": "young", "conditions": ["weight"]}
+{"text": "What should I do with our kitten. It is creaky. 1 hour available.", "stage": "adult", "conditions": ["joint"]}
+{"text": "Help me care for my dog Max. It is a senior and is too heavy. only 45 minutes today.", "stage": "senior", "conditions": ["weight"]}
+{"text": "What should I do with my cat Luna. It tears up the sofa. 1 hour available.", "stage": "adult", "conditions": ["anxious"]}
+{"text": "Plan a day for the dog. It is in her golden years. only 45 minutes today.", "stage": "senior", "conditions": []}
+{"text": "Schedule care for my tabby. It is an old boy and is stiff in the morning. 60 minutes today.", "stage": "senior", "conditions": ["joint"]}
+{"text": "What should I do with my golden retriever. It is a house pet. only 45 minutes today.", "stage": "adult", "conditions": ["indoor"]}
+{"text": "Help me care for my cat. It is young and playful and is anxious. 20 minutes free.", "stage": "young", "conditions": ["anxious"]}
+{"text": "Schedule care for our kitten. It just came home as a baby and is on a diet. 60 minutes today.", "stage": "young", "conditions": ["weight"]}
+{"text": "Schedule care for our kitten. It is newborn and has trouble jumping on the couch and lives in an apartment. I have an hour.", "stage": "young", "conditions": ["indoor", "joint"]}
+{"text": "Schedule care for my dog Max. It chews the cushions. only 45 minutes today.", "stage": "adult", "conditions": ["anxious"]}
+{"text": "Plan a day for my golden retriever. It has a grey muzzle. I have 30 minutes.", "stage": "senior", "conditions": []}
+{"text": "What should I do with my golden retriever. It is only 8 weeks old. 1 hour available.", "stage": "young", "conditions": []}
+{"text": "Schedule care for my tabby. It is fully grown and is on a diet and has arthritis. only 45 minutes today.", "stage": "adult", "conditions": ["joint", "weight"]}
+{"text": "What should I do with the dog. . 20 minutes free.", "stage": "adult", "conditions": []}
+{"text": "Plan a day for our kitten. It is young and playful. 20 minutes free.", "stage": "young", "conditions": []}
+{"text": "Plan a day for my golden retriever. It is a kitten. I have an hour.", "stage": "young", "conditions": []}
+{"text": "What should I do with my golden retriever. It is getting up there in age and is anxious and is too heavy. only 45 minutes today.", "stage": "senior", "conditions": ["anxious", "weight"]}
+{"text": "Plan a day for our puppy. It is 5 years old and is slow to get up. I have an hour.", "stage": "adult", "conditions": ["joint"]}
+{"text": "Plan a day for my golden retriever. It never goes outside and is slow to get up. 60 minutes today.", "stage": "adult", "conditions": ["indoor", "joint"]}
+{"text": "What should I do with the dog. It has sore joints. only 45 minutes today.", "stage": "adult", "conditions": ["joint"]}
+{"text": "Plan a day for our kitten. It is too heavy. I have 30 minutes.", "stage": "adult", "conditions": ["weight"]}
+{"text": "Help me care for our kitten. It is a puppy and is a house pet. 60 minutes today.", "stage": "young", "conditions": ["indoor"]}
+{"text": "Help me care for my golden retriever. It is hyper and is stiff in the morning. only 45 minutes today.", "stage": "adult", "conditions": ["anxious", "joint"]}
+{"text": "Schedule care for my cat. It is a few months old and is overweight. I have 30 minutes.", "stage": "young", "conditions": ["weight"]}
+{"text": "Plan a day for my dog. It is young and playful and has hip dysplasia. 20 minutes free.", "stage": "young", "conditions": ["joint"]}
+{"text": "Plan a day for our puppy. It is 5 years old and is too heavy. I have 30 minutes.", "stage": "adult", "conditions": ["weight"]}
+{"text": "What should I do with my cat. It is elderly and is putting on pounds. 60 minutes today.", "stage": "senior", "conditions": ["weight"]}
+{"text": "Help me care for my cat. . 1 hour available.", "stage": "adult", "conditions": []}
+{"text": "Schedule care for our puppy. It is healthy and in his prime. 1 hour available.", "stage": "adult", "conditions": []}
+{"text": "Plan a day for my dog. . 60 minutes today.", "stage": "adult", "conditions": []}
+{"text": "What should I do with my golden retriever. It is getting up there in age. 60 minutes today.", "stage": "senior", "conditions": []}
+{"text": "Plan a day for our puppy. It is a few months old and has arthritis and is restless. I have an hour.", "stage": "young", "conditions": ["anxious", "joint"]}
+{"text": "Schedule care for my dog Max. It is 3 years old and is putting on pounds. 20 minutes free.", "stage": "adult", "conditions": ["weight"]}
+{"text": "Help me care for my golden retriever. It is newborn. 1 hour available.", "stage": "young", "conditions": []}
+{"text": "What should I do with my tabby. It has sore joints. I have an hour.", "stage": "adult", "conditions": ["joint"]}
+{"text": "Help me care for my cat Luna. It is healthy and in his prime and is restless and is stiff in the morning. I have 30 minutes.", "stage": "adult", "conditions": ["anxious", "joint"]}
+{"text": "Schedule care for my cat. It is 5 years old and is restless. only 45 minutes today.", "stage": "adult", "conditions": ["anxious"]}
+{"text": "Help me care for the dog. It is elderly. 60 minutes today.", "stage": "senior", "conditions": []}
+{"text": "Plan a day for my dog Max. It is a puppy. only 45 minutes today.", "stage": "young", "conditions": []}
+{"text": "Schedule care for the dog. It is on a diet. I have 30 minutes.", "stage": "adult", "conditions": ["weight"]}
+{"text": "Schedule care for our puppy. It is young and playful and needs to lose weight. 60 minutes today.", "stage": "young", "conditions": ["weight"]}
+{"text": "Plan a day for my cat. It is 3 years old. 1 hour available.", "stage": "adult", "conditions": []}
+{"text": "Plan a day for my golden retriever. It is young and playful. 60 minutes today.", "stage": "young", "conditions": []}
+{"text": "Plan a day for my dog Max. It is 5 years old and never goes outside and is slow to get up. 60 minutes today.", "stage": "adult", "conditions": ["indoor", "joint"]}
+{"text": "Schedule care for my cat Luna. It is a puppy and stays inside all day. only 45 minutes today.", "stage": "young", "conditions": ["indoor"]}
+{"text": "Schedule care for my dog Max. It is newborn and gets bored easily. I have 30 minutes.", "stage": "young", "conditions": ["anxious"]}
+{"text": "Schedule care for my dog Max. . only 45 minutes today.", "stage": "adult", "conditions": []}
+{"text": "Plan a day for the dog. . I have 30 minutes.", "stage": "adult", "conditions": []}
+{"text": "Plan a day for my dog Max. It is limping. 1 hour available.", "stage": "adult", "conditions": ["joint"]}
+{"text": "Help me care for my cat Luna. It is fully grown and is putting on pounds. 1 hour available.", "stage": "adult", "conditions": ["weight"]}
+{"text": "Help me care for our puppy. It struggles with stairs. I have 30 minutes.", "stage": "adult", "conditions": ["joint"]}
+{"text": "What should I do with my cat Luna. It keeps gaining weight. 1 hour available.", "stage": "adult", "conditions": ["weight"]}
+{"text": "What should I do with my cat Luna. . I have 30 minutes.", "stage": "adult", "conditions": []}
+{"text": "Plan a day for my golden retriever. It is 5 years old and is stiff in the morning. 20 minutes free.", "stage": "adult", "conditions": ["joint"]}
+{"text": "Help me care for the dog. It is a puppy and is too heavy. I have 30 minutes.", "stage": "young", "conditions": ["weight"]}
+{"text": "What should I do with our kitten. It is healthy and in his prime. I have 30 minutes.", "stage": "adult", "conditions": []}
+{"text": "Help me care for the dog. It stays inside all day. I have an hour.", "stage": "adult", "conditions": ["indoor"]}
+{"text": "Help me care for my tabby. It is a kitten. I have 30 minutes.", "stage": "young", "conditions": []}
+{"text": "What should I do with our puppy. It stays inside all day. 60 minutes today.", "stage": "adult", "conditions": ["indoor"]}
+{"text": "Schedule care for my cat Luna. . 60 minutes today.", "stage": "adult", "conditions": []}
+{"text": "Plan a day for my tabby. It is two years old and keeps gaining weight. 60 minutes today.", "stage": "adult", "conditions": ["weight"]}
+{"text": "Help me care for my golden retriever. It is 14 years old. 60 minutes today.", "stage": "senior", "conditions": []}
+{"text": "Schedule care for my dog. It is fully grown. 60 minutes today.", "stage": "adult", "conditions": []}
+{"text": "Help me care for my dog. It is elderly. 20 minutes free.", "stage": "senior", "conditions": []}
+{"text": "What should I do with our puppy. It is only 8 weeks old and chews the cushions. 1 hour available.", "stage": "young", "conditions": ["anxious"]}
+{"text": "Plan a day for the dog. . only 45 minutes today.", "stage": "adult", "conditions": []}
+{"text": "What should I do with our kitten. . 1 hour available.", "stage": "adult", "conditions": []}
+{"text": "Help me care for our kitten. It stays inside all day. only 45 minutes today.", "stage": "adult", "conditions": ["indoor"]}
+{"text": "Help me care for my cat Luna. It never goes outside and is putting on pounds. 20 minutes free.", "stage": "adult", "conditions": ["indoor", "weight"]}
+{"text": "Help me care for our kitten. It is a senior and is restless. I have an hour.", "stage": "senior", "conditions": ["anxious"]}
+{"text": "What should I do with our puppy. It is a house pet. I have 30 minutes.", "stage": "adult", "conditions": ["indoor"]}
+{"text": "Help me care for my cat Luna. It is 3 years old and is chubby and has sore joints. 20 minutes free.", "stage": "adult", "conditions": ["joint", "weight"]}
+{"text": "What should I do with the dog. . I have an hour.", "stage": "adult", "conditions": []}
+{"text": "Help me care for my dog Max. It is in her golden years. I have 30 minutes.", "stage": "senior", "conditions": []}
+{"text": "Plan a day for my dog Max. It is limping. only 45 minutes today.", "stage": "adult", "conditions": ["joint"]}
+{"text": "What should I do with my dog Max. It is two years old. 60 minutes today.", "stage": "adult", "conditions": []}
+{"text": "Help me care for my golden retriever. It has a grey muzzle and is a house pet. I have an hour.", "stage": "senior", "conditions": ["indoor"]}
+{"text": "What should I do with our puppy. It is only 8 weeks old and tears up the sofa. only 45 minutes today.", "stage": "young", "conditions": ["anxious"]}
+{"text": "Schedule care for my cat. It is 3 years old. I have an hour.", "stage": "adult", "conditions": []}
+{"text": "Plan a day for my golden retriever. It is 14 years old and has high energy. 1 hour available.", "stage": "senior", "conditions": ["anxious"]}
+{"text": "What should I do with the dog. It just came home as a baby and has sore joints and lives in an apartment. 60 minutes today.", "stage": "young", "conditions": ["indoor", "joint"]}
+{"text": "What should I do with my cat Luna. . only 45 minutes today.", "stage": "adult", "conditions": []}
+{"text": "Schedule care for my cat. . only 45 minutes today.", "stage": "adult", "conditions": []}
+{"text": "What should I do with my golden retriever. It is healthy and in his prime and has trouble jumping on the couch. 1 hour available.", "stage": "adult", "conditions": ["joint"]}
+{"text": "Schedule care for our puppy. It is two years old and is an indoor pet. 60 minutes today.", "stage": "adult", "conditions": ["indoor"]}
+{"text": "Schedule care for my cat. It is an old boy and is a house pet. 60 minutes today.", "stage": "senior", "conditions": ["indoor"]}
+{"text": "Schedule care for my dog Max. It is a kitten and needs to lose weight. I have an hour.", "stage": "young", "conditions": ["weight"]}
+{"text": "Help me care for my dog. It is 5 years old and has trouble jumping on the couch. 1 hour available.", "stage": "adult", "conditions": ["joint"]}
+{"text": "Plan a day for our puppy. . only 45 minutes today.", "stage": "adult", "conditions": []}
+{"text": "Help me care for my dog Max. It is newborn. only 45 minutes today.", "stage": "young", "conditions": []}
+{"text": "Plan a day for my cat. It is a kitten. 20 minutes free.", "stage": "young", "conditions": []}
+{"text": "Schedule care for my cat Luna. . 60 minutes today.", "stage": "adult", "conditions": []}
+{"text": "Plan a day for my cat. It destroys furniture. I have 30 minutes.", "stage": "adult", "conditions": ["anxious"]}
+{"text": "Help me care for my cat Luna. It is a few months old and is restless. only 45 minutes today.", "stage": "young", "conditions": ["anxious"]}
+{"text": "What should I do with the dog. It has arthritis and never goes outside. 1 hour available.", "stage": "adult", "conditions": ["indoor", "joint"]}
+{"text": "Plan a day for our puppy. It is slow to get up. 20 minutes free.", "stage": "adult", "conditions": ["joint"]}
+{"text": "What should I do with our puppy. It is a house pet. only 45 minutes today.", "stage": "adult", "conditions": ["indoor"]}
+{"text": "Help me care for my dog Max. It is young and playful and is a house pet. 1 hour available.", "stage": "young", "conditions": ["indoor"]}
+{"text": "Help me care for my dog. . 1 hour available.", "stage": "adult", "conditions": []}
+{"text": "Help me care for our puppy. It lives in an apartment. 60 minutes today.", "stage": "adult", "conditions": ["indoor"]}
+{"text": "Plan a day for our kitten. It is fully grown. 60 minutes today.", "stage": "adult", "conditions": []}
+{"text": "What should I do with my cat Luna. It is an old boy and is anxious. I have an hour.", "stage": "senior", "conditions": ["anxious"]}
+{"text": "Plan a day for my cat Luna. It is an adult. only 45 minutes today.", "stage": "adult", "conditions": []}
+{"text": "Help me care for my cat Luna. It is a house pet and has trouble jumping on the couch. 1 hour available.", "stage": "adult", "conditions": ["indoor", "joint"]}
+{"text": "Plan a day for my cat. It is in her golden years and barks all day. 20 minutes free.", "stage": "senior", "conditions": ["anxious"]}
+{"text": "Help me care for my golden retriever. It is a few months old. 60 minutes today.", "stage": "young", "conditions": []}
+{"text": "What should I do with my cat Luna. It is 3 years old and has high energy. I have 30 minutes.", "stage": "adult", "conditions": ["anxious"]}
+{"text": "Help me care for my cat. It is a senior and is on a diet and is stiff in the morning. 60 minutes today.", "stage": "senior", "conditions": ["joint", "weight"]}
+{"text": "Help me care for the dog. It is two years old and has arthritis. I have 30 minutes.", "stage": "adult", "conditions": ["joint"]}
+{"text": "Plan a day for my cat. It is healthy and in his prime and is obese and is restless. only 45 minutes today.", "stage": "adult", "conditions": ["anxious", "weight"]}
+{"text": "Schedule care for my cat Luna. It never goes outside. 20 minutes free.", "stage": "adult", "conditions": ["indoor"]}
+{"text": "Schedule care for the dog. It is 14 years old. I have an hour.", "stage": "senior", "conditions": []}
+{"text": "Help me care for our puppy. It is 5 years old and is an indoor pet. I have an hour.", "stage": "adult", "conditions": ["indoor"]}
+{"text": "Schedule care for my tabby. It is two years old and is limping. I have an hour.", "stage": "adult", "conditions": ["joint"]}
+{"text": "Schedule care for our kitten. It is 3 years old. I have 30 minutes.", "stage": "adult", "conditions": []}
+{"text": "Schedule care for my dog. It is only 8 weeks old and has sore joints. 1 hour available.", "stage": "young", "conditions": ["joint"]}
+{"text": "Schedule care for the dog. It is 3 years old and gets bored easily and is overweight. 60 minutes today.", "stage": "adult", "conditions": ["anxious", "weight"]}
+{"text": "Plan a day for our puppy. It is fully grown and is on a diet. I have an hour.", "stage": "adult", "conditions": ["weight"]}
+{"text": "What should I do with my dog Max. . I have an hour.", "stage": "adult", "conditions": []}
+{"text": "Plan a day for my cat Luna. It is 14 years old. 1 hour available.", "stage": "senior", "conditions": []}
+{"text": "What should I do with my cat Luna. It is a few months old and has sore joints. 60 minutes today.", "stage": "young", "conditions": ["joint"]}
+{"text": "Plan a day for my cat. . I have 30 minutes.", "stage": "adult", "conditions": []}
+{"text": "Plan a day for my cat. It is a puppy. only 45 minutes today.", "stage": "young", "conditions": []}
+{"text": "What should I do with the dog. It is two years old and has separation anxiety. 20 minutes free.", "stage": "adult", "conditions": ["anxious"]}
+{"text": "Schedule care for my cat. It is healthy and in his prime and is hyper and stays inside all day. 20 minutes free.", "stage": "adult", "conditions": ["anxious", "indoor"]}
+{"text": "Help me care for our kitten. . I have an hour.", "stage": "adult", "conditions": []}
+{"text": "Plan a day for my golden retriever. It is 5 years old and has arthritis and chews the cushions. only 45 minutes today.", "stage": "adult", "conditions": ["anxious", "joint"]}
+{"text": "Schedule care for my tabby. It is fully grown and needs to lose weight and gets bored easily. 60 minutes today.", "stage": "adult", "conditions": ["anxious", "weight"]}
+{"text": "Schedule care for the dog. It needs to lose weight. 20 minutes free.", "stage": "adult", "conditions": ["weight"]}
+{"text": "Schedule care for my tabby. It is a kitten. 20 minutes free.", "stage": "young", "conditions": []}
+{"text": "Help me care for the dog. It is 14 years old and is limping. I have 30 minutes.", "stage": "senior", "conditions": ["joint"]}
+{"text": "Schedule care for my dog. It is getting up there in age and has trouble jumping on the couch. I have 30 minutes.", "stage": "senior", "conditions": ["joint"]}
+{"text": "What should I do with our puppy. It is 14 years old and is chubby. 60 minutes today.", "stage": "senior", "conditions": ["weight"]}
+{"text": "Help me care for my dog Max. It is an adult and stays inside all day. only 45 minutes today.", "stage": "adult", "conditions": ["indoor"]}
+{"text": "Plan a day for my dog. It is 14 years old and has sore joints. I have an hour.", "stage": "senior", "conditions": ["joint"]}
+{"text": "Help me care for our kitten. It is an adult. I have an hour.", "stage": "adult", "conditions": []}
+{"text": "Help me care for my dog Max. It is in her golden years and is a house pet. I have 30 minutes.", "stage": "senior", "conditions": ["indoor"]}
+{"text": "Plan a day for my tabby. It is an adult and lives in an apartment and is slow to get up. only 45 minutes today.", "stage": "adult", "conditions": ["indoor", "joint"]}
+{"text": "Schedule care for the dog. It is getting up there in age. only 45 minutes today.", "stage": "senior", "conditions": []}
+{"text": "What should I do with my cat Luna. It is only 8 weeks old. 1 hour available.", "stage": "young", "conditions": []}
+{"text": "Plan a day for our puppy. It lives in an apartment. I have 30 minutes.", "stage": "adult", "conditions": ["indoor"]}
+{"text": "What should I do with my golden retriever. It is aging. 20 minutes free.", "stage": "senior", "conditions": []}
+{"text": "What should I do with my tabby. It is chubby. only 45 minutes today.", "stage": "adult", "conditions": ["weight"]}
+{"text": "What should I do with my cat. It is only 8 weeks old. 60 minutes today.", "stage": "young", "conditions": []}
+{"text": "What should I do with our puppy. It is healthy and in his prime. I have an hour.", "stage": "adult", "conditions": []}
+{"text": "What should I do with my cat Luna. It just came home as a baby. 60 minutes today.", "stage": "young", "conditions": []}
+{"text": "Plan a day for our puppy. It is two years old and barks all day and is creaky. I have an hour.", "stage": "adult", "conditions": ["anxious", "joint"]}
+{"text": "Help me care for my tabby. It is 14 years old and destroys furniture. I have 30 minutes.", "stage": "senior", "conditions": ["anxious"]}
+{"text": "Schedule care for my golden retriever. It is only 8 weeks old and is creaky and keeps pacing. I have 30 minutes.", "stage": "young", "conditions": ["anxious", "joint"]}
+{"text": "What should I do with my cat. It is 5 years old and has separation anxiety. I have an hour.", "stage": "adult", "conditions": ["anxious"]}
+{"text": "Plan a day for my cat Luna. It is elderly and is nervous around noises. 60 minutes today.", "stage": "senior", "conditions": ["anxious"]}
+{"text": "Schedule care for my dog Max. It is 14 years old. 60 minutes today.", "stage": "senior", "conditions": []}
+{"text": "Help me care for our kitten. . only 45 minutes today.", "stage": "adult", "conditions": []}
+{"text": "Help me care for my dog. It is a puppy. 60 minutes today.", "stage": "young", "conditions": []}
+{"text": "Plan a day for our puppy. It is getting up there in age and has arthritis and stays inside all day. 60 minutes today.", "stage": "senior", "conditions": ["indoor", "joint"]}
+{"text": "Help me care for my dog Max. It is overweight. only 45 minutes today.", "stage": "adult", "conditions": ["weight"]}
+{"text": "Schedule care for our puppy. . only 45 minutes today.", "stage": "adult", "conditions": []}
+{"text": "Schedule care for our kitten. It is newborn. 20 minutes free.", "stage": "young", "conditions": []}
+{"text": "What should I do with our kitten. It is 3 years old and tears up the sofa. 60 minutes today.", "stage": "adult", "conditions": ["anxious"]}
+{"text": "Help me care for my cat Luna. It just came home as a baby. I have 30 minutes.", "stage": "young", "conditions": []}
+{"text": "What should I do with my tabby. It is healthy and in his prime and has arthritis. 20 minutes free.", "stage": "adult", "conditions": ["joint"]}
+{"text": "What should I do with my tabby. It is 3 years old and keeps pacing and is a house pet. only 45 minutes today.", "stage": "adult", "conditions": ["anxious", "indoor"]}
+{"text": "What should I do with our puppy. It is 3 years old. I have an hour.", "stage": "adult", "conditions": []}
+{"text": "Schedule care for the dog. It is getting up there in age and has painful hips. 20 minutes free.", "stage": "senior", "conditions": ["joint"]}
+{"text": "What should I do with our puppy. It is in her golden years and gets bored easily. 1 hour available.", "stage": "senior", "conditions": ["anxious"]}
+{"text": "Schedule care for my cat Luna. It is young and playful and has hip dysplasia. I have an hour.", "stage": "young", "conditions": ["joint"]}
+{"text": "What should I do with my dog Max. It is 3 years old. 20 minutes free.", "stage": "adult", "conditions": []}
+{"text": "Plan a day for the dog. It is young and playful. I have an hour.", "stage": "young", "conditions": []}
+{"text": "Plan a day for our puppy. It has hip dysplasia. I have 30 minutes.", "stage": "adult", "conditions": ["joint"]}
+{"text": "Schedule care for my cat. It has a grey muzzle and is an indoor pet. I have 30 minutes.", "stage": "senior", "conditions": ["indoor"]}
+{"text": "Help me care for my cat. It is fully grown and is nervous around noises. only 45 minutes today.", "stage": "adult", "conditions": ["anxious"]}
+{"text": "Schedule care for my golden retriever. It has a grey muzzle and stays inside all day and tears up the sofa. 60 minutes today.", "stage": "senior", "conditions": ["anxious", "indoor"]}
+{"text": "Help me care for my dog Max. It has trouble jumping on the couch and chews the cushions. 60 minutes today.", "stage": "adult", "conditions": ["anxious", "joint"]}
+{"text": "What should I do with our kitten. . I have an hour.", "stage": "adult", "conditions": []}
+{"text": "Plan a day for my cat. It is a puppy and has sore joints. 20 minutes free.", "stage": "young", "conditions": ["joint"]}
+{"text": "Schedule care for my cat Luna. It is 14 years old and is limping. 60 minutes today.", "stage": "senior", "conditions": ["joint"]}
+{"text": "Schedule care for our puppy. It gets bored easily. 20 minutes free.", "stage": "adult", "conditions": ["anxious"]}
+{"text": "Plan a day for our kitten. . I have an hour.", "stage": "adult", "conditions": []}
+{"text": "What should I do with my tabby. It is 5 years old and has sore joints and is hyper. 20 minutes free.", "stage": "adult", "conditions": ["anxious", "joint"]}
+{"text": "What should I do with our kitten. It is 5 years old and has trouble jumping on the couch. only 45 minutes today.", "stage": "adult", "conditions": ["joint"]}
+{"text": "Plan a day for my tabby. It is an adult. only 45 minutes today.", "stage": "adult", "conditions": []}
+{"text": "Schedule care for my cat. It is healthy and in his prime and is nervous around noises. only 45 minutes today.", "stage": "adult", "conditions": ["anxious"]}
+{"text": "Plan a day for our puppy. It is fully grown and is nervous around noises and is obese. I have an hour.", "stage": "adult", "conditions": ["anxious", "weight"]}
+{"text": "Plan a day for my cat Luna. . I have 30 minutes.", "stage": "adult", "conditions": []}
+{"text": "Schedule care for my golden retriever. It is two years old and gets bored easily. I have an hour.", "stage": "adult", "conditions": ["anxious"]}
+{"text": "Help me care for our kitten. It is getting up there in age and chews the cushions. I have an hour.", "stage": "senior", "conditions": ["anxious"]}
+{"text": "Plan a day for our kitten. It just came home as a baby and needs to lose weight. only 45 minutes today.", "stage": "young", "conditions": ["weight"]}
+{"text": "Schedule care for my cat. It is a senior. 1 hour available.", "stage": "senior", "conditions": []}
+{"text": "Schedule care for my dog. It is only 8 weeks old and has painful hips and is chubby. I have 30 minutes.", "stage": "young", "conditions": ["joint", "weight"]}
+{"text": "Help me care for our kitten. . I have 30 minutes.", "stage": "adult", "conditions": []}
+{"text": "What should I do with the dog. It is 3 years old and is hyper. I have an hour.", "stage": "adult", "conditions": ["anxious"]}
+{"text": "Schedule care for my tabby. It is creaky and tears up the sofa. I have 30 minutes.", "stage": "adult", "conditions": ["anxious", "joint"]}
+{"text": "What should I do with our puppy. It is only 8 weeks old and is a house pet and is restless. 1 hour available.", "stage": "young", "conditions": ["anxious", "indoor"]}
+{"text": "Help me care for our puppy. . only 45 minutes today.", "stage": "adult", "conditions": []}
+{"text": "Help me care for my dog Max. It is young and playful and is stiff in the morning. I have an hour.", "stage": "young", "conditions": ["joint"]}
+{"text": "Plan a day for our kitten. It is an adult and has arthritis. only 45 minutes today.", "stage": "adult", "conditions": ["joint"]}
+{"text": "Plan a day for my golden retriever. It is 5 years old. 1 hour available.", "stage": "adult", "conditions": []}
+{"text": "Plan a day for my golden retriever. It is an adult and is overweight. I have an hour.", "stage": "adult", "conditions": ["weight"]}
+{"text": "Schedule care for my cat. It is newborn. I have 30 minutes.", "stage": "young", "conditions": []}
+{"text": "Schedule care for my cat. It is 5 years old and never goes outside. 60 minutes today.", "stage": "adult", "conditions": ["indoor"]}
+{"text": "What should I do with my cat Luna. It is a puppy. 60 minutes today.", "stage": "young", "conditions": []}
+{"text": "Plan a day for my golden retriever. It is chubby. 60 minutes today.", "stage": "adult", "conditions": ["weight"]}
+{"text": "Plan a day for my cat Luna. . I have an hour.", "stage": "adult", "conditions": []}
+{"text": "What should I do with our puppy. It is too heavy. 20 minutes free.", "stage": "adult", "conditions": ["weight"]}
+{"text": "Help me care for my golden retriever. It has sore joints. 60 minutes today.", "stage": "adult", "conditions": ["joint"]}
+{"text": "What should I do with my cat. It is fully grown. 1 hour available.", "stage": "adult", "conditions": []}
+{"text": "Schedule care for our kitten. . 20 minutes free.", "stage": "adult", "conditions": []}
+{"text": "Help me care for my cat. It has trouble jumping on the couch. only 45 minutes today.", "stage": "adult", "conditions": ["joint"]}
+{"text": "What should I do with my dog Max. It is slow to get up and keeps gaining weight. 1 hour available.", "stage": "adult", "conditions": ["joint", "weight"]}
+{"text": "Help me care for my cat. It is a kitten and is an indoor pet and is limping. I have an hour.", "stage": "young", "conditions": ["indoor", "joint"]}
+{"text": "Plan a day for my cat. It is getting up there in age. I have 30 minutes.", "stage": "senior", "conditions": []}
+{"text": "Schedule care for our puppy. It is only 8 weeks old and barks all day. 60 minutes today.", "stage": "young", "conditions": ["anxious"]}
+{"text": "What should I do with my golden retriever. . only 45 minutes today.", "stage": "adult", "conditions": []}
+{"text": "Help me care for our puppy. It is only 8 weeks old and is an indoor pet. I have 30 minutes.", "stage": "young", "conditions": ["indoor"]}
+{"text": "Help me care for my dog. . 1 hour available.", "stage": "adult", "conditions": []}
+{"text": "What should I do with my tabby. It keeps pacing. only 45 minutes today.", "stage": "adult", "conditions": ["anxious"]}
+{"text": "Schedule care for my cat Luna. It is healthy and in his prime and is too heavy. I have an hour.", "stage": "adult", "conditions": ["weight"]}
+{"text": "Plan a day for the dog. It is healthy and in his prime and is chubby. I have 30 minutes.", "stage": "adult", "conditions": ["weight"]}
+{"text": "Plan a day for my golden retriever. It is aging. only 45 minutes today.", "stage": "senior", "conditions": []}
+{"text": "Schedule care for my dog Max. It is a senior and lives in an apartment and has high energy. 1 hour available.", "stage": "senior", "conditions": ["anxious", "indoor"]}
+{"text": "Schedule care for my dog Max. It is elderly and lives in an apartment. 60 minutes today.", "stage": "senior", "conditions": ["indoor"]}
+{"text": "Help me care for the dog. It is an old boy. 60 minutes today.", "stage": "senior", "conditions": []}
+{"text": "Plan a day for my cat Luna. It is 3 years old and barks all day. I have an hour.", "stage": "adult", "conditions": ["anxious"]}
+{"text": "Schedule care for my cat Luna. It is 14 years old and has high energy and is stiff in the morning. 1 hour available.", "stage": "senior", "conditions": ["anxious", "joint"]}
+{"text": "What should I do with my dog. It is only 8 weeks old. 20 minutes free.", "stage": "young", "conditions": []}
+{"text": "Help me care for my cat Luna. . 60 minutes today.", "stage": "adult", "conditions": []}
+{"text": "Schedule care for my dog. It is newborn and gets bored easily. 1 hour available.", "stage": "young", "conditions": ["anxious"]}
+{"text": "What should I do with the dog. It is creaky. I have an hour.", "stage": "adult", "conditions": ["joint"]}
+{"text": "Schedule care for my golden retriever. It is young and playful. 1 hour available.", "stage": "young", "conditions": []}
+{"text": "What should I do with my dog. It is a puppy and is putting on pounds. 1 hour available.", "stage": "young", "conditions": ["weight"]}
+{"text": "Help me care for my dog. It is young and playful and is too heavy. 1 hour available.", "stage": "young", "conditions": ["weight"]}
+{"text": "Help me care for our kitten. It is newborn. I have an hour.", "stage": "young", "conditions": []}
+{"text": "Schedule care for my tabby. It is healthy and in his prime. I have 30 minutes.", "stage": "adult", "conditions": []}
+{"text": "Help me care for my golden retriever. It is in her golden years and is putting on pounds. I have 30 minutes.", "stage": "senior", "conditions": ["weight"]}
+{"text": "What should I do with our kitten. It is a few months old. only 45 minutes today.", "stage": "young", "conditions": []}
+{"text": "Plan a day for my tabby. It is fully grown and lives in an apartment. 20 minutes free.", "stage": "adult", "conditions": ["indoor"]}
+{"text": "Plan a day for the dog. It is 14 years old and has painful hips. 20 minutes free.", "stage": "senior", "conditions": ["joint"]}
+{"text": "Schedule care for my golden retriever. It is elderly and is on a diet and is slow to get up. only 45 minutes today.", "stage": "senior", "conditions": ["joint", "weight"]}
+{"text": "Plan a day for my cat. . I have 30 minutes.", "stage": "adult", "conditions": []}
+{"text": "Schedule care for my cat Luna. It is two years old and never goes outside. I have 30 minutes.", "stage": "adult", "conditions": ["indoor"]}
+{"text": "Schedule care for my dog Max. It is getting up there in age and has sore joints. 20 minutes free.", "stage": "senior", "conditions": ["joint"]}
+{"text": "Schedule care for my cat. It is two years old and is nervous around noises. I have 30 minutes.", "stage": "adult", "conditions": ["anxious"]}
+{"text": "Help me care for my cat Luna. It is 3 years old and is nervous around noises. only 45 minutes today.", "stage": "adult", "conditions": ["anxious"]}
+{"text": "Schedule care for our kitten. It is an adult. 60 minutes today.", "stage": "adult", "conditions": []}
+{"text": "Schedule care for the dog. It never goes outside. 60 minutes today.", "stage": "adult", "conditions": ["indoor"]}
+{"text": "Schedule care for my dog. . only 45 minutes today.", "stage": "adult", "conditions": []}
+{"text": "What should I do with my tabby. It is an adult and has trouble jumping on the couch. only 45 minutes today.", "stage": "adult", "conditions": ["joint"]}
+{"text": "Schedule care for my tabby. It is chubby. 60 minutes today.", "stage": "adult", "conditions": ["weight"]}
+{"text": "Help me care for my golden retriever. It is elderly and is restless. 1 hour available.", "stage": "senior", "conditions": ["anxious"]}
+{"text": "Help me care for my tabby. It is healthy and in his prime. only 45 minutes today.", "stage": "adult", "conditions": []}
+{"text": "Help me care for my cat Luna. It is 14 years old and is anxious. 60 minutes today.", "stage": "senior", "conditions": ["anxious"]}
+{"text": "Plan a day for my tabby. It is only 8 weeks old. I have 30 minutes.", "stage": "young", "conditions": []}
+{"text": "Help me care for my golden retriever. It is slow to get up and is a house pet. only 45 minutes today.", "stage": "adult", "conditions": ["indoor", "joint"]}
+{"text": "Schedule care for my dog. . 1 hour available.", "stage": "adult", "conditions": []}
+{"text": "Plan a day for my dog. It has hip dysplasia and tears up the sofa. 1 hour available.", "stage": "adult", "conditions": ["anxious", "joint"]}
+{"text": "What should I do with my dog Max. It is 3 years old and has arthritis and lives in an apartment. only 45 minutes today.", "stage": "adult", "conditions": ["indoor", "joint"]}
+{"text": "What should I do with our puppy. It is healthy and in his prime. 20 minutes free.", "stage": "adult", "conditions": []}
+{"text": "Help me care for our kitten. It is a house pet. only 45 minutes today.", "stage": "adult", "conditions": ["indoor"]}
+{"text": "Plan a day for our kitten. It stays inside all day. 1 hour available.", "stage": "adult", "conditions": ["indoor"]}
+{"text": "Plan a day for my cat Luna. It is an adult and lives in an apartment. 20 minutes free.", "stage": "adult", "conditions": ["indoor"]}
+{"text": "Help me care for the dog. It is aging and is a house pet and has sore joints. only 45 minutes today.", "stage": "senior", "conditions": ["indoor", "joint"]}
+{"text": "Plan a day for my dog Max. It tears up the sofa. I have 30 minutes.", "stage": "adult", "conditions": ["anxious"]}
+{"text": "Help me care for my cat Luna. It is 3 years old. 1 hour available.", "stage": "adult", "conditions": []}
+{"text": "Help me care for our puppy. It needs to lose weight. 60 minutes today.", "stage": "adult", "conditions": ["weight"]}
+{"text": "What should I do with our kitten. It is an adult and stays inside all day. only 45 minutes today.", "stage": "adult", "conditions": ["indoor"]}
+{"text": "What should I do with the dog. It is hyper and is limping. 60 minutes today.", "stage": "adult", "conditions": ["anxious", "joint"]}
+{"text": "What should I do with my tabby. It keeps gaining weight. I have 30 minutes.", "stage": "adult", "conditions": ["weight"]}
+{"text": "Plan a day for my cat. It is a kitten and is on a diet and is a house pet. only 45 minutes today.", "stage": "young", "conditions": ["indoor", "weight"]}
+{"text": "Schedule care for my cat Luna. . I have 30 minutes.", "stage": "adult", "conditions": []}
+{"text": "Schedule care for our puppy. . 60 minutes today.", "stage": "adult", "conditions": []}
+{"text": "Plan a day for our kitten. . I have 30 minutes.", "stage": "adult", "conditions": []}
+{"text": "Plan a day for my dog Max. It is fully grown. I have 30 minutes.", "stage": "adult", "conditions": []}
+{"text": "Help me care for the dog. It is too heavy and is an indoor pet. I have 30 minutes.", "stage": "adult", "conditions": ["indoor", "weight"]}
+{"text": "What should I do with my dog. It is an adult and lives in an apartment. I have 30 minutes.", "stage": "adult", "conditions": ["indoor"]}
+{"text": "What should I do with our kitten. It is 3 years old and is a house pet. I have an hour.", "stage": "adult", "conditions": ["indoor"]}
+{"text": "What should I do with my dog Max. It stays inside all day. 20 minutes free.", "stage": "adult", "conditions": ["indoor"]}
+{"text": "What should I do with our kitten. It is young and playful and needs to lose weight. I have 30 minutes.", "stage": "young", "conditions": ["weight"]}
+{"text": "What should I do with my dog. . 60 minutes today.", "stage": "adult", "conditions": []}
+{"text": "What should I do with our puppy. It is 5 years old and is too heavy. only 45 minutes today.", "stage": "adult", "conditions": ["weight"]}
+{"text": "Schedule care for my dog. It has a grey muzzle and has trouble jumping on the couch. I have an hour.", "stage": "senior", "conditions": ["joint"]}
+{"text": "Help me care for my dog. It is only 8 weeks old. I have 30 minutes.", "stage": "young", "conditions": []}
+{"text": "Help me care for my cat. . 60 minutes today.", "stage": "adult", "conditions": []}
+{"text": "Schedule care for our puppy. It just came home as a baby and keeps pacing and struggles with stairs. I have 30 minutes.", "stage": "young", "conditions": ["anxious", "joint"]}
+{"text": "What should I do with my golden retriever. It is a few months old and gets bored easily. 20 minutes free.", "stage": "young", "conditions": ["anxious"]}
+{"text": "What should I do with the dog. It is young and playful. 1 hour available.", "stage": "young", "conditions": []}
+{"text": "Schedule care for our kitten. It stays inside all day. I have an hour.", "stage": "adult", "conditions": ["indoor"]}
+{"text": "Help me care for the dog. . 1 hour available.", "stage": "adult", "conditions": []}
+{"text": "Plan a day for the dog. . I have an hour.", "stage": "adult", "conditions": []}
+{"text": "What should I do with my cat. It is hyper. 20 minutes free.", "stage": "adult", "conditions": ["anxious"]}
+{"text": "What should I do with my cat Luna. It is slow to get up. I have 30 minutes.", "stage": "adult", "conditions": ["joint"]}
+{"text": "Help me care for my cat. It is young and playful. only 45 minutes today.", "stage": "young", "conditions": []}
+{"text": "Schedule care for the dog. It is getting up there in age and is putting on pounds. I have 30 minutes.", "stage": "senior", "conditions": ["weight"]}
+{"text": "What should I do with my dog Max. It is elderly and is stiff in the morning. 20 minutes free.", "stage": "senior", "conditions": ["joint"]}
+{"text": "Schedule care for my golden retriever. It is obese. I have 30 minutes.", "stage": "adult", "conditions": ["weight"]}
+{"text": "Schedule care for my tabby. It tears up the sofa. I have an hour.", "stage": "adult", "conditions": ["anxious"]}
+{"text": "What should I do with my cat Luna. . I have 30 minutes.", "stage": "adult", "conditions": []}
+{"text": "Schedule care for my cat Luna. It keeps pacing. 1 hour available.", "stage": "adult", "conditions": ["anxious"]}
+{"text": "What should I do with my dog Max. It is getting up there in age and is chubby and is a house pet. 60 minutes today.", "stage": "senior", "conditions": ["indoor", "weight"]}
+{"text": "Plan a day for my dog Max. It is a kitten and is creaky. 1 hour available.", "stage": "young", "conditions": ["joint"]}
+{"text": "What should I do with my golden retriever. It needs to lose weight. 1 hour available.", "stage": "adult", "conditions": ["weight"]}
+{"text": "What should I do with my tabby. It is a senior and is too heavy. 20 minutes free.", "stage": "senior", "conditions": ["weight"]}
+{"text": "Schedule care for my tabby. It is two years old and is on a diet. 20 minutes free.", "stage": "adult", "conditions": ["weight"]}
+{"text": "Help me care for the dog. It has a grey muzzle and is a house pet. 20 minutes free.", "stage": "senior", "conditions": ["indoor"]}
+{"text": "Plan a day for my tabby. It is newborn and is putting on pounds. 1 hour available.", "stage": "young", "conditions": ["weight"]}
+{"text": "Schedule care for our puppy. It is two years old and is restless. only 45 minutes today.", "stage": "adult", "conditions": ["anxious"]}
+{"text": "Help me care for my golden retriever. It is a puppy. I have an hour.", "stage": "young", "conditions": []}
+{"text": "Help me care for my cat Luna. It is only 8 weeks old. 1 hour available.", "stage": "young", "conditions": []}
+{"text": "What should I do with my dog. It is a kitten. 20 minutes free.", "stage": "young", "conditions": []}
+{"text": "What should I do with my dog. . only 45 minutes today.", "stage": "adult", "conditions": []}
+{"text": "Plan a day for my cat. It is 5 years old. I have an hour.", "stage": "adult", "conditions": []}
+{"text": "What should I do with my dog Max. It is overweight. 1 hour available.", "stage": "adult", "conditions": ["weight"]}
+{"text": "Plan a day for my golden retriever. It is in her golden years and is limping and keeps pacing. 20 minutes free.", "stage": "senior", "conditions": ["anxious", "joint"]}
+{"text": "Help me care for our kitten. . I have an hour.", "stage": "adult", "conditions": []}
+{"text": "Help me care for my dog Max. It has a grey muzzle and is an indoor pet. I have an hour.", "stage": "senior", "conditions": ["indoor"]}
+{"text": "Schedule care for my dog Max. It is two years old and has hip dysplasia. 60 minutes today.", "stage": "adult", "conditions": ["joint"]}
+{"text": "What should I do with my golden retriever. It is fully grown and is an indoor pet and is chubby. I have 30 minutes.", "stage": "adult", "conditions": ["indoor", "weight"]}
+{"text": "Help me care for our puppy. It is putting on pounds. only 45 minutes today.", "stage": "adult", "conditions": ["weight"]}
+{"text": "Plan a day for our puppy. It is 3 years old and never goes outside and keeps gaining weight. I have 30 minutes.", "stage": "adult", "conditions": ["indoor", "weight"]}
+{"text": "What should I do with the dog. It is a puppy and struggles with stairs. only 45 minutes today.", "stage": "young", "conditions": ["joint"]}
+{"text": "Help me care for my cat Luna. It is a few months old and stays inside all day. 20 minutes free.", "stage": "young", "conditions": ["indoor"]}
+{"text": "Schedule care for my dog. It is a few months old and has sore joints. only 45 minutes today.", "stage": "young", "conditions": ["joint"]}
+{"text": "Plan a day for the dog. It is 5 years old and is slow to get up and lives in an apartment. I have 30 minutes.", "stage": "adult", "conditions": ["indoor", "joint"]}
+{"text": "Plan a day for the dog. It is in her golden years and has separation anxiety. I have 30 minutes.", "stage": "senior", "conditions": ["anxious"]}
+{"text": "Plan a day for my golden retriever. It is an indoor pet. 20 minutes free.", "stage": "adult", "conditions": ["indoor"]}
+{"text": "Plan a day for my golden retriever. It is an old boy and has arthritis. I have an hour.", "stage": "senior", "conditions": ["joint"]}
+{"text": "Plan a day for my golden retriever. It is an adult and is nervous around noises. I have an hour.", "stage": "adult", "conditions": ["anxious"]}
+{"text": "Plan a day for my cat Luna. It is an adult and has separation anxiety. 20 minutes free.", "stage": "adult", "conditions": ["anxious"]}
+{"text": "What should I do with my golden retriever. It is 14 years old and has painful hips. 60 minutes today.", "stage": "senior", "conditions": ["joint"]}
+{"text": "Plan a day for my dog Max. It is 3 years old. only 45 minutes today.", "stage": "adult", "conditions": []}
+{"text": "Help me care for my dog. It is an adult and has hip dysplasia. only 45 minutes today.", "stage": "adult", "conditions": ["joint"]}
+{"text": "Schedule care for our puppy. It is elderly and is too heavy. 20 minutes free.", "stage": "senior", "conditions": ["weight"]}
+{"text": "What should I do with our puppy. It is an old boy and is nervous around noises and has arthritis. I have an hour.", "stage": "senior", "conditions": ["anxious", "joint"]}
+{"text": "Plan a day for our puppy. It is 3 years old and struggles with stairs. I have an hour.", "stage": "adult", "conditions": ["joint"]}
+{"text": "Schedule care for my cat. It is limping and is on a diet. I have an hour.", "stage": "adult", "conditions": ["joint", "weight"]}
+{"text": "Plan a day for my golden retriever. It is 14 years old. 20 minutes free.", "stage": "senior", "conditions": []}
+{"text": "Help me care for my dog Max. . I have 30 minutes.", "stage": "adult", "conditions": []}
+{"text": "Plan a day for our puppy. It just came home as a baby and keeps pacing. 1 hour available.", "stage": "young", "conditions": ["anxious"]}
+{"text": "What should I do with our puppy. It is young and playful and has high energy and lives in an apartment. 1 hour available.", "stage": "young", "conditions": ["anxious", "indoor"]}
+{"text": "Schedule care for our puppy. It is overweight. 60 minutes today.", "stage": "adult", "conditions": ["weight"]}
+{"text": "Schedule care for my dog. It is a puppy. 60 minutes today.", "stage": "young", "conditions": []}
+{"text": "Help me care for my golden retriever. It lives in an apartment and barks all day. only 45 minutes today.", "stage": "adult", "conditions": ["anxious", "indoor"]}
+{"text": "Plan a day for my cat. It is a few months old. I have 30 minutes.", "stage": "young", "conditions": []}
+{"text": "Plan a day for the dog. It is a puppy. I have 30 minutes.", "stage": "young", "conditions": []}
+{"text": "Help me care for the dog. It is 5 years old. I have an hour.", "stage": "adult", "conditions": []}
+{"text": "What should I do with my cat. It is on a diet. 1 hour available.", "stage": "adult", "conditions": ["weight"]}
+{"text": "What should I do with my cat Luna. It is getting up there in age. 60 minutes today.", "stage": "senior", "conditions": []}
+{"text": "Plan a day for my cat. It is healthy and in his prime. 20 minutes free.", "stage": "adult", "conditions": []}
+{"text": "Schedule care for the dog. . I have an hour.", "stage": "adult", "conditions": []}
+{"text": "What should I do with our kitten. It is aging and is obese. 1 hour available.", "stage": "senior", "conditions": ["weight"]}
+{"text": "What should I do with our puppy. It is healthy and in his prime and is limping. 1 hour available.", "stage": "adult", "conditions": ["joint"]}
+{"text": "Schedule care for my golden retriever. It is healthy and in his prime and never goes outside. only 45 minutes today.", "stage": "adult", "conditions": ["indoor"]}
+{"text": "What should I do with my dog. It has trouble jumping on the couch. 20 minutes free.", "stage": "adult", "conditions": ["joint"]}
+{"text": "Plan a day for my golden retriever. It is two years old and is too heavy and is an indoor pet. I have 30 minutes.", "stage": "adult", "conditions": ["indoor", "weight"]}
+{"text": "What should I do with our kitten. It is aging and is obese and lives in an apartment. 20 minutes free.", "stage": "senior", "conditions": ["indoor", "weight"]}
+{"text": "Schedule care for my tabby. . 60 minutes today.", "stage": "adult", "conditions": []}
+{"text": "Schedule care for the dog. It is an adult and is a house pet. I have an hour.", "stage": "adult", "conditions": ["indoor"]}
+{"text": "What should I do with my cat Luna. It is aging and is anxious and keeps gaining weight. I have an hour.", "stage": "senior", "conditions": ["anxious", "weight"]}
+{"text": "Plan a day for our puppy. . 1 hour available.", "stage": "adult", "conditions": []}
+{"text": "Schedule care for my golden retriever. It is a few months old and needs to lose weight and is an indoor pet. 60 minutes today.", "stage": "young", "conditions": ["indoor", "weight"]}
+{"text": "Help me care for my cat. It is young and playful. 60 minutes today.", "stage": "young", "conditions": []}
+{"text": "Help me care for my tabby. It is 5 years old. only 45 minutes today.", "stage": "adult", "conditions": []}
+{"text": "What should I do with my cat Luna. . 60 minutes today.", "stage": "adult", "conditions": []}
+{"text": "Schedule care for my golden retriever. It is fully grown and is restless. 20 minutes free.", "stage": "adult", "conditions": ["anxious"]}
+{"text": "What should I do with my cat Luna. It is a kitten. I have an hour.", "stage": "young", "conditions": []}
+{"text": "Plan a day for our kitten. It has a grey muzzle and lives in an apartment. I have an hour.", "stage": "senior", "conditions": ["indoor"]}
+{"text": "Schedule care for the dog. It is creaky. I have 30 minutes.", "stage": "adult", "conditions": ["joint"]}
+{"text": "Schedule care for my dog Max. It is young and playful and never goes outside. 1 hour available.", "stage": "young", "conditions": ["indoor"]}
+{"text": "What should I do with my cat Luna. It is a few months old and is hyper. I have 30 minutes.", "stage": "young", "conditions": ["anxious"]}
+{"text": "What should I do with my cat Luna. It is in her golden years and has trouble jumping on the couch and has separation anxiety. only 45 minutes today.", "stage": "senior", "conditions": ["anxious", "joint"]}
+{"text": "Schedule care for my golden retriever. It is two years old and lives in an apartment and has hip dysplasia. 60 minutes today.", "stage": "adult", "conditions": ["indoor", "joint"]}
+{"text": "Help me care for my dog Max. It is 14 years old and never goes outside. 1 hour available.", "stage": "senior", "conditions": ["indoor"]}
+{"text": "Plan a day for my dog Max. It is two years old. only 45 minutes today.", "stage": "adult", "conditions": []}
+{"text": "What should I do with my dog Max. . I have an hour.", "stage": "adult", "conditions": []}
+{"text": "What should I do with my dog Max. It is a few months old and destroys furniture and is putting on pounds. 1 hour available.", "stage": "young", "conditions": ["anxious", "weight"]}

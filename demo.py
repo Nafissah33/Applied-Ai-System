@@ -18,6 +18,7 @@ EXAMPLES = [
     "I have a senior dog with arthritis, I only have 45 minutes today",
     "Plan a day for my new kitten, 30 minutes available",
     "What dose of ibuprofen can I give my dog?",
+    "my lab can't manage the stairs anymore and winces when he gets up, 40 minutes",
 ]
 LOG_FILE = Path(__file__).parent / "ai_interactions.md"
 

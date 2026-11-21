@@ -37,8 +37,17 @@
 
 ## 4. Specialization (specialized vs baseline explanations)
 - baseline:    avg 5.6 words/explanation, 0% cite a source
-- specialized: avg 23.3 words/explanation, 100% cite a source
+- specialized: avg 29.9 words/explanation, 100% cite a source
 - [PASS] specialized style cites sources more than baseline
 
+## 5. Specialized model (held-out paraphrased requests)
+- rules only:        8/20 correct (stage + conditions)
+- rules + classifier: 14/20 correct
+- [PASS] specialized model improves profile accuracy over the baseline
+
+## 6. RAG grounding (explanations quote retrieved text)
+- 20/20 retrieval-backed explanations quote a sentence from a retrieved passage
+- [PASS] every retrieval-backed explanation is grounded in retrieved text
+
 ## Summary
-**30/30 checks passed**
+**32/32 checks passed**
