@@ -14,6 +14,9 @@ I took PawPal+, a rule-based pet-care scheduler I built earlier, and extended it
 - **Guardrails:** input checks (injection, medical or dosage questions, empty or oversized input, tiny budgets) and output checks (schema, no dosage text, duplicates, forced feeding and water).
 - **Evaluation:** 39 predefined test cases, all passing, plus 41 unit tests.
 
+## Stretch features
+RAG enhancement (multiple sources including two custom documents, with a before/after), an agentic workflow whose tool-call traces are saved in `ai_interactions.md`, specialization (a model trained on synthetic data plus a constrained explanation format, compared against a baseline in `model_card.md`), and an evaluation harness that prints a pass/fail summary.
+
 ## Results
 | Check | Result |
 |---|---|
