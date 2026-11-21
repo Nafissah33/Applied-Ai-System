@@ -175,7 +175,7 @@ Sources: Cat Care Basics > Kitten care
 
 ## Testing summary
 
-**In a few lines:** 28 of 28 evaluation test cases and 30 of 30 unit tests pass. Average confidence was 0.93 with retrieval versus 0.30 without it, and 0.00 (with a warning shown) for an unsupported species. Retrieval put the expected task in 6/6 plans versus 0/6 without it. The trained classifier got 14/20 held-out requests right versus 8/20 for keyword rules. Along the way the tests caught four real bugs (below), and accuracy improved after each fix.
+**In a few lines:** 28 of 28 evaluation test cases and 30 of 30 unit tests pass. Average confidence was 0.93 with retrieval versus 0.30 without it, and 0.00 (with a warning shown) for an unsupported species. Retrieval put the expected task in 6/6 plans versus 0/6 without it. The trained classifier got 14/20 held-out requests right versus 8/20 for keyword rules. Along the way the tests caught four real bugs (below), and accuracy improved after each fix. A human review of 6 inputs passed 4 of 6 and found two plan-quality weaknesses the automated tests did not catch.
 
 **How reliability is measured** (all reproducible with `python evals/run_evals.py`, which writes [`evals/results.md`](evals/results.md) and machine-readable [`evals/results.json`](evals/results.json)):
 
@@ -185,7 +185,7 @@ Sources: Cat Care Basics > Kitten care
 | Evaluation harness (28 cases) | Guardrails 11/11, plan quality 6/6, consistency 6/6, specialization, classifier vs rules, RAG grounding, confidence, error handling |
 | Confidence scoring | Every plan carries a 0-1 score from retrieval strength; plans under 0.5 show a "review this yourself" warning |
 | Logging and error handling | Each request goes to `logs/pawpal.log`; an internal failure returns a safe `error` result with a log pointer instead of crashing (tested by simulating a crash) |
-| Human evaluation | [`evals/human_eval.md`](evals/human_eval.md) is a ready-to-fill peer-review table; **it has not been completed yet and no results are claimed** |
+| Human evaluation | [`evals/human_eval.md`](evals/human_eval.md): 6 inputs reviewed by hand, **4 of 6 pass**. The two failures (a kitten plan with only one meal, and an overweight-dog plan with overlapping feeding tasks) are real weaknesses documented there. One reviewer so far; notes were drafted by Claude Code from the outputs and confirmed by me. |
 
 A sample of the results table (full table in `evals/results.md`):
 

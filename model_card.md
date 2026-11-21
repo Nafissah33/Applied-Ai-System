@@ -41,7 +41,7 @@ Confidence is `min(1, best retrieval score / 0.5)`, capped at 0.30 for unsupport
 | Confidence scoring (average) | 0.93 with retrieval, 0.30 without, 0.00 + warning for an unsupported species |
 | Error handling (simulated retriever crash) | Safe `error` result, no crash |
 
-Machine-readable results: `evals/results.json`. A peer-review template is in `evals/human_eval.md` (not yet completed).
+Machine-readable results: `evals/results.json`. Human evaluation (`evals/human_eval.md`): 4 of 6 inputs pass; the kitten plan has only one meal and the overweight-dog plan has overlapping feeding tasks. One reviewer; notes drafted by Claude Code and confirmed by the reviewer.
 
 ### Before/after: retrieval
 Request: "senior dog with arthritis, 45 minutes".
