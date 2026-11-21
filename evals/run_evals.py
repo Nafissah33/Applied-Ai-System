@@ -12,6 +12,7 @@ Usage: python evals/run_evals.py        (exit code 1 if any required check fails
 """
 
 import json
+import logging
 import sys
 from pathlib import Path
 
@@ -62,6 +63,11 @@ def main() -> int:
     planner = AIPlanner()
     required_failures = 0
     lines = ["# Evaluation results", ""]
+    rows_out: list[dict] = []
+
+    def record(section, test_input, criteria, passed, detail=""):
+        rows_out.append({"section": section, "input": test_input, "criteria": criteria,
+                         "result": "Pass" if passed else "Fail", "detail": detail})
 
     def emit(text=""):
         print(text)
@@ -76,6 +82,7 @@ def main() -> int:
         passed += good
         label = (text[:55] + "...") if len(text) > 55 else text
         emit(f"- [{'PASS' if good else 'FAIL'}] `{label or '<empty>'}` expected={expected} got={got}")
+        record("guardrails", label or "<empty>", f"handled as '{expected}'", good, f"got {got}")
     emit(f"\n**Guardrails: {passed}/{len(GUARDRAIL_CASES)} passed**\n")
     required_failures += len(GUARDRAIL_CASES) - passed
 
@@ -92,6 +99,8 @@ def main() -> int:
         inv += ok
         emit(f"- [{'PASS' if has_on and ok else 'FAIL'}] `{request}` -> expects \"{expected}\": "
              f"retrieval ON={'yes' if has_on else 'no'}, OFF={'yes' if has_off else 'no'}, invariants={'ok' if ok else 'BROKEN'}")
+        record("plan quality", request, f'plan includes "{expected}" and keeps feeding + water within budget',
+               has_on and ok, f"retrieval OFF includes it: {has_off}")
         required_failures += (not has_on) + (not ok)
     n = len(PLAN_CASES)
     emit(f"\n**Expected-task hit rate: retrieval ON {hits_on}/{n} vs OFF {hits_off}/{n}; invariants {inv}/{n}**\n")
@@ -103,6 +112,7 @@ def main() -> int:
         same = runs[0] == runs[1] == runs[2]
         consistent += same
         emit(f"- [{'PASS' if same else 'FAIL'}] `{request}`")
+        record("consistency", request, "identical plan across 3 runs", same)
     emit(f"\n**Consistency: {consistent}/{n}**\n")
     required_failures += n - consistent
 
@@ -122,6 +132,8 @@ def main() -> int:
     emit(f"- specialized: avg {spec_len:.1f} words/explanation, {spec_cite:.0%} cite a source")
     spec_ok = spec_cite > base_cite
     emit(f"- [{'PASS' if spec_ok else 'FAIL'}] specialized style cites sources more than baseline")
+    record("specialization", "all plan cases", "specialized explanations cite sources more than baseline", spec_ok,
+           f"cited: specialized {spec_cite:.0%} vs baseline {base_cite:.0%}")
     required_failures += not spec_ok
 
     emit("\n## 5. Specialized model (held-out paraphrased requests)")
@@ -137,6 +149,8 @@ def main() -> int:
     emit(f"- rules + classifier: {hybrid_hits}/{len(rows)} correct")
     model_ok = hybrid_hits > rules_hits
     emit(f"- [{'PASS' if model_ok else 'FAIL'}] specialized model improves profile accuracy over the baseline")
+    record("specialized model", "20 held-out requests", "rules + classifier more accurate than rules alone", model_ok,
+           f"{hybrid_hits}/{len(rows)} vs {rules_hits}/{len(rows)}")
     required_failures += not model_ok
 
     emit("\n## 6. RAG grounding (explanations quote retrieved text)")
@@ -153,11 +167,51 @@ def main() -> int:
     emit(f"- {grounded_hits}/{grounded_total} retrieval-backed explanations quote a sentence from a retrieved passage")
     grounded_ok = grounded_total > 0 and grounded_hits == grounded_total
     emit(f"- [{'PASS' if grounded_ok else 'FAIL'}] every retrieval-backed explanation is grounded in retrieved text")
+    record("rag grounding", "all plan cases", "every retrieval-backed explanation quotes a retrieved sentence",
+           grounded_ok, f"{grounded_hits}/{grounded_total}")
     required_failures += not grounded_ok
 
-    total_checks = len(GUARDRAIL_CASES) + 2 * n + n + 1 + 2
-    emit(f"\n## Summary\n**{total_checks - required_failures}/{total_checks} checks passed**")
-    (Path(__file__).parent / "results.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
+    emit("\n## 7. Confidence scoring")
+    conf_on = [planner.plan(q).confidence for q, _ in PLAN_CASES]
+    conf_off = [planner.plan(q, use_retrieval=False).confidence for q, _ in PLAN_CASES]
+    parrot = planner.plan("my parrot, 40 minutes")
+    avg_on, avg_off = sum(conf_on) / len(conf_on), sum(conf_off) / len(conf_off)
+    emit(f"- average confidence, retrieval ON:  {avg_on:.2f} (min {min(conf_on):.2f})")
+    emit(f"- average confidence, retrieval OFF: {avg_off:.2f}")
+    emit(f"- unsupported species (parrot): {parrot.confidence:.2f}, warning shown: "
+         f"{any('Low confidence' in w for w in parrot.warnings)}")
+    conf_ok = avg_on > avg_off and parrot.confidence <= 0.3 and any("Low confidence" in w for w in parrot.warnings)
+    emit(f"- [{'PASS' if conf_ok else 'FAIL'}] confidence is higher when retrieval finds support and low (with a warning) when it cannot")
+    record("confidence", "6 plan cases + parrot", "confidence higher with retrieval; low with warning for unsupported species",
+           conf_ok, f"avg ON {avg_on:.2f}, OFF {avg_off:.2f}, parrot {parrot.confidence:.2f}")
+    required_failures += not conf_ok
+
+    emit("\n## 8. Error handling")
+    original = planner.retriever.search
+    planner.retriever.search = lambda *a, **k: 1 / 0  # simulate an internal failure
+    logging.disable(logging.CRITICAL)  # the simulated crash is expected; keep the console readable
+    try:
+        broken = planner.plan("puppy, 30 minutes")
+    finally:
+        logging.disable(logging.NOTSET)
+        planner.retriever.search = original
+    err_ok = broken.status == "error" and "logs/pawpal.log" in broken.message
+    emit(f"- [{'PASS' if err_ok else 'FAIL'}] internal failure returns a safe error message instead of crashing (status={broken.status})")
+    record("error handling", "simulated retriever crash", "returns status 'error' with a log pointer, no crash", err_ok, f"status={broken.status}")
+    required_failures += not err_ok
+
+    passed_cases = sum(r["result"] == "Pass" for r in rows_out)
+    emit(f"\n## Summary\n**{passed_cases}/{len(rows_out)} test cases passed**")
+    summary = (f"{passed_cases} of {len(rows_out)} test cases passed; average confidence {avg_on:.2f} with retrieval "
+               f"vs {avg_off:.2f} without; classifier accuracy {hybrid_hits}/{len(rows)} vs {rules_hits}/{len(rows)} for rules alone.")
+    emit(f"\n{summary}")
+    lines.append("\n## Results table\n\n| Test Input | Evaluation Criteria | Result | Detail |\n|---|---|---|---|")
+    for r in rows_out:
+        cells = [c.replace("|", "/") for c in (f"{r['input']} ({r['section']})", r["criteria"], r["result"], r["detail"])]
+        lines.append("| " + " | ".join(cells) + " |")
+    here = Path(__file__).parent
+    (here / "results.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
+    (here / "results.json").write_text(json.dumps({"summary": summary, "checks": rows_out}, indent=2), encoding="utf-8")
     return 1 if required_failures else 0
 
 
