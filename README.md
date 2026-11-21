@@ -39,7 +39,7 @@ It matters because a generic scheduler would give that arthritic dog a 30-minute
 
 The system is a pipeline with two checkpoints around the AI and a loop that revises its own plan. A request first passes the **input guardrail**, which can refuse it. The **profile** step reads species, life stage, conditions and time budget using keyword rules plus the trained classifier. The **retriever** searches the knowledge base for the best-matching sections, and the **planning agent** proposes tasks from those passages. The **output guardrail** validates the tasks (and forces feeding and water), the original **Scheduler** lays out the day, and a **self-check** loops back to the agent if essential care did not fit. The **explanation** step quotes the source sentence and attaches a confidence score.
 
-Humans and tests check the AI at three points: the owner reviews and confirms the plan, the developer reads the logs and traces, and `evals/run_evals.py` plus pytest run predefined inputs through the system. Orange boxes are humans and teal is the evaluator. Sources: [`diagrams/system_overview.mmd`](diagrams/system_overview.mmd) (this diagram) and the detailed [`diagrams/architecture.mmd`](diagrams/architecture.mmd).
+Humans and tests check the AI at three points: the owner reviews and confirms the plan, the developer reads the logs and traces, and `evals/run_evals.py` plus pytest run predefined inputs through the system. Orange boxes are humans and teal is the evaluator. Sources: [`diagrams/system_overview.mmd`](diagrams/system_overview.mmd) (this diagram) and the detailed [`diagrams/architecture.mmd`](diagrams/architecture.mmd); PNG exports are in [`assets/`](assets/) (`system_overview.png`, `architecture.png`).
 
 ```mermaid
 flowchart LR
@@ -95,6 +95,7 @@ python demo.py "puppy, 45 minutes"
 python demo.py --baseline "senior dog with arthritis, 45 minutes"   # no retrieval, for comparison
 python demo.py --log              # also append agent traces to ai_interactions.md
 streamlit run app.py              # UI: see the "AI Planner" section at the bottom
+bash walkthrough.sh               # guided tour of the whole system (tests, RAG, guardrails, evals)
 ```
 
 Test it:
