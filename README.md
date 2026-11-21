@@ -12,6 +12,17 @@ You type something like *"I have a senior dog with arthritis, I only have 45 min
 
 It matters because a generic scheduler would give that arthritic dog a 30-minute walk. Grounding the plan in retrieved guidance, refusing medical and dosage questions, and showing sources and confidence is what makes AI advice in a pet-health setting responsible rather than just fluent. It is also a worked example of building an AI feature that is integrated into an existing app and tested, not a standalone demo.
 
+## At a glance
+
+| | |
+|---|---|
+| **Built with** | Python, Streamlit, pytest. Retrieval and the classifier are written from scratch with no ML libraries. |
+| **Results** | 32/32 evaluation checks and 30/30 unit tests pass. Retrieval put the expected task in 6/6 plans vs 0/6 without it. The trained classifier beat keyword rules 14/20 vs 8/20 on held-out requests. |
+| **Safety** | Refuses dosage and medical questions, blocks prompt injection, validates every AI-proposed task, and needs a human click before changing any data. |
+| **Runs anywhere** | No API key, no network, deterministic output. Four commands from clone to demo. |
+
+**What this project demonstrates:** extending an existing codebase instead of starting over, retrieval-augmented generation, training and honestly evaluating a small model, designing guardrails and a self-checking agent workflow, writing an evaluation harness that found real bugs, and documenting limitations plainly.
+
 ## Features
 
 | Feature | Where | What it does |

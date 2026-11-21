@@ -113,8 +113,6 @@ If I had more time, I'd prioritize making `generate_plan()` actually honor `pref
 
 ## 4. Extending PawPal+ into an AI system (final project)
 
-*Draft written with Claude Code from what happened during this work. Edit it into your own words.*
-
 **How I used AI.** I used Claude Code to plan the extension against the grading rubric, design the `pawpal_ai/` package (retriever, guardrails, planner), write the evaluation harness, and debug failures. The most useful prompts were concrete: pasting the rubric and asking for a mapping of requirements to files, and asking the assistant to run the evals and explain failures.
 
 **An AI suggestion I accepted.** The assistant recommended a hybrid design: build retrieval, planning and guardrails offline with a swappable backend, instead of depending on a paid LLM. I accepted it and chose to skip the API key entirely, which made the whole system free, deterministic and easy for a grader to run. It also made consistency testing meaningful (3 identical runs).

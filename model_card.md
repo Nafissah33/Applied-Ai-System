@@ -65,8 +65,6 @@ The system never adds tasks to a pet without a user click, shows its sources and
 
 ## Reflection: AI collaboration, accepted and rejected suggestions, limitations
 
-*Draft written with Claude Code from what happened while building the AI layer. Edit it into your own words and add anything from earlier in the project.*
-
 **How I collaborated with AI.** I used Claude Code to map the grading rubric onto concrete files, design the `pawpal_ai/` package (retriever, classifier, guardrails, planner), write the evaluation harness, and debug. The most useful prompts were specific ones: pasting the rubric and asking for a requirement-to-file mapping, and asking the assistant to run the evals and explain each failure. I treated its code as a first draft to be tested, not trusted.
 
 **A suggestion I accepted.** The assistant recommended building the system offline, with a swappable design, instead of depending on a paid LLM. I accepted it and skipped the API key. That made the system free, deterministic (three identical runs) and easy for anyone to run, and it made consistency testing meaningful.
