@@ -12,7 +12,9 @@ TASK: Evening feeding | 10 | high | feeding | 18:00
 
 ## Puppy care
 Puppies need three or four small meals a day, short play sessions, frequent potty breaks, and early training and socialization. Sessions should be brief because puppies tire quickly.
-TASK: Puppy meal | 10 | high | feeding | 08:00
+TASK: Puppy morning meal | 10 | high | feeding | 08:00
+TASK: Puppy midday meal | 10 | high | feeding | 12:00
+TASK: Puppy evening meal | 10 | high | feeding | 18:00
 TASK: Potty break | 5 | high | walk |
 TASK: Short training session | 10 | medium | play |
 TASK: Socialization play | 15 | medium | play |

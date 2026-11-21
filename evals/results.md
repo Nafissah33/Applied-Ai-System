@@ -17,7 +17,7 @@
 
 ## 2. Plan quality (retrieval ON vs OFF)
 - [PASS] `senior dog with arthritis, 45 minutes` -> expects "Low-impact leash walk": retrieval ON=yes, OFF=no, invariants=ok
-- [PASS] `new kitten, 30 minutes` -> expects "Kitten meal": retrieval ON=yes, OFF=no, invariants=ok
+- [PASS] `new kitten, 30 minutes` -> expects "Kitten morning meal": retrieval ON=yes, OFF=no, invariants=ok
 - [PASS] `overweight dog, 60 minutes` -> expects "Measured portion feeding": retrieval ON=yes, OFF=no, invariants=ok
 - [PASS] `Mochi golden retriever, 1 hour` -> expects "Fetch session": retrieval ON=yes, OFF=no, invariants=ok
 - [PASS] `indoor cat, 40 minutes` -> expects "Enrichment toy rotation": retrieval ON=yes, OFF=no, invariants=ok
@@ -37,7 +37,7 @@
 
 ## 4. Specialization (specialized vs baseline explanations)
 - baseline:    avg 5.6 words/explanation, 0% cite a source
-- specialized: avg 29.9 words/explanation, 100% cite a source
+- specialized: avg 30.0 words/explanation, 100% cite a source
 - [PASS] specialized style cites sources more than baseline
 
 ## 5. Specialized model (held-out paraphrased requests)
@@ -55,13 +55,17 @@
 - unsupported species (parrot): 0.00, warning shown: True
 - [PASS] confidence is higher when retrieval finds support and low (with a warning) when it cannot
 
-## 8. Error handling
+## 8. Regression checks from human review
+- [PASS] kitten plan has several small meals: ['Kitten morning meal', 'Kitten midday meal', 'Kitten evening meal']
+- [PASS] overweight-dog feeding tasks come from one section only: ['Dog Care Basics > Weight management for dogs']
+
+## 9. Error handling
 - [PASS] internal failure returns a safe error message instead of crashing (status=error)
 
 ## Summary
-**28/28 test cases passed**
+**30/30 test cases passed**
 
-28 of 28 test cases passed; average confidence 0.93 with retrieval vs 0.30 without; classifier accuracy 14/20 vs 8/20 for rules alone.
+30 of 30 test cases passed; average confidence 0.93 with retrieval vs 0.30 without; classifier accuracy 14/20 vs 8/20 for rules alone.
 
 ## Results table
 
@@ -79,7 +83,7 @@
 | remind me to give my dog his vet-prescribed medication,... (guardrails) | handled as 'ok' | Pass | got ok |
 | new kitten, 30 minutes (guardrails) | handled as 'ok' | Pass | got ok |
 | senior dog with arthritis, 45 minutes (plan quality) | plan includes "Low-impact leash walk" and keeps feeding + water within budget | Pass | retrieval OFF includes it: False |
-| new kitten, 30 minutes (plan quality) | plan includes "Kitten meal" and keeps feeding + water within budget | Pass | retrieval OFF includes it: False |
+| new kitten, 30 minutes (plan quality) | plan includes "Kitten morning meal" and keeps feeding + water within budget | Pass | retrieval OFF includes it: False |
 | overweight dog, 60 minutes (plan quality) | plan includes "Measured portion feeding" and keeps feeding + water within budget | Pass | retrieval OFF includes it: False |
 | Mochi golden retriever, 1 hour (plan quality) | plan includes "Fetch session" and keeps feeding + water within budget | Pass | retrieval OFF includes it: False |
 | indoor cat, 40 minutes (plan quality) | plan includes "Enrichment toy rotation" and keeps feeding + water within budget | Pass | retrieval OFF includes it: False |
@@ -94,4 +98,6 @@
 | 20 held-out requests (specialized model) | rules + classifier more accurate than rules alone | Pass | 14/20 vs 8/20 |
 | all plan cases (rag grounding) | every retrieval-backed explanation quotes a retrieved sentence | Pass | 20/20 |
 | 6 plan cases + parrot (confidence) | confidence higher with retrieval; low with warning for unsupported species | Pass | avg ON 0.93, OFF 0.30, parrot 0.00 |
+| new kitten, 30 minutes (human-review regression) | at least 2 meals scheduled | Pass | 3 meals |
+| overweight dog, 60 minutes (human-review regression) | feeding tasks do not overlap across sections | Pass | 1 source(s) |
 | simulated retriever crash (error handling) | returns status 'error' with a log pointer, no crash | Pass | status=error |

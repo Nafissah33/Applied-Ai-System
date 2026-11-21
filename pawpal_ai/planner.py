@@ -220,6 +220,18 @@ class AIPlanner:
             tasks = [t for t in tasks if t["category"] != "walk" or t is best]
             log("revise", f"kept most relevant walk \"{best['title']}\"; removed {removed}")
 
+        # Overlapping feeding plans (e.g. adult-routine meals + a weight-management portion plan):
+        # keep the feeding tasks from the single best-matching source and drop the rest.
+        feeds = [t for t in tasks if t["category"] == "feeding" and "water" not in t["title"].lower()
+                 and t.get("chunk_score", 0.0) > 0]
+        feed_sources = {t["source"] for t in feeds}
+        if len(feed_sources) > 1:
+            best_source = max(feeds, key=lambda t: t["chunk_score"])["source"]
+            dropped_feeds = [t["title"] for t in feeds if t["source"] != best_source]
+            tasks = [t for t in tasks if t not in feeds or t["source"] == best_source]
+            log("revise", f"feeding tasks came from {len(feed_sources)} sections; kept those from "
+                          f"\"{best_source}\" and removed overlapping {dropped_feeds}")
+
         scheduler = Scheduler(profile["minutes"])
         objects = {t["title"]: Task(t["title"], t["duration_minutes"], t["priority"], t["category"],
                                     preferred_time=t.get("preferred_time")) for t in tasks}

@@ -1,5 +1,5 @@
 {
-  "summary": "28 of 28 test cases passed; average confidence 0.93 with retrieval vs 0.30 without; classifier accuracy 14/20 vs 8/20 for rules alone.",
+  "summary": "30 of 30 test cases passed; average confidence 0.93 with retrieval vs 0.30 without; classifier accuracy 14/20 vs 8/20 for rules alone.",
   "checks": [
     {
       "section": "guardrails",
@@ -88,7 +88,7 @@
     {
       "section": "plan quality",
       "input": "new kitten, 30 minutes",
-      "criteria": "plan includes \"Kitten meal\" and keeps feeding + water within budget",
+      "criteria": "plan includes \"Kitten morning meal\" and keeps feeding + water within budget",
       "result": "Pass",
       "detail": "retrieval OFF includes it: False"
     },
@@ -189,6 +189,20 @@
       "criteria": "confidence higher with retrieval; low with warning for unsupported species",
       "result": "Pass",
       "detail": "avg ON 0.93, OFF 0.30, parrot 0.00"
+    },
+    {
+      "section": "human-review regression",
+      "input": "new kitten, 30 minutes",
+      "criteria": "at least 2 meals scheduled",
+      "result": "Pass",
+      "detail": "3 meals"
+    },
+    {
+      "section": "human-review regression",
+      "input": "overweight dog, 60 minutes",
+      "criteria": "feeding tasks do not overlap across sections",
+      "result": "Pass",
+      "detail": "1 source(s)"
     },
     {
       "section": "error handling",

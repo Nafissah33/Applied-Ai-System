@@ -127,3 +127,15 @@ def test_planner_survives_internal_error(planner, monkeypatch):
 def test_planner_falls_back_to_rules_when_model_missing(monkeypatch, tmp_path):
     monkeypatch.setattr("pawpal_ai.planner.ProfileClassifier.load", classmethod(lambda cls, *a, **k: (_ for _ in ()).throw(OSError("missing"))))
     assert AIPlanner().classifier is None
+
+
+def test_kitten_gets_several_small_meals(planner):
+    titles = [e["task"].title for e in planner.plan("new kitten, 30 minutes").plan]
+    assert sum("meal" in x.lower() for x in titles) >= 2
+
+
+def test_overweight_dog_has_no_overlapping_feeding_tasks(planner):
+    result = planner.plan("overweight dog, 60 minutes")
+    sources = {t["source"] for t in result.tasks if t["category"] == "feeding" and "water" not in t["title"].lower()}
+    assert len(sources) == 1
+    assert any("revise" == s["step"] and "feeding tasks came from" in s["detail"] for s in result.trace)

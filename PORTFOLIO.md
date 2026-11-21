@@ -12,7 +12,7 @@ I took PawPal+, a rule-based pet-care scheduler I built earlier, and extended it
 - **Specialized model:** a Naive Bayes classifier trained on 900 synthetic examples that reads life stage and conditions from free text. On 20 held-out paraphrased requests, keyword rules alone were right 8/20 times; rules plus the classifier were right 14/20 (tuned on the same 20 examples, so slightly optimistic).
 - **Agentic workflow:** eight traced steps with a self-check loop that revises the plan if essential care is missed.
 - **Guardrails:** input checks (injection, medical or dosage questions, empty or oversized input, tiny budgets) and output checks (schema, no dosage text, duplicates, forced feeding and water).
-- **Evaluation:** 28 predefined test cases, all passing, plus 30 unit tests.
+- **Evaluation:** 30 predefined test cases, all passing, plus 32 unit tests.
 
 ## Results
 | Check | Result |

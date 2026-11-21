@@ -41,7 +41,7 @@ GUARDRAIL_CASES = [
 PLAN_CASES = [
     # (request, task that retrieval should surface)
     ("senior dog with arthritis, 45 minutes", "Low-impact leash walk"),
-    ("new kitten, 30 minutes", "Kitten meal"),
+    ("new kitten, 30 minutes", "Kitten morning meal"),
     ("overweight dog, 60 minutes", "Measured portion feeding"),
     ("Mochi golden retriever, 1 hour", "Fetch session"),
     ("indoor cat, 40 minutes", "Enrichment toy rotation"),
@@ -186,7 +186,23 @@ def main() -> int:
            conf_ok, f"avg ON {avg_on:.2f}, OFF {avg_off:.2f}, parrot {parrot.confidence:.2f}")
     required_failures += not conf_ok
 
-    emit("\n## 8. Error handling")
+    emit("\n## 8. Regression checks from human review")
+    kitten = planner.plan("new kitten, 30 minutes")
+    meals = [en["task"].title for en in kitten.plan if "meal" in en["task"].title.lower()]
+    k_ok = len(meals) >= 2
+    emit(f"- [{'PASS' if k_ok else 'FAIL'}] kitten plan has several small meals: {meals}")
+    record("human-review regression", "new kitten, 30 minutes", "at least 2 meals scheduled", k_ok, f"{len(meals)} meals")
+    required_failures += not k_ok
+    ow = planner.plan("overweight dog, 60 minutes")
+    sources = {t["source"] for t in ow.tasks
+               if t["category"] == "feeding" and "water" not in t["title"].lower()}
+    ow_ok = len(sources) == 1
+    emit(f"- [{'PASS' if ow_ok else 'FAIL'}] overweight-dog feeding tasks come from one section only: {sorted(sources)}")
+    record("human-review regression", "overweight dog, 60 minutes", "feeding tasks do not overlap across sections", ow_ok,
+           f"{len(sources)} source(s)")
+    required_failures += not ow_ok
+
+    emit("\n## 9. Error handling")
     original = planner.retriever.search
     planner.retriever.search = lambda *a, **k: 1 / 0  # simulate an internal failure
     logging.disable(logging.CRITICAL)  # the simulated crash is expected; keep the console readable

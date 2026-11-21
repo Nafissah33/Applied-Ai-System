@@ -28,7 +28,7 @@ Confidence is `min(1, best retrieval score / 0.5)`, capped at 0.30 for unsupport
   Caveat: I tried thresholds 0.7, 0.8, 0.9 and 0.95 on these same 20 examples (12, 12, 14 and 15 correct) and picked 0.9 as a conservative round value, so 14/20 is slightly optimistic and the sample is small. The classifier alone scored 10/20 and the rules alone 8/20, which is why they are combined.
 - **Remaining errors:** vague age cues ("thirteen", "slowing down"), unusual condition wording ("pudgy", "pacing and panting"), and occasional false positives.
 
-## Evaluation (`python evals/run_evals.py`, 28 test cases, all passing)
+## Evaluation (`python evals/run_evals.py`, 30 test cases, all passing)
 | Experiment | Result |
 |---|---|
 | Guardrails (11 inputs: medical, injection, empty, too long, low budget, 3 valid) | 11/11 correct |
@@ -41,7 +41,7 @@ Confidence is `min(1, best retrieval score / 0.5)`, capped at 0.30 for unsupport
 | Confidence scoring (average) | 0.93 with retrieval, 0.30 without, 0.00 + warning for an unsupported species |
 | Error handling (simulated retriever crash) | Safe `error` result, no crash |
 
-Machine-readable results: `evals/results.json`. Human evaluation (`evals/human_eval.md`): 4 of 6 inputs pass; the kitten plan has only one meal and the overweight-dog plan has overlapping feeding tasks. One reviewer; notes drafted by Claude Code and confirmed by the reviewer.
+Machine-readable results: `evals/results.json`. Human evaluation (`evals/human_eval.md`): 4 of 6 inputs passed on the first review; the two failures (kitten plan with one meal, overweight-dog plan with overlapping feeding tasks) were fixed and are covered by regression tests. One reviewer; notes drafted by Claude Code and confirmed by the reviewer.
 
 ### Before/after: retrieval
 Request: "senior dog with arthritis, 45 minutes".

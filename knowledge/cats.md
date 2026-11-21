@@ -13,7 +13,9 @@ TASK: Evening feeding | 5 | high | feeding | 18:00
 
 ## Kitten care
 Kittens need several small meals a day, lots of short play sessions, and gentle handling and socialization. Keep the litter box clean and easy to reach.
-TASK: Kitten meal | 5 | high | feeding | 08:00
+TASK: Kitten morning meal | 5 | high | feeding | 08:00
+TASK: Kitten midday meal | 5 | high | feeding | 12:00
+TASK: Kitten evening meal | 5 | high | feeding | 18:00
 TASK: Kitten play session | 10 | medium | play |
 TASK: Gentle handling and socialization | 10 | medium | play |
 
