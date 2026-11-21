@@ -1,34 +1,86 @@
+import base64
 import os
+from pathlib import Path
 
 import streamlit as st
 
 from pawpal_system import DEFAULT_DATA_FILE, PRIORITY_ICONS, Owner, Pet, Scheduler, Task
 
-st.set_page_config(page_title="PawPal+ AI", page_icon="🐾", layout="centered")
+st.set_page_config(page_title="PawPal+ Veterinary Clinic", page_icon="🐾", layout="wide")
 
 REPO_URL = "https://github.com/Nafissah33/Applied-Ai-System"
+CLINIC_NAME = "PawPal+ Veterinary Clinic"
+ASSETS = Path(__file__).parent / "assets"
+
+
+def _hero_image_src() -> str:
+    """Use assets/hero.png if you drop your own picture there, otherwise the built-in illustration."""
+    for name, mime in (("hero.png", "image/png"), ("hero.jpg", "image/jpeg"), ("clinic_team.svg", "image/svg+xml")):
+        path = ASSETS / name
+        if path.exists():
+            return f"data:{mime};base64," + base64.b64encode(path.read_bytes()).decode()
+    return ""
+
 
 st.markdown(
     """
 <style>
-h1, h2, h3 { letter-spacing: -0.01em; }
-.hero { background: #12263A; color: #F6F1E7; padding: 28px 32px; border-radius: 18px; margin-bottom: 8px; }
-.hero h1 { color: #F6F1E7; margin: 0 0 6px 0; font-size: 2.3rem; }
-.hero p { color: #B9C4CF; margin: 0; font-size: 1.05rem; }
-.hero .tag { color: #E07A3F; font-weight: 600; letter-spacing: 0.08em; font-size: 0.8rem; }
+/* Times New Roman everywhere except icon glyphs */
+html, body, .stApp, .stApp p, .stApp li, .stApp label, .stApp h1, .stApp h2, .stApp h3, .stApp h4,
+.stApp button, .stApp input, .stApp textarea, .stApp select, .stApp table, .stApp th, .stApp td,
+.stApp [data-testid="stMarkdownContainer"], .stApp [data-testid="stCaptionContainer"],
+.stApp [data-testid="stMetricValue"], .stApp [data-testid="stMetricLabel"], .stApp [data-baseweb="tab"],
+.stApp [data-testid="stExpander"] summary p, .stApp [data-testid="stSidebar"] * :not([data-testid="stIconMaterial"]) {
+    font-family: "Times New Roman", Times, serif !important;
+}
+.stApp p, .stApp li, .stApp label, .stApp td, .stApp th { font-size: 1.15rem; }
+.stApp { background: linear-gradient(180deg, #EAF7F6 0%, #E3F1F7 100%); }
+header[data-testid="stHeader"] { background: transparent; }
+.block-container { max-width: 1180px; padding-top: 3.6rem; }
+h1, h2, h3 { color: #0E4C7A; letter-spacing: -0.01em; }
+.topbar { display: flex; justify-content: space-between; align-items: center; background: #0E4C7A; color: #fff;
+          padding: 14px 26px; border-radius: 14px 14px 0 0; }
+.topbar .brand { font-size: 1.45rem; font-weight: 700; }
+.topbar .tagline { color: #BFEDE7; font-size: 1.05rem; }
+.hero { background: linear-gradient(135deg, #0E4C7A 0%, #14908F 55%, #3BB98A 100%); text-align: center;
+        padding: 30px 24px 0 24px; border-radius: 0 0 18px 18px; margin-bottom: 18px; overflow: hidden; }
+.hero h1 { color: #fff; font-size: 2.7rem; margin: 0 0 8px 0; }
+.hero p { color: #E6FAF6; font-size: 1.3rem; margin: 0 auto 14px auto; max-width: 820px; }
+.hero img { width: 100%; max-width: 1080px; display: block; margin: 0 auto; border-radius: 14px 14px 0 0; }
+.cards { display: flex; gap: 16px; margin: 6px 0 20px 0; flex-wrap: wrap; }
+.card { flex: 1; min-width: 220px; background: #fff; border-top: 5px solid #1FA89B; border-radius: 12px;
+        padding: 16px 20px; box-shadow: 0 2px 8px #0e4c7a1a; }
+.card.blue { border-top-color: #1D6FA5; } .card.green { border-top-color: #3BB273; }
+.card h3 { margin: 0 0 6px 0; font-size: 1.3rem; } .card p { margin: 0; font-size: 1.1rem; color: #25506b; }
+div.stButton > button { border-radius: 10px; font-size: 1.1rem; }
+.stApp input, .stApp textarea { font-size: 1.15rem !important; }
 </style>
+""",
+    unsafe_allow_html=True,
+)
+
+_img = _hero_image_src()
+st.markdown(
+    f"""
+<div class="topbar"><span class="brand">🐾 {CLINIC_NAME}</span>
+<span class="tagline">Compassionate care, planned with AI</span></div>
 <div class="hero">
-  <div class="tag">APPLIED AI FINAL PROJECT</div>
-  <h1>🐾 PawPal+ AI</h1>
-  <p>Describe your pet in plain English and get a safe, explained daily care plan.
-  It retrieves care guidance, checks its own work, and shows its sources.</p>
+  <h1>Welcome to {CLINIC_NAME}</h1>
+  <p>Our team is here for your dogs, cats and exotic pets. Tell us about your companion and we will build a safe,
+  explained daily care plan.</p>
+  {'<img src="' + _img + '" alt="Our veterinary team with a Rottweiler, a husky, cats, a snake and a turtle">' if _img else ''}
+</div>
+<div class="cards">
+  <div class="card"><h3>Smart care plans</h3><p>Tell us about your pet in plain English and get a daily schedule.</p></div>
+  <div class="card blue"><h3>Safe by design</h3><p>No medical advice or doses. Emergencies go straight to a real vet.</p></div>
+  <div class="card green"><h3>Backed by sources</h3><p>Every task shows where its guidance came from, with a confidence score.</p></div>
 </div>
 """,
     unsafe_allow_html=True,
 )
 
 with st.sidebar:
-    st.markdown("### 🐾 PawPal+ AI")
+    st.markdown(f"### 🐾 {CLINIC_NAME}")
     st.caption("Nafissatou LO · 491 Applied AI for Engineers · Fall 2026")
     st.markdown(f"[View the code on GitHub]({REPO_URL})")
     st.divider()
@@ -42,7 +94,7 @@ with st.sidebar:
     )
     st.divider()
     st.info(
-        "PawPal+ plans routine care. It does **not** give medical advice or doses. "
+        "We plan routine care. We do **not** give medical advice or doses. "
         "For health concerns or emergencies, contact a veterinarian."
     )
 
