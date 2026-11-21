@@ -18,7 +18,7 @@ I took PawPal+, a rule-based pet-care scheduler I built earlier, and extended it
 | Check | Result |
 |---|---|
 | Expected specialized task, retrieval on vs off | 6/6 vs 0/6 |
-| Guardrail cases (incl. adversarial) | 11/11 |
+| Guardrail cases (incl. adversarial, emergencies) | 14/14 |
 | Identical output across 3 runs | 6/6 |
 | Classifier + rules vs rules (held-out) | 14/20 vs 8/20 |
 | Explanations quoting a retrieved sentence | 20/20 |
