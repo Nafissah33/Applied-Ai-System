@@ -4,46 +4,52 @@ import streamlit as st
 
 from pawpal_system import DEFAULT_DATA_FILE, PRIORITY_ICONS, Owner, Pet, Scheduler, Task
 
-st.set_page_config(page_title="PawPal+", page_icon="🐾", layout="centered")
+st.set_page_config(page_title="PawPal+ AI", page_icon="🐾", layout="centered")
 
-st.title("🐾 PawPal+")
+REPO_URL = "https://github.com/Nafissah33/Applied-Ai-System"
 
 st.markdown(
     """
-Welcome to the PawPal+ starter app.
-
-This file is intentionally thin. It gives you a working Streamlit app so you can start quickly,
-but **it does not implement the project logic**. Your job is to design the system and build it.
-
-Use this app as your interactive demo once your backend classes/functions exist.
-"""
+<style>
+h1, h2, h3 { letter-spacing: -0.01em; }
+.hero { background: #12263A; color: #F6F1E7; padding: 28px 32px; border-radius: 18px; margin-bottom: 8px; }
+.hero h1 { color: #F6F1E7; margin: 0 0 6px 0; font-size: 2.3rem; }
+.hero p { color: #B9C4CF; margin: 0; font-size: 1.05rem; }
+.hero .tag { color: #E07A3F; font-weight: 600; letter-spacing: 0.08em; font-size: 0.8rem; }
+</style>
+<div class="hero">
+  <div class="tag">APPLIED AI FINAL PROJECT</div>
+  <h1>🐾 PawPal+ AI</h1>
+  <p>Describe your pet in plain English and get a safe, explained daily care plan.
+  It retrieves care guidance, checks its own work, and shows its sources.</p>
+</div>
+""",
+    unsafe_allow_html=True,
 )
 
-with st.expander("Scenario", expanded=True):
+with st.sidebar:
+    st.markdown("### 🐾 PawPal+ AI")
+    st.caption("Nafissatou LO · 491 Applied AI for Engineers · Fall 2026")
+    st.markdown(f"[View the code on GitHub]({REPO_URL})")
+    st.divider()
+    st.markdown("**How it works**")
     st.markdown(
-        """
-**PawPal+** is a pet care planning assistant. It helps a pet owner plan care tasks
-for their pet(s) based on constraints like time, priority, and preferences.
-
-You will design and implement the scheduling logic and connect it to this Streamlit UI.
-"""
+        "1. Checks your request is safe\n"
+        "2. Reads your pet's age and conditions\n"
+        "3. Retrieves care guidance (RAG)\n"
+        "4. Builds and double-checks the plan\n"
+        "5. Explains each task with its source"
     )
-
-with st.expander("What you need to build", expanded=True):
-    st.markdown(
-        """
-At minimum, your system should:
-- Represent pet care tasks (what needs to happen, how long it takes, priority)
-- Represent the pet and the owner (basic info and preferences)
-- Build a plan/schedule for a day that chooses and orders tasks based on constraints
-- Explain the plan (why each task was chosen and when it happens)
-"""
+    st.divider()
+    st.info(
+        "PawPal+ plans routine care. It does **not** give medical advice or doses. "
+        "For health concerns or emergencies, contact a veterinarian."
     )
 
 st.divider()
 
-st.subheader("Quick Demo Inputs (UI only)")
-owner_name = st.text_input("Owner name", value="Jordan")
+st.subheader("Your pets")
+owner_name = st.text_input("Owner name", value="Nafissatou")
 pet_name = st.text_input("Pet name", value="Mochi")
 species = st.selectbox("Species", ["dog", "cat", "other"])
 
