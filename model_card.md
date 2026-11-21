@@ -69,7 +69,7 @@ The planner is a multi-step decision chain (11 steps for an arthritic dog with a
 | Confidence scoring (average) | 0.92 with retrieval, 0.30 without, 0.00 + warning for an unsupported species |
 | Error handling (simulated retriever crash) | Safe `error` result, no crash |
 
-Machine-readable results: `evals/results.json`. Human evaluation (`evals/human_eval.md`): 4 of 6 inputs passed on the first review; the two failures (kitten plan with one meal, overweight-dog plan with overlapping feeding tasks) were fixed and are covered by regression tests. One reviewer; notes drafted by Claude Code and confirmed by the reviewer.
+Machine-readable results: `evals/results.json`. Human evaluation (`evals/human_eval.md`): 4 of 6 inputs passed on the first review; the two failures (kitten plan with one meal, overweight-dog plan with overlapping feeding tasks) were fixed, are covered by regression tests, and now pass a re-check (6 of 6; re-check done by Claude Code at the reviewer's request). One reviewer; notes drafted by Claude Code and confirmed by the reviewer.
 
 ### Before/after: retrieval
 Request: "senior dog with arthritis, 45 minutes".

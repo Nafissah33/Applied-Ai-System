@@ -421,7 +421,7 @@ $ python evals/run_evals.py
 
 ## Testing summary
 
-**In a few lines:** 39 of 39 evaluation test cases and 44 of 44 unit tests pass. Average confidence was 0.92 with retrieval versus 0.30 without it, and 0.00 (with a warning shown) for an unsupported species. Retrieval put the expected task in 6/6 plans versus 0/6 without it. The trained classifier got 14/20 held-out requests right versus 8/20 for keyword rules. Along the way the tests caught four real bugs (below), and accuracy improved after each fix. A human review of 6 inputs passed 4 of 6 and found two plan-quality weaknesses the automated tests did not catch; both were then fixed and covered by regression tests.
+**In a few lines:** 39 of 39 evaluation test cases and 44 of 44 unit tests pass. Average confidence was 0.92 with retrieval versus 0.30 without it, and 0.00 (with a warning shown) for an unsupported species. Retrieval put the expected task in 6/6 plans versus 0/6 without it. The trained classifier got 14/20 held-out requests right versus 8/20 for keyword rules. Along the way the tests caught four real bugs (below), and accuracy improved after each fix. A human review of 6 inputs passed 4 of 6 and found two plan-quality weaknesses the automated tests did not catch; both were then fixed, covered by regression tests, and re-checked (6 of 6 pass).
 
 **How reliability is measured** (all reproducible with `python evals/run_evals.py`, which writes [`evals/results.md`](evals/results.md) and machine-readable [`evals/results.json`](evals/results.json)):
 
@@ -431,7 +431,7 @@ $ python evals/run_evals.py
 | Evaluation harness (39 cases) | Guardrails 14/14, plan quality 6/6, consistency 6/6, human-review regressions 2/2, specialization, classifier vs rules, RAG grounding, confidence, error handling |
 | Confidence scoring | Every plan carries a 0-1 score from retrieval strength; plans under 0.5 show a "review this yourself" warning |
 | Logging and error handling | Each request goes to `logs/pawpal.log`; an internal failure returns a safe `error` result with a log pointer instead of crashing (tested by simulating a crash) |
-| Human evaluation | [`evals/human_eval.md`](evals/human_eval.md): 6 inputs reviewed by hand, **4 of 6 passed on the first review**. The two failures (a kitten plan with one meal, an overweight-dog plan with overlapping feeding tasks) were fixed and now have automated regression checks. Re-review of the fixed outputs is recorded as pending. One reviewer; notes drafted by Claude Code and confirmed by me. |
+| Human evaluation | [`evals/human_eval.md`](evals/human_eval.md): 6 inputs reviewed by hand, **4 of 6 passed on the first review**. The two failures (a kitten plan with one meal, an overweight-dog plan with overlapping feeding tasks) were fixed, covered by regression tests, and re-checked: **6 of 6 now pass** against the stated criteria. The re-check was done by Claude Code at my request and I have not independently re-run it; two minor weaknesses are documented. Notes were drafted by Claude Code and confirmed by me. |
 
 A sample of the results table (full table in `evals/results.md`):
 
