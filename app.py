@@ -1,5 +1,9 @@
 import base64
+import json
 import os
+import re
+import subprocess
+import sys
 from pathlib import Path
 
 import streamlit as st
@@ -118,7 +122,7 @@ def _get_planner() -> AIPlanner:
     return AIPlanner()
 
 
-tab_ai, tab_manage = st.tabs(["AI Planner", "My pets & schedule"])
+tab_ai, tab_manage, tab_results = st.tabs(["AI Planner", "My pets & schedule", "Results & responsible AI"])
 
 with tab_ai:
     st.subheader("Plan a day with AI")
@@ -316,3 +320,72 @@ with tab_manage:
             st.caption(f"Total time used: {total_used}/{available_minutes} minutes.")
         else:
             st.info(scheduler.explain_plan(plan))
+
+
+with tab_results:
+    st.subheader("How we know it works")
+    st.caption("These numbers come from the project's evaluation harness, not from this page. Re-run it yourself below.")
+
+    results_path = Path(__file__).parent / "evals" / "results.json"
+
+    if st.button("Re-run the evaluation now", type="primary"):
+        with st.spinner("Running all predefined test cases..."):
+            run = subprocess.run([sys.executable, str(Path(__file__).parent / "evals" / "run_evals.py")],
+                                 capture_output=True, text=True, timeout=120, cwd=str(Path(__file__).parent))
+        st.session_state.eval_log = run.stdout[-3500:]
+
+    if results_path.exists():
+        data = json.loads(results_path.read_text(encoding="utf-8"))
+        checks = data["checks"]
+        passed = sum(c["result"] == "Pass" for c in checks)
+        conf = re.search(r"average confidence ([0-9.]+) with retrieval vs ([0-9.]+) without", data["summary"])
+        acc = re.search(r"classifier accuracy (\d+/\d+) vs (\d+/\d+)", data["summary"])
+        c1, c2, c3 = st.columns(3)
+        c1.metric("Evaluation cases passed", f"{passed}/{len(checks)}")
+        if conf:
+            c2.metric("Avg. confidence (retrieval on vs off)", f"{conf.group(1)} vs {conf.group(2)}")
+        if acc:
+            c3.metric("Profile accuracy (model vs rules)", f"{acc.group(1)} vs {acc.group(2)}")
+
+        by_section: dict[str, list[int]] = {}
+        for c in checks:
+            tally = by_section.setdefault(c["section"], [0, 0])
+            tally[1] += 1
+            tally[0] += c["result"] == "Pass"
+        st.table([{"What was tested": k, "Passed": f"{v[0]}/{v[1]}"} for k, v in by_section.items()])
+        with st.expander("Every test case (input, criteria, result)"):
+            st.table([{"Input": c["input"], "Criteria": c["criteria"], "Result": c["result"]} for c in checks])
+    else:
+        st.info("No results file yet. Click the button above to generate one.")
+
+    if st.session_state.get("eval_log"):
+        with st.expander("Evaluation output", expanded=True):
+            st.text(st.session_state.eval_log)
+            st.caption("Refresh the page to update the numbers above.")
+
+    st.subheader("How the AI makes decisions")
+    st.markdown(
+        "1. **Input guardrail** blocks emergencies, prompt injection, medical or dosage questions and bad input.\n"
+        "2. **Profile** reads species, life stage and conditions with keyword rules plus a small trained classifier.\n"
+        "3. **Retrieval** searches the knowledge base (built-in guides and custom owner notes) for matching guidance.\n"
+        "4. **Proposal** builds tasks from the retrieved passages, so retrieval changes the plan.\n"
+        "5. **Output guardrail and revision** validate tasks, add feeding and water, and remove conflicts and overlaps.\n"
+        "6. **Scheduler and self-check** lay out the day with the original PawPal+ scheduler and re-plan if essential care was missed.\n"
+        "7. **Explanation** quotes the source sentence for each task and reports a confidence score.\n\n"
+        "Every step, and the tool it called, is shown in the **Agent trace** on the AI Planner tab."
+    )
+
+    st.subheader("Limits and responsible use")
+    st.markdown(
+        "- The knowledge base is small and **has not been reviewed by a veterinarian**. Treat plans as suggestions.\n"
+        "- **Confidence means how well your request matched a document, not that the advice is medically correct.**\n"
+        "- Only dogs and cats have detailed guidance. Other animals get general feeding and water only.\n"
+        "- The trained classifier learned from synthetic data and was tested on only 20 examples.\n"
+        "- Guardrails are pattern-based, so unusual wording can slip past them.\n"
+        "- Nothing is added to a pet without your confirmation, and everything runs locally with no data sent out."
+    )
+    st.markdown(
+        f"Read the full write-ups on GitHub: [README]({REPO_URL}#readme) · "
+        f"[Model card]({REPO_URL}/blob/main/model_card.md) · [Agent traces]({REPO_URL}/blob/main/ai_interactions.md) · "
+        f"[Evaluation results]({REPO_URL}/blob/main/evals/results.md)"
+    )

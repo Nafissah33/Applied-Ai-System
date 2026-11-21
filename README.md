@@ -33,7 +33,7 @@ It matters because a generic scheduler would give that arthritic dog a 30-minute
 | **Guardrails** | `pawpal_ai/guardrails.py` | Blocks injection, medical or dosage questions, and bad input; validates and repairs proposed tasks. |
 | **Evaluation harness** | `evals/run_evals.py` | 39 predefined test cases with a pass/fail summary. |
 | **Logging and error handling** | `pawpal_ai/log.py` | Requests logged to `logs/pawpal.log`; unexpected errors return a safe message; a missing model falls back to rules. |
-| **UI integration** | `app.py` | "AI Planner" tab (first) and "My pets & schedule" tab in the Streamlit app. Tasks are added to a pet only after you confirm. |
+| **UI integration** | `app.py` | Streamlit app with three tabs: "AI Planner", "My pets & schedule", and "Results & responsible AI" (live evaluation numbers, a re-run button, how decisions are made, and limits). Tasks are added to a pet only after you confirm. |
 
 ## Architecture overview
 
@@ -94,7 +94,7 @@ python demo.py                    # 4 built-in example requests, end to end
 python demo.py "puppy, 45 minutes"
 python demo.py --baseline "senior dog with arthritis, 45 minutes"   # no retrieval, for comparison
 python demo.py --log              # also append agent traces to ai_interactions.md
-streamlit run app.py              # UI: opens on the "AI Planner" tab, with pets and schedule on the second tab
+streamlit run app.py              # UI: AI Planner, pets and schedule, and a Results & responsible AI tab
 bash walkthrough.sh               # guided tour of the whole system (tests, RAG, guardrails, evals)
 ```
 
