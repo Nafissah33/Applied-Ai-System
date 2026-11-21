@@ -36,5 +36,5 @@ flowchart TD
     OUT --> LOG["ai_interactions.md<br/>(demo.py --log traces)"]
     AG -. "every request" .-> LG["logs/pawpal.log"]
 
-    EV["evals/run_evals.py (39 cases) + pytest (41 tests)<br/>guardrails, plan quality, consistency, specialization,<br/>classifier vs rules, RAG grounding, custom sources,<br/>agent chain, confidence, error handling"] -. "runs predefined inputs through plan()" .-> AG
+    EV["evals/run_evals.py (39 cases) + pytest (44 tests)<br/>guardrails, plan quality, consistency, specialization,<br/>classifier vs rules, RAG grounding, custom sources,<br/>agent chain, confidence, error handling"] -. "runs predefined inputs through plan()" .-> AG
     EV -. "results.md + results.json" .-> DEV(["Developer / reviewer"])

@@ -90,10 +90,9 @@ def parse_profile(text: str, classifier: ProfileClassifier | None = None) -> dic
     words = set(raw_words) | {w[:-1] for w in raw_words if w.endswith("s") and len(w) > 3}
 
     species = "other"
-    for name, vocab in _SPECIES_WORDS.items():
-        if words & set(vocab):
-            species = name
-            break
+    matched = [name for name, vocab in _SPECIES_WORDS.items() if words & set(vocab)]
+    if matched:
+        species = matched[0]
     stage = "adult"
     for name, vocab in _STAGE_WORDS.items():
         if words & set(vocab):
@@ -108,6 +107,8 @@ def parse_profile(text: str, classifier: ProfileClassifier | None = None) -> dic
         minutes = int(float(hours.group(1)) * 60) if hours else 0
         minutes += int(mins.group(1)) if mins else 0
     profile = {"species": species, "stage": stage, "conditions": conditions, "minutes": minutes}
+    if len(matched) > 1:
+        profile["mixed_species"] = True
     if classifier is not None:
         pred = classifier.predict(text, threshold=MODEL_CONDITION_THRESHOLD)
         added = [c for c in pred["conditions"] if c not in conditions]
@@ -175,7 +176,8 @@ class AIPlanner:
 
         # 1. Input guardrail
         profile = parse_profile(request or "", self.classifier if use_model else None)
-        verdict = check_input(request, minutes=profile["minutes"], species=profile["species"])
+        verdict = check_input(request, minutes=profile["minutes"], species=profile["species"],
+                              mixed_species=profile.get("mixed_species", False))
         if not verdict.allowed:
             log("input_guardrail", f"BLOCKED ({verdict.code}): {verdict.reason}")
             result.status, result.message = "refused", verdict.reason
@@ -279,7 +281,16 @@ class AIPlanner:
                 # Only essentials remain: collapse redundant meals so one feeding + water still fit.
                 meals = [t for t in objects.values() if t.category == "feeding" and "water" not in t.title.lower()]
                 if len(meals) < 2:
-                    break
+                    # Last resort: shorten a missed essential task to the time still free instead of dropping it.
+                    left = profile["minutes"] - sum(e["task"].duration_minutes for e in plan)
+                    shrinkable = [t for t in missed_high if t.category != "feeding" and t.duration_minutes > left >= 10]
+                    if not shrinkable:
+                        break
+                    t = shrinkable[0]
+                    log("revise", f"shortened \"{t.title}\" from {t.duration_minutes} to {left} min to fit the time budget")
+                    meta[t.title]["duration_minutes"] = left
+                    t.duration_minutes = left
+                    continue
                 victim = max(meals, key=lambda t: t.duration_minutes)
             del objects[victim.title]
             log("revise", f"removed \"{victim.title}\" ({victim.priority}) to make room for essential care")

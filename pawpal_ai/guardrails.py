@@ -66,7 +66,8 @@ class InputCheck:
     warnings: list[str] = field(default_factory=list)
 
 
-def check_input(text: str, minutes: int | None = None, species: str | None = None) -> InputCheck:
+def check_input(text: str, minutes: int | None = None, species: str | None = None,
+                mixed_species: bool = False) -> InputCheck:
     """Validate a free-text planning request before any processing happens."""
     if not text or not text.strip():
         return InputCheck(False, "Request is empty. Describe your pet and how much time you have.", "empty")
@@ -84,7 +85,13 @@ def check_input(text: str, minutes: int | None = None, species: str | None = Non
         if re.search(pattern, lowered):
             return InputCheck(False, VET_MESSAGE, "medical")
 
+    if re.search(r"(?<![\w])-\s*\d+(\.\d+)?\s*(minutes?|mins?|hours?|hrs?)\b", lowered):
+        return InputCheck(False, "A negative time budget isn't valid. Enter how many minutes you have today.", "budget_invalid")
+
     warnings = []
+    if mixed_species:
+        warnings.append("Your request mentions both a dog and a cat. I can only plan for one pet at a time, "
+                        "so this plan is for the first one mentioned. Run the other pet separately.")
     if minutes is not None:
         if minutes < MIN_MINUTES:
             return InputCheck(False, f"{minutes} minutes is too little time to plan a day (minimum {MIN_MINUTES}).", "budget_low")

@@ -12,7 +12,7 @@ I took PawPal+, a rule-based pet-care scheduler I built earlier, and extended it
 - **Specialized model:** a Naive Bayes classifier trained on 900 synthetic examples that reads life stage and conditions from free text. On 20 held-out paraphrased requests, keyword rules alone were right 8/20 times; rules plus the classifier were right 14/20 (tuned on the same 20 examples, so slightly optimistic).
 - **Agentic workflow:** eight traced steps with a self-check loop that revises the plan if essential care is missed.
 - **Guardrails:** input checks (injection, medical or dosage questions, empty or oversized input, tiny budgets) and output checks (schema, no dosage text, duplicates, forced feeding and water).
-- **Evaluation:** 39 predefined test cases, all passing, plus 41 unit tests.
+- **Evaluation:** 39 predefined test cases, all passing, plus 44 unit tests.
 
 ## Stretch features
 RAG enhancement (multiple sources including two custom documents, with a before/after), an agentic workflow whose tool-call traces are saved in `ai_interactions.md`, specialization (a model trained on synthetic data plus a constrained explanation format, compared against a baseline in `model_card.md`), and an evaluation harness that prints a pass/fail summary.

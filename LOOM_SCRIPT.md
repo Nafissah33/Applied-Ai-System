@@ -7,7 +7,7 @@ Grading is based on the README's text evidence, not the video. Record only if yo
 | Time | On screen | Say (in your own words) |
 |---|---|---|
 | 0:00 | Terminal, `bash walkthrough.sh` starts | "This is PawPal+ AI. I extended my earlier pet-care scheduler into an AI system that retrieves care guidance, understands plain-English requests, and checks its own work. It runs offline, no API key." |
-| 0:20 | Step 1: tests pass | "41 unit tests pass." |
+| 0:20 | Step 1: tests pass | "44 unit tests pass." |
 | 0:30 | Step 2: arthritic senior dog | "I typed one sentence. The classifier read 'senior' and 'arthritis', retrieval found joint-care guidance, and the plan has a short low-impact walk. Each task quotes its source, and the trace shows every tool the agent called, including a self-check." |
 | 1:10 | Step 3: baseline | "Without retrieval, the same dog gets a generic 30-minute walk at low confidence. That is the difference RAG makes." |
 | 1:30 | Step 4: Luna | "With a custom vet-notes document, the plan follows Luna's vet's advice: wet food and extra water, instead of a generic routine." |

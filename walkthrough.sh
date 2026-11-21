@@ -9,7 +9,7 @@ PY=python3; [ -x .venv/bin/python ] && PY=.venv/bin/python
 step() { echo; echo "=============================================================================="; echo "$1"; echo "=============================================================================="; }
 pause() { [ -n "$NONSTOP" ] || read -r -p "-- press Enter to continue --" _; }
 
-step "1/6  Unit tests (41 tests)"
+step "1/6  Unit tests (44 tests)"
 $PY -m pytest -q
 pause
 

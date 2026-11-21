@@ -178,3 +178,21 @@ def test_trace_records_tool_calls(planner):
     trace = planner.plan("senior dog with arthritis, 45 minutes").trace
     tools = {s["tool"] for s in trace if s.get("tool")}
     assert {"guardrails.check_input", "KnowledgeRetriever.search", "guardrails.validate_tasks"} <= tools
+
+
+def test_negative_time_budget_is_rejected(planner):
+    result = planner.plan("my dog, -30 minutes")
+    assert result.status == "refused" and "negative" in result.message.lower()
+
+
+def test_mixed_species_request_warns_and_plans_first_pet(planner):
+    result = planner.plan("plan for my dog and my cat, 60 minutes")
+    assert result.status == "ok" and result.profile["species"] == "dog"
+    assert any("both a dog and a cat" in w for w in result.warnings)
+
+
+def test_missed_essential_walk_is_shortened_not_dropped(planner):
+    result = planner.plan("my dog, 30 minutes")
+    walk = [e["task"] for e in result.plan if "walk" in e["task"].title.lower()]
+    assert walk and sum(e["task"].duration_minutes for e in result.plan) <= 30
+    assert any("shortened" in s["detail"] for s in result.trace)

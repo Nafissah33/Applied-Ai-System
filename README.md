@@ -17,7 +17,7 @@ It matters because a generic scheduler would give that arthritic dog a 30-minute
 | | |
 |---|---|
 | **Built with** | Python, Streamlit, pytest. Retrieval and the classifier are written from scratch with no ML libraries. |
-| **Results** | 39/39 evaluation test cases and 41/41 unit tests pass. Retrieval put the expected task in 6/6 plans vs 0/6 without it. The trained classifier beat keyword rules 14/20 vs 8/20 on held-out requests. |
+| **Results** | 39/39 evaluation test cases and 44/44 unit tests pass. Retrieval put the expected task in 6/6 plans vs 0/6 without it. The trained classifier beat keyword rules 14/20 vs 8/20 on held-out requests. |
 | **Safety** | Refuses dosage and medical questions, blocks prompt injection, validates every AI-proposed task, and needs a human click before changing any data. |
 | **Runs anywhere** | No API key, no network, deterministic output. Four commands from clone to demo. |
 
@@ -101,7 +101,7 @@ bash walkthrough.sh               # guided tour of the whole system (tests, RAG,
 Test it:
 
 ```bash
-python -m pytest -q               # 41 unit tests (original scheduler + AI layer)
+python -m pytest -q               # 44 unit tests (original scheduler + AI layer)
 python evals/run_evals.py         # 39-case evaluation harness, writes evals/results.md
 ```
 
@@ -228,7 +228,7 @@ python demo.py --baseline "I have a senior dog with arthritis, I only have 45 mi
 | **AI feature behavior: RAG** | [Stretch features](#stretch-features-all-four-implemented) (before/after) and Command 2 below | Same request with and without retrieval or custom documents, with the plans, sources and confidence for each |
 | **AI feature behavior: agent** | Command 3 below | An 11-step trace showing the tool called at each step, two revisions and a self-check |
 | **AI feature behavior: specialized model** | [Sample interactions](#sample-interactions) (example 2) and `model_card.md` | A paraphrase the keyword rules miss, handled by the trained classifier (8/20 vs 14/20 held-out) |
-| **Reliability, guardrail and evaluation behavior** | Commands 1 and 4 below | 41 passing unit tests, 14/14 guardrail cases, plan-quality and consistency results, and the final summary line |
+| **Reliability, guardrail and evaluation behavior** | Commands 1 and 4 below | 44 passing unit tests, 14/14 guardrail cases, plan-quality and consistency results, and the final summary line |
 
 **Command 1: unit tests**
 
@@ -421,13 +421,13 @@ $ python evals/run_evals.py
 
 ## Testing summary
 
-**In a few lines:** 39 of 39 evaluation test cases and 41 of 41 unit tests pass. Average confidence was 0.92 with retrieval versus 0.30 without it, and 0.00 (with a warning shown) for an unsupported species. Retrieval put the expected task in 6/6 plans versus 0/6 without it. The trained classifier got 14/20 held-out requests right versus 8/20 for keyword rules. Along the way the tests caught four real bugs (below), and accuracy improved after each fix. A human review of 6 inputs passed 4 of 6 and found two plan-quality weaknesses the automated tests did not catch; both were then fixed and covered by regression tests.
+**In a few lines:** 39 of 39 evaluation test cases and 44 of 44 unit tests pass. Average confidence was 0.92 with retrieval versus 0.30 without it, and 0.00 (with a warning shown) for an unsupported species. Retrieval put the expected task in 6/6 plans versus 0/6 without it. The trained classifier got 14/20 held-out requests right versus 8/20 for keyword rules. Along the way the tests caught four real bugs (below), and accuracy improved after each fix. A human review of 6 inputs passed 4 of 6 and found two plan-quality weaknesses the automated tests did not catch; both were then fixed and covered by regression tests.
 
 **How reliability is measured** (all reproducible with `python evals/run_evals.py`, which writes [`evals/results.md`](evals/results.md) and machine-readable [`evals/results.json`](evals/results.json)):
 
 | Method | What it shows |
 |---|---|
-| Automated tests (`pytest`, 41 tests) | Key functions: retrieval, guardrails, parsing, planner, classifier, error handling |
+| Automated tests (`pytest`, 44 tests) | Key functions: retrieval, guardrails, parsing, planner, classifier, error handling |
 | Evaluation harness (39 cases) | Guardrails 14/14, plan quality 6/6, consistency 6/6, human-review regressions 2/2, specialization, classifier vs rules, RAG grounding, confidence, error handling |
 | Confidence scoring | Every plan carries a 0-1 score from retrieval strength; plans under 0.5 show a "review this yourself" warning |
 | Logging and error handling | Each request goes to `logs/pawpal.log`; an internal failure returns a safe `error` result with a log pointer instead of crashing (tested by simulating a crash) |
