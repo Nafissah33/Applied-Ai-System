@@ -2,6 +2,8 @@
 
 > Describe your pet in plain English and get a safe, explained daily care plan. It runs offline with no API key.
 
+**Author:** Nafissatou LO · 491 Applied AI for Engineers · Fall 2026 (final project)
+
 **Original project:** this is an extension of **PawPal+**, the pet-care scheduling app I built in Modules 1-3. PawPal+ let an owner enter pets and care tasks by hand, then built a prioritized daily schedule (priority sorting, time-budget filtering, same-time conflict detection with a suggested fix, daily and weekly recurrence, multi-pet scheduling, JSON saving, and a Streamlit UI) and explained its reasoning. Its limits were that every task had to be typed in, it knew nothing about pet care, and it had no safety checks. Its original documentation is kept at the bottom of this file.
 
 ## Summary: what it does and why it matters

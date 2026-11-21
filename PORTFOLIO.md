@@ -1,5 +1,7 @@
 # PawPal+ AI: from a scheduler to an applied AI system
 
+**Author:** Nafissatou LO · 491 Applied AI for Engineers · Fall 2026
+
 **Repo:** https://github.com/Nafissah33/Applied-Ai-System
 
 ## Summary
