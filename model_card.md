@@ -28,7 +28,35 @@ Confidence is `min(1, best retrieval score / 0.5)`, capped at 0.30 for unsupport
   Caveat: I tried thresholds 0.7, 0.8, 0.9 and 0.95 on these same 20 examples (12, 12, 14 and 15 correct) and picked 0.9 as a conservative round value, so 14/20 is slightly optimistic and the sample is small. The classifier alone scored 10/20 and the rules alone 8/20, which is why they are combined.
 - **Remaining errors:** vague age cues ("thirteen", "slowing down"), unusual condition wording ("pudgy", "pacing and panting"), and occasional false positives.
 
-## Evaluation (`python evals/run_evals.py`, 33 test cases, all passing)
+## Stretch: baseline vs specialized comparison
+"Baseline" is the plain system (keyword rules, no retrieval, plain one-line explanations). "Specialized" is the full system (trained classifier, retrieval, constrained explanation format). Numbers come from `python evals/run_evals.py`.
+
+| Measure | Baseline | Specialized |
+|---|---|---|
+| Profile accuracy on 20 held-out paraphrased requests (stage + conditions) | 8/20 (rules only) | **14/20** (rules + trained classifier) |
+| Expected specialized task present in the plan (6 requests) | 0/6 (no retrieval) | **6/6** |
+| Explanations that cite a source | 0% | **100%** |
+| Explanations that follow the constrained template `[PRIORITY] task, N min. Why: "…" Source: …. Placed HH:MM-HH:MM …` | 0% | **100%** |
+| Average explanation length | 5.8 words | 32.1 words |
+| Average confidence | 0.30 | **0.92** |
+
+The specialization has two parts: a classifier **trained on a synthetic dataset** (900 generated examples) and a **constrained style** for explanations (fixed fields, quoted source, no free-form text). Caveats for the classifier are in the section above.
+
+## Stretch: RAG enhancement (custom documents and multiple sources)
+Sources indexed: Dog Care Basics, Cat Care Basics, General Pet Care Guidelines, **Owner Custom Notes** (Mochi) and **Owner Vet Notes** (Luna). Custom documents live in `knowledge/custom/` and are indexed automatically.
+
+Before/after for `"Luna cat, 30 minutes"`:
+- **Built-in sources only:** Morning feeding, Evening feeding, Appetite and water check, Fresh water check, Litter box scooping, Claw trim. Confidence 0.65.
+- **With custom documents:** Wet food meal, Extra water refill, Quiet play session, Enrichment toy rotation. Confidence 0.92, drawing on *Owner Vet Notes* and *Cat Care Basics*.
+
+How retrieval improved the output: the generic cat routine was replaced by a plan that follows the owner's vet advice. The eval (section 9) checks that custom documents add tasks built-in sources cannot (2/2), that one plan can draw on at least two sources, and that a risky custom suggestion (a fetch session for an arthritic dog) is removed.
+
+**Risk of multiple sources:** sources can disagree, so the planner removes tasks that conflict with a detected condition. A malicious or careless custom file could still inject bad advice, so `knowledge/custom/` must be treated as trusted content.
+
+## Stretch: agentic workflow
+The planner is a multi-step decision chain (11 steps for an arthritic dog with a custom note) that calls tools at each stage (`guardrails.check_input`, `ProfileClassifier.predict`, `KnowledgeRetriever.search`, `guardrails.validate_tasks`, `Scheduler.detect_conflicts` and `Scheduler.generate_plan`), revises its plan when it finds a problem (conflicting task, overlapping feeding, missed essential care), and self-checks before answering. Every step and the tool it called is saved; six full traces are embedded in `ai_interactions.md`.
+
+## Evaluation (`python evals/run_evals.py`, 39 test cases, all passing)
 | Experiment | Result |
 |---|---|
 | Guardrails (14 inputs: medical, emergency, injection, empty, too long, low budget, 3 valid) | 14/14 correct |
@@ -38,7 +66,7 @@ Confidence is `min(1, best retrieval score / 0.5)`, capped at 0.30 for unsupport
 | Specialization: explanations citing a source | 100% specialized vs 0% baseline |
 | Specialized model vs rules (20 held-out requests) | 14/20 vs 8/20 |
 | RAG grounding: explanations quoting a retrieved sentence | 20/20 |
-| Confidence scoring (average) | 0.93 with retrieval, 0.30 without, 0.00 + warning for an unsupported species |
+| Confidence scoring (average) | 0.92 with retrieval, 0.30 without, 0.00 + warning for an unsupported species |
 | Error handling (simulated retriever crash) | Safe `error` result, no crash |
 
 Machine-readable results: `evals/results.json`. Human evaluation (`evals/human_eval.md`): 4 of 6 inputs passed on the first review; the two failures (kitten plan with one meal, overweight-dog plan with overlapping feeding tasks) were fixed and are covered by regression tests. One reviewer; notes drafted by Claude Code and confirmed by the reviewer.
@@ -52,7 +80,7 @@ Request: "senior dog with arthritis, 45 minutes".
 | | Baseline | Specialized and grounded |
 |---|---|---|
 | Example | `Low-impact leash walk scheduled (high priority).` | `[HIGH] Low-impact leash walk, 15 min. Why: "Dogs with joint pain or arthritis benefit from low-impact exercise such as slow leash walks and avoiding stairs or jumping." Source: Dog Care Basics > Joint and arthritis support for dogs. Placed 08:15-08:30 after higher-priority care.` |
-| Avg words per explanation | 5.6 | about 30 |
+| Avg words per explanation | 5.8 | about 32 |
 | Cites a source | 0% | 100% |
 
 The eval checks that every retrieval-backed explanation quotes a sentence that really appears in a retrieved passage.

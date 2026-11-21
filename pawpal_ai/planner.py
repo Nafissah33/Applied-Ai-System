@@ -24,6 +24,14 @@ MODEL_STAGE_CONFIDENCE = 0.9
 DEFAULT_MINUTES = 60
 MAX_REVISIONS = 8
 _PRIORITY_RANK = {"high": 0, "medium": 1, "low": 2}
+# The tool (function) the agent calls at each step; recorded in every trace entry.
+_STEP_TOOLS = {
+    "input_guardrail": "guardrails.check_input",
+    "specialized_model": "ProfileClassifier.predict",
+    "retrieve": "KnowledgeRetriever.search",
+    "output_guardrail": "guardrails.validate_tasks",
+    "self_check": "Scheduler.detect_conflicts + Scheduler.generate_plan",
+}
 
 _CONDITION_WORDS = {
     "joint": ["joint", "arthritis", "arthritic", "stiff", "hip", "hips", "limp", "mobility"],
@@ -38,6 +46,8 @@ _STAGE_WORDS = {
 _SPECIES_WORDS = {"dog": ["dog", "puppy", "pup", "pooch", "canine", "retriever", "lab", "labrador", "poodle", "beagle",
                           "shepherd", "bulldog", "husky", "terrier", "corgi", "dachshund"],
                   "cat": ["cat", "kitten", "kitty", "feline", "tabby", "siamese", "persian", "tomcat"]}
+# Tasks that conflict with a health condition, even if a retrieved source (e.g. a custom note) suggests them.
+_CONFLICTING_TASKS = {"joint": ("fetch", "jump", "run", "agility", "chase", "sprint")}
 _BASELINE_TASKS = {
     "dog": [("Feeding", 10, "high", "feeding"), ("Fresh water check", 5, "high", "feeding"), ("Walk", 30, "medium", "walk")],
     "cat": [("Feeding", 5, "high", "feeding"), ("Fresh water check", 5, "high", "feeding"), ("Play", 15, "medium", "play")],
@@ -62,7 +72,8 @@ class PlanResult:
     def trace_markdown(self, request: str) -> str:
         lines = [f"**Request:** `{request}`", ""]
         for i, step in enumerate(self.trace, 1):
-            lines.append(f"{i}. **{step['step']}** — {step['detail']}")
+            tool = f" `[tool: {step['tool']}]`" if step.get("tool") else ""
+            lines.append(f"{i}. **{step['step']}**{tool} — {step['detail']}")
         lines.append(f"\n**Outcome:** {self.status}, confidence {self.confidence:.2f}")
         return "\n".join(lines)
 
@@ -160,7 +171,7 @@ class AIPlanner:
         trace = result.trace
 
         def log(step: str, detail: str) -> None:
-            trace.append({"step": step, "detail": detail})
+            trace.append({"step": step, "detail": detail, "tool": _STEP_TOOLS.get(step)})
 
         # 1. Input guardrail
         profile = parse_profile(request or "", self.classifier if use_model else None)
@@ -219,6 +230,14 @@ class AIPlanner:
             removed = [t["title"] for t in walks if t is not best]
             tasks = [t for t in tasks if t["category"] != "walk" or t is best]
             log("revise", f"kept most relevant walk \"{best['title']}\"; removed {removed}")
+
+        # Drop tasks that conflict with a known condition (a custom source may suggest high-impact play).
+        for condition, keywords in _CONFLICTING_TASKS.items():
+            if condition in profile["conditions"]:
+                clash = [t["title"] for t in tasks if any(k in t["title"].lower() for k in keywords)]
+                if clash:
+                    tasks = [t for t in tasks if t["title"] not in clash]
+                    log("revise", f"removed high-impact task(s) {clash} because the pet has a {condition} condition")
 
         # Overlapping feeding plans (e.g. adult-routine meals + a weight-management portion plan):
         # keep the feeding tasks from the single best-matching source and drop the rest.

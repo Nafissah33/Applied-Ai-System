@@ -18,7 +18,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from pawpal_ai import AIPlanner  # noqa: E402
+from pawpal_ai import AIPlanner, KnowledgeRetriever  # noqa: E402
 from pawpal_ai.classifier import ProfileClassifier  # noqa: E402
 from pawpal_ai.planner import parse_profile  # noqa: E402
 
@@ -131,6 +131,18 @@ def main() -> int:
         return sum(lens) / len(lens), cited / total
     base_len, base_cite = stats("baseline")
     spec_len, spec_cite = stats("specialized")
+    import re as _re
+    template = _re.compile(r"^\[(HIGH|MEDIUM|LOW)\] .+, \d+ min\. Why: .+ Source: .+\. Placed \d\d:\d\d-\d\d:\d\d ")
+
+    def format_rate(style):
+        lines_ = [l for q, _ in PLAN_CASES for l in planner.plan(q, style=style).explanation.splitlines()]
+        return sum(bool(template.match(l)) for l in lines_) / len(lines_)
+
+    base_fmt, spec_fmt = format_rate("baseline"), format_rate("specialized")
+    emit(f"- constrained format compliance: baseline {base_fmt:.0%} vs specialized {spec_fmt:.0%}")
+    record("specialization", "all plan cases", "explanations follow the constrained template", spec_fmt == 1.0 and base_fmt == 0.0,
+           f"specialized {spec_fmt:.0%} vs baseline {base_fmt:.0%}")
+    required_failures += not (spec_fmt == 1.0 and base_fmt == 0.0)
     emit(f"- baseline:    avg {base_len:.1f} words/explanation, {base_cite:.0%} cite a source")
     emit(f"- specialized: avg {spec_len:.1f} words/explanation, {spec_cite:.0%} cite a source")
     spec_ok = spec_cite > base_cite
@@ -205,7 +217,42 @@ def main() -> int:
            f"{len(sources)} source(s)")
     required_failures += not ow_ok
 
-    emit("\n## 9. Error handling")
+    emit("\n## 9. RAG enhancement: custom documents and multiple sources")
+    no_custom = AIPlanner(KnowledgeRetriever(include_custom=False))
+    for request, expected in [("Mochi golden retriever, 1 hour", "Fetch session"), ("Luna cat, 30 minutes", "Wet food meal")]:
+        with_c = any(en["task"].title == expected for en in planner.plan(request).plan)
+        without_c = any(en["task"].title == expected for en in no_custom.plan(request).plan)
+        ok = with_c and not without_c
+        emit(f"- [{'PASS' if ok else 'FAIL'}] `{request}` -> \"{expected}\": with custom docs={'yes' if with_c else 'no'}, built-in only={'yes' if without_c else 'no'}")
+        record("rag enhancement", request, f'custom documents add "{expected}" that built-in sources cannot', ok,
+               f"with custom {with_c}, without {without_c}")
+        required_failures += not ok
+    luna = planner.plan("Luna cat, 30 minutes")
+    srcs = {c.source for c in luna.retrieved}
+    multi_ok = len(srcs) >= 2
+    emit(f"- [{'PASS' if multi_ok else 'FAIL'}] one plan draws on multiple sources: {sorted(srcs)}")
+    record("rag enhancement", "Luna cat, 30 minutes", "plan retrieves from at least 2 different sources", multi_ok, ", ".join(sorted(srcs)))
+    required_failures += not multi_ok
+    mochi = planner.plan("Mochi senior golden retriever with arthritis, 45 minutes")
+    safe_ok = not any(en["task"].title == "Fetch session" for en in mochi.plan)
+    emit(f"- [{'PASS' if safe_ok else 'FAIL'}] a custom-note suggestion that conflicts with a joint condition (Fetch session) is removed")
+    record("rag enhancement", "Mochi senior golden retriever with arthritis, 45 minutes",
+           "conflicting high-impact task from a custom source is removed", safe_ok)
+    required_failures += not safe_ok
+
+    emit("\n## 10. Agentic workflow (tool calls and decision chain)")
+    trace = planner.plan("Mochi senior golden retriever with arthritis, 45 minutes").trace
+    tools_used = {s["tool"] for s in trace if s.get("tool")}
+    steps_used = [s["step"] for s in trace]
+    needed = {"guardrails.check_input", "KnowledgeRetriever.search", "guardrails.validate_tasks"}
+    agent_ok = needed <= tools_used and "revise" in steps_used and "self_check" in steps_used and len(trace) >= 8
+    emit(f"- {len(trace)} traced steps, tools called: {sorted(tools_used)}")
+    emit(f"- [{'PASS' if agent_ok else 'FAIL'}] multi-step chain with tool calls, a revision step and a self-check")
+    record("agentic workflow", "Mochi senior golden retriever with arthritis, 45 minutes",
+           "multi-step trace with tool calls, a revise step and a self-check", agent_ok, f"{len(trace)} steps")
+    required_failures += not agent_ok
+
+    emit("\n## 11. Error handling")
     original = planner.retriever.search
     planner.retriever.search = lambda *a, **k: 1 / 0  # simulate an internal failure
     logging.disable(logging.CRITICAL)  # the simulated crash is expected; keep the console readable

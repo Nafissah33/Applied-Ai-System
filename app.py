@@ -252,4 +252,5 @@ if ai_result is not None:
             st.success(f"Added {len(ai_result.plan)} tasks to {pet.name}. Scroll up to see them.")
     with st.expander("Agent trace"):
         for i, step in enumerate(ai_result.trace, 1):
-            st.markdown(f"{i}. **{step['step']}**: {step['detail']}")
+            tool = f" `[tool: {step['tool']}]`" if step.get("tool") else ""
+            st.markdown(f"{i}. **{step['step']}**{tool}: {step['detail']}")

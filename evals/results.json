@@ -1,5 +1,5 @@
 {
-  "summary": "33 of 33 test cases passed; average confidence 0.93 with retrieval vs 0.30 without; classifier accuracy 14/20 vs 8/20 for rules alone.",
+  "summary": "39 of 39 test cases passed; average confidence 0.92 with retrieval vs 0.30 without; classifier accuracy 14/20 vs 8/20 for rules alone.",
   "checks": [
     {
       "section": "guardrails",
@@ -186,6 +186,13 @@
     {
       "section": "specialization",
       "input": "all plan cases",
+      "criteria": "explanations follow the constrained template",
+      "result": "Pass",
+      "detail": "specialized 100% vs baseline 0%"
+    },
+    {
+      "section": "specialization",
+      "input": "all plan cases",
       "criteria": "specialized explanations cite sources more than baseline",
       "result": "Pass",
       "detail": "cited: specialized 100% vs baseline 0%"
@@ -202,14 +209,14 @@
       "input": "all plan cases",
       "criteria": "every retrieval-backed explanation quotes a retrieved sentence",
       "result": "Pass",
-      "detail": "20/20"
+      "detail": "22/22"
     },
     {
       "section": "confidence",
       "input": "6 plan cases + parrot",
       "criteria": "confidence higher with retrieval; low with warning for unsupported species",
       "result": "Pass",
-      "detail": "avg ON 0.93, OFF 0.30, parrot 0.00"
+      "detail": "avg ON 0.92, OFF 0.30, parrot 0.00"
     },
     {
       "section": "human-review regression",
@@ -224,6 +231,41 @@
       "criteria": "feeding tasks do not overlap across sections",
       "result": "Pass",
       "detail": "1 source(s)"
+    },
+    {
+      "section": "rag enhancement",
+      "input": "Mochi golden retriever, 1 hour",
+      "criteria": "custom documents add \"Fetch session\" that built-in sources cannot",
+      "result": "Pass",
+      "detail": "with custom True, without False"
+    },
+    {
+      "section": "rag enhancement",
+      "input": "Luna cat, 30 minutes",
+      "criteria": "custom documents add \"Wet food meal\" that built-in sources cannot",
+      "result": "Pass",
+      "detail": "with custom True, without False"
+    },
+    {
+      "section": "rag enhancement",
+      "input": "Luna cat, 30 minutes",
+      "criteria": "plan retrieves from at least 2 different sources",
+      "result": "Pass",
+      "detail": "Cat Care Basics, Owner Vet Notes"
+    },
+    {
+      "section": "rag enhancement",
+      "input": "Mochi senior golden retriever with arthritis, 45 minutes",
+      "criteria": "conflicting high-impact task from a custom source is removed",
+      "result": "Pass",
+      "detail": ""
+    },
+    {
+      "section": "agentic workflow",
+      "input": "Mochi senior golden retriever with arthritis, 45 minutes",
+      "criteria": "multi-step trace with tool calls, a revise step and a self-check",
+      "result": "Pass",
+      "detail": "11 steps"
     },
     {
       "section": "error handling",

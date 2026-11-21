@@ -19,6 +19,8 @@ EXAMPLES = [
     "Plan a day for my new kitten, 30 minutes available",
     "What dose of ibuprofen can I give my dog?",
     "my lab can't manage the stairs anymore and winces when he gets up, 40 minutes",
+    "Luna cat, 30 minutes",
+    "Mochi senior golden retriever with arthritis, 45 minutes",
 ]
 LOG_FILE = Path(__file__).parent / "ai_interactions.md"
 
@@ -41,7 +43,8 @@ def show(planner: AIPlanner, request: str, baseline: bool) -> str:
         print("\nWhy this plan:\n" + result.explanation)
     print("\nAgent trace:")
     for i, step in enumerate(result.trace, 1):
-        print(f"  {i}. {step['step']}: {step['detail']}")
+        tool = f" [tool: {step['tool']}]" if step.get("tool") else ""
+        print(f"  {i}. {step['step']}{tool}: {step['detail']}")
     return result.trace_markdown(request)
 
 

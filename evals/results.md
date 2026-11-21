@@ -39,8 +39,9 @@
 **Consistency: 6/6**
 
 ## 4. Specialization (specialized vs baseline explanations)
-- baseline:    avg 5.6 words/explanation, 0% cite a source
-- specialized: avg 30.0 words/explanation, 100% cite a source
+- constrained format compliance: baseline 0% vs specialized 100%
+- baseline:    avg 5.8 words/explanation, 0% cite a source
+- specialized: avg 32.1 words/explanation, 100% cite a source
 - [PASS] specialized style cites sources more than baseline
 
 ## 5. Specialized model (held-out paraphrased requests)
@@ -49,11 +50,11 @@
 - [PASS] specialized model improves profile accuracy over the baseline
 
 ## 6. RAG grounding (explanations quote retrieved text)
-- 20/20 retrieval-backed explanations quote a sentence from a retrieved passage
+- 22/22 retrieval-backed explanations quote a sentence from a retrieved passage
 - [PASS] every retrieval-backed explanation is grounded in retrieved text
 
 ## 7. Confidence scoring
-- average confidence, retrieval ON:  0.93 (min 0.74)
+- average confidence, retrieval ON:  0.92 (min 0.74)
 - average confidence, retrieval OFF: 0.30
 - unsupported species (parrot): 0.00, warning shown: True
 - [PASS] confidence is higher when retrieval finds support and low (with a warning) when it cannot
@@ -62,13 +63,23 @@
 - [PASS] kitten plan has several small meals: ['Kitten morning meal', 'Kitten midday meal', 'Kitten evening meal']
 - [PASS] overweight-dog feeding tasks come from one section only: ['Dog Care Basics > Weight management for dogs']
 
-## 9. Error handling
+## 9. RAG enhancement: custom documents and multiple sources
+- [PASS] `Mochi golden retriever, 1 hour` -> "Fetch session": with custom docs=yes, built-in only=no
+- [PASS] `Luna cat, 30 minutes` -> "Wet food meal": with custom docs=yes, built-in only=no
+- [PASS] one plan draws on multiple sources: ['Cat Care Basics', 'Owner Vet Notes']
+- [PASS] a custom-note suggestion that conflicts with a joint condition (Fetch session) is removed
+
+## 10. Agentic workflow (tool calls and decision chain)
+- 11 traced steps, tools called: ['KnowledgeRetriever.search', 'Scheduler.detect_conflicts + Scheduler.generate_plan', 'guardrails.check_input', 'guardrails.validate_tasks']
+- [PASS] multi-step chain with tool calls, a revision step and a self-check
+
+## 11. Error handling
 - [PASS] internal failure returns a safe error message instead of crashing (status=error)
 
 ## Summary
-**33/33 test cases passed**
+**39/39 test cases passed**
 
-33 of 33 test cases passed; average confidence 0.93 with retrieval vs 0.30 without; classifier accuracy 14/20 vs 8/20 for rules alone.
+39 of 39 test cases passed; average confidence 0.92 with retrieval vs 0.30 without; classifier accuracy 14/20 vs 8/20 for rules alone.
 
 ## Results table
 
@@ -100,10 +111,16 @@
 | Mochi golden retriever, 1 hour (consistency) | identical plan across 3 runs | Pass |  |
 | indoor cat, 40 minutes (consistency) | identical plan across 3 runs | Pass |  |
 | puppy, 45 minutes (consistency) | identical plan across 3 runs | Pass |  |
+| all plan cases (specialization) | explanations follow the constrained template | Pass | specialized 100% vs baseline 0% |
 | all plan cases (specialization) | specialized explanations cite sources more than baseline | Pass | cited: specialized 100% vs baseline 0% |
 | 20 held-out requests (specialized model) | rules + classifier more accurate than rules alone | Pass | 14/20 vs 8/20 |
-| all plan cases (rag grounding) | every retrieval-backed explanation quotes a retrieved sentence | Pass | 20/20 |
-| 6 plan cases + parrot (confidence) | confidence higher with retrieval; low with warning for unsupported species | Pass | avg ON 0.93, OFF 0.30, parrot 0.00 |
+| all plan cases (rag grounding) | every retrieval-backed explanation quotes a retrieved sentence | Pass | 22/22 |
+| 6 plan cases + parrot (confidence) | confidence higher with retrieval; low with warning for unsupported species | Pass | avg ON 0.92, OFF 0.30, parrot 0.00 |
 | new kitten, 30 minutes (human-review regression) | at least 2 meals scheduled | Pass | 3 meals |
 | overweight dog, 60 minutes (human-review regression) | feeding tasks do not overlap across sections | Pass | 1 source(s) |
+| Mochi golden retriever, 1 hour (rag enhancement) | custom documents add "Fetch session" that built-in sources cannot | Pass | with custom True, without False |
+| Luna cat, 30 minutes (rag enhancement) | custom documents add "Wet food meal" that built-in sources cannot | Pass | with custom True, without False |
+| Luna cat, 30 minutes (rag enhancement) | plan retrieves from at least 2 different sources | Pass | Cat Care Basics, Owner Vet Notes |
+| Mochi senior golden retriever with arthritis, 45 minutes (rag enhancement) | conflicting high-impact task from a custom source is removed | Pass |  |
+| Mochi senior golden retriever with arthritis, 45 minutes (agentic workflow) | multi-step trace with tool calls, a revise step and a self-check | Pass | 11 steps |
 | simulated retriever crash (error handling) | returns status 'error' with a log pointer, no crash | Pass | status=error |

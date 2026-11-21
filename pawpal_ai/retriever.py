@@ -82,11 +82,16 @@ def _parse_suggestion(line: str) -> dict | None:
     }
 
 
-def load_chunks(knowledge_dir: Path | str = DEFAULT_KNOWLEDGE_DIR) -> list[Chunk]:
-    """Read every markdown file under knowledge_dir and split it into one chunk per `##` section."""
+def load_chunks(knowledge_dir: Path | str = DEFAULT_KNOWLEDGE_DIR, include_custom: bool = True) -> list[Chunk]:
+    """Read every markdown file under knowledge_dir and split it into one chunk per `##` section.
+
+    include_custom=False skips knowledge/custom/, which makes it easy to measure what custom sources add.
+    """
     chunks: list[Chunk] = []
     for path in sorted(Path(knowledge_dir).rglob("*.md")):
         if path.name.lower() == "readme.md":
+            continue
+        if not include_custom and "custom" in path.relative_to(knowledge_dir).parts:
             continue
         meta, body = _parse_front_matter(path.read_text(encoding="utf-8"))
         if "source" not in meta:
@@ -131,8 +136,8 @@ def best_sentence(text: str, primary: str, secondary: str = "") -> str:
 
 
 class KnowledgeRetriever:
-    def __init__(self, knowledge_dir: Path | str = DEFAULT_KNOWLEDGE_DIR):
-        self.chunks = load_chunks(knowledge_dir)
+    def __init__(self, knowledge_dir: Path | str = DEFAULT_KNOWLEDGE_DIR, include_custom: bool = True):
+        self.chunks = load_chunks(knowledge_dir, include_custom)
         self._doc_tokens = [tokenize(c.heading + " " + c.heading + " " + c.text) for c in self.chunks]
         n = len(self.chunks)
         df = Counter(term for tokens in self._doc_tokens for term in set(tokens))

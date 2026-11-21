@@ -17,7 +17,7 @@ It matters because a generic scheduler would give that arthritic dog a 30-minute
 | | |
 |---|---|
 | **Built with** | Python, Streamlit, pytest. Retrieval and the classifier are written from scratch with no ML libraries. |
-| **Results** | 33/33 evaluation test cases and 37/37 unit tests pass. Retrieval put the expected task in 6/6 plans vs 0/6 without it. The trained classifier beat keyword rules 14/20 vs 8/20 on held-out requests. |
+| **Results** | 39/39 evaluation test cases and 41/41 unit tests pass. Retrieval put the expected task in 6/6 plans vs 0/6 without it. The trained classifier beat keyword rules 14/20 vs 8/20 on held-out requests. |
 | **Safety** | Refuses dosage and medical questions, blocks prompt injection, validates every AI-proposed task, and needs a human click before changing any data. |
 | **Runs anywhere** | No API key, no network, deterministic output. Four commands from clone to demo. |
 
@@ -31,7 +31,7 @@ It matters because a generic scheduler would give that arthritic dog a 30-minute
 | **Specialized model** | `pawpal_ai/classifier.py`, `data/`, `models/` | A Naive Bayes classifier **trained on a synthetic dataset** (900 examples) that reads life stage and conditions from free text. Compared against keyword rules on held-out phrasing. |
 | **Agentic workflow** | `pawpal_ai/planner.py` | Eight traced steps with a self-check loop that revises the plan if essential care is missed. |
 | **Guardrails** | `pawpal_ai/guardrails.py` | Blocks injection, medical or dosage questions, and bad input; validates and repairs proposed tasks. |
-| **Evaluation harness** | `evals/run_evals.py` | 33 predefined test cases with a pass/fail summary. |
+| **Evaluation harness** | `evals/run_evals.py` | 39 predefined test cases with a pass/fail summary. |
 | **Logging and error handling** | `pawpal_ai/log.py` | Requests logged to `logs/pawpal.log`; unexpected errors return a safe message; a missing model falls back to rules. |
 | **UI integration** | `app.py` | "AI Planner" section in the Streamlit app. Tasks are added to a pet only after you confirm. |
 
@@ -100,8 +100,8 @@ streamlit run app.py              # UI: see the "AI Planner" section at the bott
 Test it:
 
 ```bash
-python -m pytest -q               # 37 unit tests (original scheduler + AI layer)
-python evals/run_evals.py         # 33-case evaluation harness, writes evals/results.md
+python -m pytest -q               # 41 unit tests (original scheduler + AI layer)
+python evals/run_evals.py         # 39-case evaluation harness, writes evals/results.md
 ```
 
 Optional, retrain the classifier from the synthetic data:
@@ -163,6 +163,31 @@ Sources: Cat Care Basics > Kitten care
   08:15-08:20 Fresh water check | 08:20-08:30 Kitten play session
 ```
 
+## Stretch features (all four implemented)
+
+| Stretch feature | Where it is | Evidence |
+|---|---|---|
+| **RAG enhancement: custom documents and multiple sources** (+2) | `knowledge/` (4 built-in guides plus 2 custom sources in `knowledge/custom/`), `KnowledgeRetriever(include_custom=...)` | Before/after example below; eval section 9 (`evals/results.md`); [`model_card.md`](model_card.md) |
+| **Agentic workflow enhancement** (+2) | `pawpal_ai/planner.py`: 11-step decision chain with tool calls, revision steps and a self-check loop | Every step records the tool it called. Six full traces are saved in [`ai_interactions.md`](ai_interactions.md); eval section 10 |
+| **Specialization** (+2) | `pawpal_ai/classifier.py` (model trained on a synthetic dataset) and the constrained explanation format in `planner._explain` | Baseline vs specialized table in [`model_card.md`](model_card.md): profile accuracy 8/20 vs 14/20, explanation template compliance 0% vs 100% |
+| **Test harness** (+2) | `evals/run_evals.py` | Runs 39 predefined cases and prints a pass/fail summary, average confidence and classifier accuracy; writes `evals/results.md` and `evals/results.json` |
+
+### RAG enhancement: before and after
+
+The retriever indexes several sources: Dog Care Basics, Cat Care Basics, General Pet Care Guidelines, and two **custom** sources, *Owner Custom Notes* (Mochi the golden retriever) and *Owner Vet Notes* (Luna the cat). Dropping a new markdown file into `knowledge/custom/` indexes it automatically.
+
+`python demo.py "Luna cat, 30 minutes"`
+
+| | Built-in sources only | With custom documents |
+|---|---|---|
+| Plan | Morning feeding, Evening feeding, Appetite and water check, Fresh water check, Litter box scooping, Claw trim | **Wet food meal, Extra water refill, Quiet play session**, Enrichment toy rotation |
+| Sources used | Cat Care Basics | **Owner Vet Notes** + Cat Care Basics |
+| Confidence | 0.65 | 0.92 |
+
+The built-in plan is a generic cat routine. With the owner's vet notes, the plan follows the vet's advice (wet food twice a day, extra water, quiet play because Luna hides when stressed). The same happens for `"Mochi golden retriever, 1 hour"`: a generic *Walk* becomes the owner's *Fetch session*.
+
+**Trade-off found in testing:** merging sources can create conflicts. The Mochi note suggests a fetch session, which is a poor idea for an arthritic senior dog. The planner now removes high-impact tasks when a joint condition is detected, logs that as a `revise` step, and has a regression test for it.
+
 ## Design decisions and trade-offs
 
 - **Offline and rule-based over an LLM.** There is no API key, so the system is free, reproducible, and deterministic (3 identical runs per request). The trade-off is that it cannot handle truly free-form requests the way an LLM could, and its "reasoning" is rules grounded in retrieved text. The planner is structured so a model backend could be added later.
@@ -175,14 +200,14 @@ Sources: Cat Care Basics > Kitten care
 
 ## Testing summary
 
-**In a few lines:** 33 of 33 evaluation test cases and 37 of 37 unit tests pass. Average confidence was 0.93 with retrieval versus 0.30 without it, and 0.00 (with a warning shown) for an unsupported species. Retrieval put the expected task in 6/6 plans versus 0/6 without it. The trained classifier got 14/20 held-out requests right versus 8/20 for keyword rules. Along the way the tests caught four real bugs (below), and accuracy improved after each fix. A human review of 6 inputs passed 4 of 6 and found two plan-quality weaknesses the automated tests did not catch; both were then fixed and covered by regression tests.
+**In a few lines:** 39 of 39 evaluation test cases and 41 of 41 unit tests pass. Average confidence was 0.92 with retrieval versus 0.30 without it, and 0.00 (with a warning shown) for an unsupported species. Retrieval put the expected task in 6/6 plans versus 0/6 without it. The trained classifier got 14/20 held-out requests right versus 8/20 for keyword rules. Along the way the tests caught four real bugs (below), and accuracy improved after each fix. A human review of 6 inputs passed 4 of 6 and found two plan-quality weaknesses the automated tests did not catch; both were then fixed and covered by regression tests.
 
 **How reliability is measured** (all reproducible with `python evals/run_evals.py`, which writes [`evals/results.md`](evals/results.md) and machine-readable [`evals/results.json`](evals/results.json)):
 
 | Method | What it shows |
 |---|---|
-| Automated tests (`pytest`, 37 tests) | Key functions: retrieval, guardrails, parsing, planner, classifier, error handling |
-| Evaluation harness (33 cases) | Guardrails 14/14, plan quality 6/6, consistency 6/6, human-review regressions 2/2, specialization, classifier vs rules, RAG grounding, confidence, error handling |
+| Automated tests (`pytest`, 41 tests) | Key functions: retrieval, guardrails, parsing, planner, classifier, error handling |
+| Evaluation harness (39 cases) | Guardrails 14/14, plan quality 6/6, consistency 6/6, human-review regressions 2/2, specialization, classifier vs rules, RAG grounding, confidence, error handling |
 | Confidence scoring | Every plan carries a 0-1 score from retrieval strength; plans under 0.5 show a "review this yourself" warning |
 | Logging and error handling | Each request goes to `logs/pawpal.log`; an internal failure returns a safe `error` result with a log pointer instead of crashing (tested by simulating a crash) |
 | Human evaluation | [`evals/human_eval.md`](evals/human_eval.md): 6 inputs reviewed by hand, **4 of 6 passed on the first review**. The two failures (a kitten plan with one meal, an overweight-dog plan with overlapping feeding tasks) were fixed and now have automated regression checks. Re-review of the fixed outputs is recorded as pending. One reviewer; notes drafted by Claude Code and confirmed by me. |

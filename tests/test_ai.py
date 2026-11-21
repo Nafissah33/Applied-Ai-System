@@ -155,3 +155,26 @@ def test_guardrail_catches_emergencies_and_medicine_amounts(text, code):
 def test_guardrail_does_not_block_normal_food_requests():
     assert check_input("my dog ate his breakfast, plan my day, 30 minutes").allowed
     assert check_input("remind me to give my dog his vet-prescribed medication, 30 minutes").allowed
+
+
+def test_custom_documents_change_the_plan():
+    with_custom = AIPlanner()
+    without = AIPlanner(KnowledgeRetriever(include_custom=False))
+    assert "Wet food meal" in [e["task"].title for e in with_custom.plan("Luna cat, 30 minutes").plan]
+    assert "Wet food meal" not in [e["task"].title for e in without.plan("Luna cat, 30 minutes").plan]
+
+
+def test_plan_can_draw_on_multiple_sources(planner):
+    assert len({c.source for c in planner.plan("Luna cat, 30 minutes").retrieved}) >= 2
+
+
+def test_conflicting_custom_suggestion_is_removed_for_joint_condition(planner):
+    result = planner.plan("Mochi senior golden retriever with arthritis, 45 minutes")
+    assert "Fetch session" not in [e["task"].title for e in result.plan]
+    assert any("high-impact" in s["detail"] for s in result.trace)
+
+
+def test_trace_records_tool_calls(planner):
+    trace = planner.plan("senior dog with arthritis, 45 minutes").trace
+    tools = {s["tool"] for s in trace if s.get("tool")}
+    assert {"guardrails.check_input", "KnowledgeRetriever.search", "guardrails.validate_tasks"} <= tools
